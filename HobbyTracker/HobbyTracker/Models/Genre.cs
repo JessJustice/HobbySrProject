@@ -5,12 +5,11 @@ using System.Web;
 
 namespace HobbyTracker.Models
 {
-    public class User
+    public class Genre
     {
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-       
-      //  public virtual IEnumerable<Item> Items { get; set; }
+        public int GenreID { get; set; }
+        public string GenreName { get; set; }
+
         public virtual IEnumerable<Collection> Collections { get; set; }
     }
 }

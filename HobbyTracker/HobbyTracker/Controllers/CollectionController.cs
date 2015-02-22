@@ -11,107 +11,116 @@ using HobbyTracker.Models;
 
 namespace HobbyTracker.Controllers
 {
-    public class UserController : Controller
+    public class CollectionController : Controller
     {
         private HobbyContext db = new HobbyContext();
 
-        // GET: User
+        // GET: Collection
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            var collections = db.Collections.Include(c => c.Genre).Include(c => c.User);
+            return View(collections.ToList());
         }
 
-        // GET: User/Details/5
+        // GET: Collection/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Collection collection = db.Collections.Find(id);
+            if (collection == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(collection);
         }
 
-        // GET: User/Create
+        // GET: Collection/Create
         public ActionResult Create()
         {
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName");
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
             return View();
         }
 
-        // POST: User/Create
+        // POST: Collection/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,UserName")] User user)
+        public ActionResult Create([Bind(Include = "CollectionID,CollectionName,UserID,GenreID")] Collection collection)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                db.Collections.Add(collection);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", collection.GenreID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", collection.UserID);
+            return View(collection);
         }
 
-        // GET: User/Edit/5
+        // GET: Collection/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Collection collection = db.Collections.Find(id);
+            if (collection == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", collection.GenreID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", collection.UserID);
+            return View(collection);
         }
 
-        // POST: User/Edit/5
+        // POST: Collection/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,UserName")] User user)
+        public ActionResult Edit([Bind(Include = "CollectionID,CollectionName,UserID,GenreID")] Collection collection)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(collection).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(user);
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", collection.GenreID);
+            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", collection.UserID);
+            return View(collection);
         }
 
-        // GET: User/Delete/5
+        // GET: Collection/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Collection collection = db.Collections.Find(id);
+            if (collection == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(collection);
         }
 
-        // POST: User/Delete/5
+        // POST: Collection/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            Collection collection = db.Collections.Find(id);
+            db.Collections.Remove(collection);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -165,6 +165,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CollectionController.cs" />
+    <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -176,13 +178,14 @@
     <Compile Include="Migrations\201502221030031_InitialCreate.Designer.cs">
       <DependentUpon>201502221030031_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201502221117347_addUser.cs" />
-    <Compile Include="Migrations\201502221117347_addUser.Designer.cs">
-      <DependentUpon>201502221117347_addUser.cs</DependentUpon>
+    <Compile Include="Migrations\201502221930219_updateTables.cs" />
+    <Compile Include="Migrations\201502221930219_updateTables.Designer.cs">
+      <DependentUpon>201502221930219_updateTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\User.cs" />
@@ -243,16 +246,26 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Item\Create.cshtml" />
     <Content Include="Views\Item\Delete.cshtml" />
     <Content Include="Views\Item\Details.cshtml" />
     <Content Include="Views\Item\Edit.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Collection\Create.cshtml" />
+    <Content Include="Views\Collection\Delete.cshtml" />
+    <Content Include="Views\Collection\Details.cshtml" />
+    <Content Include="Views\Collection\Edit.cshtml" />
+    <Content Include="Views\Collection\Index.cshtml" />
+    <Content Include="Views\Genre\Create.cshtml" />
+    <Content Include="Views\Genre\Delete.cshtml" />
+    <Content Include="Views\Genre\Details.cshtml" />
+    <Content Include="Views\Genre\Edit.cshtml" />
+    <Content Include="Views\Genre\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,8 +281,8 @@
     <EmbeddedResource Include="Migrations\201502221030031_InitialCreate.resx">
       <DependentUpon>201502221030031_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502221117347_addUser.resx">
-      <DependentUpon>201502221117347_addUser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502221930219_updateTables.resx">
+      <DependentUpon>201502221930219_updateTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

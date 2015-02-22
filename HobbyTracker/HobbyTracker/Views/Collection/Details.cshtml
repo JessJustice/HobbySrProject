@@ -1,0 +1,42 @@
+﻿@model HobbyTracker.Models.Collection
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Collection</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre.GenreName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre.GenreName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CollectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CollectionName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CollectionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

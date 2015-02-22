@@ -7,6 +7,12 @@ namespace HobbyTracker.Models
 {
     public class Collection
     {
+        public int CollectionID { get; set; }
+        public string CollectionName { get; set; }
+        public int UserID { get; set; }
+        public int GenreID { get; set; }
 
+        public virtual User User { get; set; }
+        public virtual Genre Genre { get; set; }
     }
 }

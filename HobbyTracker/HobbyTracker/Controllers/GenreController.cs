@@ -11,107 +11,107 @@ using HobbyTracker.Models;
 
 namespace HobbyTracker.Controllers
 {
-    public class UserController : Controller
+    public class GenreController : Controller
     {
         private HobbyContext db = new HobbyContext();
 
-        // GET: User
+        // GET: Genre
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.Genres.ToList());
         }
 
-        // GET: User/Details/5
+        // GET: Genre/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(genre);
         }
 
-        // GET: User/Create
+        // GET: Genre/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: User/Create
+        // POST: Genre/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,UserName")] User user)
+        public ActionResult Create([Bind(Include = "GenreID,GenreName")] Genre genre)
         {
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                db.Genres.Add(genre);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            return View(genre);
         }
 
-        // GET: User/Edit/5
+        // GET: Genre/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(genre);
         }
 
-        // POST: User/Edit/5
+        // POST: Genre/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,UserName")] User user)
+        public ActionResult Edit([Bind(Include = "GenreID,GenreName")] Genre genre)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(user).State = EntityState.Modified;
+                db.Entry(genre).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(user);
+            return View(genre);
         }
 
-        // GET: User/Delete/5
+        // GET: Genre/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
-            if (user == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            return View(genre);
         }
 
-        // POST: User/Delete/5
+        // POST: Genre/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
+            Genre genre = db.Genres.Find(id);
+            db.Genres.Remove(genre);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

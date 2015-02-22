@@ -11,11 +11,14 @@ namespace HobbyTracker.DAL
         }
 
         public DbSet<Item> Items { get; set; }
-        public DbSet<User> User { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Collection> Collections { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.Genre> Genres { get; set; }
     }
 }
