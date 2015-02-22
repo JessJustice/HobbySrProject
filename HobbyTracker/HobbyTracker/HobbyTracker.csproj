@@ -182,6 +182,10 @@
     <Compile Include="Migrations\201502221930219_updateTables.Designer.cs">
       <DependentUpon>201502221930219_updateTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502221938356_updateCollItem.cs" />
+    <Compile Include="Migrations\201502221938356_updateCollItem.Designer.cs">
+      <DependentUpon>201502221938356_updateCollItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -283,6 +287,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502221930219_updateTables.resx">
       <DependentUpon>201502221930219_updateTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502221938356_updateCollItem.resx">
+      <DependentUpon>201502221938356_updateCollItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
