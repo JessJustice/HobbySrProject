@@ -12,6 +12,7 @@ namespace HobbyTracker.Models
      //   public string itemDesc { get; set; }
 
         public int ItemID { get; set; }
+        public string ItemName { get; set; }
         public string ItemDesc { get; set; }
     }
 }

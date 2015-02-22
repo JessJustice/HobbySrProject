@@ -7,5 +7,6 @@ namespace HobbyTracker.Models
 {
     public class Collection
     {
+
     }
 }

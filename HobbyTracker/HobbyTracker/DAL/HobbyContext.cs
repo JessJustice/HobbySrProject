@@ -11,6 +11,7 @@ namespace HobbyTracker.DAL
         }
 
         public DbSet<Item> Items { get; set; }
+        public DbSet<User> User { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

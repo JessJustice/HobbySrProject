@@ -11,107 +11,107 @@ using HobbyTracker.Models;
 
 namespace HobbyTracker.Controllers
 {
-    public class ItemController : Controller
+    public class UserController : Controller
     {
         private HobbyContext db = new HobbyContext();
 
-        // GET: Item
+        // GET: User
         public ActionResult Index()
         {
-            return View(db.Items.ToList());
+            return View(db.User.ToList());
         }
 
-        // GET: Item/Details/5
+        // GET: User/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = db.Items.Find(id);
-            if (item == null)
+            User user = db.User.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(item);
+            return View(user);
         }
 
-        // GET: Item/Create
+        // GET: User/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Item/Create
+        // POST: User/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemID,ItemName,ItemDesc")] Item item)
+        public ActionResult Create([Bind(Include = "UserID,UserName")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Items.Add(item);
+                db.User.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(item);
+            return View(user);
         }
 
-        // GET: Item/Edit/5
+        // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = db.Items.Find(id);
-            if (item == null)
+            User user = db.User.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(item);
+            return View(user);
         }
 
-        // POST: Item/Edit/5
+        // POST: User/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemID,ItemName,ItemDesc")] Item item)
+        public ActionResult Edit([Bind(Include = "UserID,UserName")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(item).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(item);
+            return View(user);
         }
 
-        // GET: Item/Delete/5
+        // GET: User/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Item item = db.Items.Find(id);
-            if (item == null)
+            User user = db.User.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(item);
+            return View(user);
         }
 
-        // POST: Item/Delete/5
+        // POST: User/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Item item = db.Items.Find(id);
-            db.Items.Remove(item);
+            User user = db.User.Find(id);
+            db.User.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
