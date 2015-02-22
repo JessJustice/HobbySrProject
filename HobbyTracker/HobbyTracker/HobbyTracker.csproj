@@ -171,20 +171,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201502131135099_InitialCreate.cs" />
-    <Compile Include="Migrations\201502131135099_InitialCreate.Designer.cs">
-      <DependentUpon>201502131135099_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502220505028_InitialCreate1.cs" />
-    <Compile Include="Migrations\201502220505028_InitialCreate1.Designer.cs">
-      <DependentUpon>201502220505028_InitialCreate1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502220510127_fixItem.cs" />
-    <Compile Include="Migrations\201502220510127_fixItem.Designer.cs">
-      <DependentUpon>201502220510127_fixItem.cs</DependentUpon>
+    <Compile Include="Migrations\201502221030031_InitialCreate.cs" />
+    <Compile Include="Migrations\201502221030031_InitialCreate.Designer.cs">
+      <DependentUpon>201502221030031_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Collection.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -200,6 +193,7 @@
     <Content Include="images\bg.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\HobbyTracker22.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker4465.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -260,14 +254,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502131135099_InitialCreate.resx">
-      <DependentUpon>201502131135099_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502220505028_InitialCreate1.resx">
-      <DependentUpon>201502220505028_InitialCreate1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502220510127_fixItem.resx">
-      <DependentUpon>201502220510127_fixItem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502221030031_InitialCreate.resx">
+      <DependentUpon>201502221030031_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

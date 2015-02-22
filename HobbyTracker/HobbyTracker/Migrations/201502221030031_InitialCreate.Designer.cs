@@ -13,7 +13,7 @@ namespace HobbyTracker.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201502131135099_InitialCreate"; }
+            get { return "201502221030031_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

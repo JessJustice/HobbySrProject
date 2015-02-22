@@ -11,10 +11,10 @@ namespace HobbyTracker.Migrations
                 "dbo.Item",
                 c => new
                     {
-                        itemID = c.Int(nullable: false, identity: true),
-                        itemDesc = c.String(),
+                        ItemID = c.Int(nullable: false, identity: true),
+                        ItemDesc = c.String(),
                     })
-                .PrimaryKey(t => t.itemID);
+                .PrimaryKey(t => t.ItemID);
             
         }
         
