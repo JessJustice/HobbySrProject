@@ -21,5 +21,7 @@ namespace HobbyTracker.DAL
         }
 
         public System.Data.Entity.DbSet<HobbyTracker.Models.Genre> Genres { get; set; }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.CollectionItem> CollectionItems { get; set; }
     }
 }

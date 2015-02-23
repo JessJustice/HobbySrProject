@@ -39,7 +39,7 @@ namespace HobbyTracker.Controllers
         // GET: Item/Create
         public ActionResult Create()
         {
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
+         //   ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
             return View();
         }
 
@@ -48,7 +48,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemID,ItemName,ItemDesc,UserID")] Item item)
+        public ActionResult Create([Bind(Include = "ItemID,ItemName,ItemDesc")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -56,7 +56,7 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", item.UserID);
+       //     ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", item.UserID);
 
             return View(item);
         }
@@ -73,7 +73,7 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
+         //   ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
             return View(item);
         }
 
@@ -82,7 +82,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemID,ItemName,ItemDesc,UserID")] Item item)
+        public ActionResult Edit([Bind(Include = "ItemID,ItemName,ItemDesc")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", item.UserID);
+        //    ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", item.UserID);
             return View(item);
         }
 

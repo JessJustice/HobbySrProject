@@ -22,6 +22,6 @@ namespace HobbyTracker.Models
 
         public virtual User User { get; set; }
         public virtual Genre Genre { get; set; }
-        public virtual IEnumerable<Item> Items { get; set; }
+        public virtual IEnumerable<CollectionItem> CollectionItems { get; set; }
     }
 }

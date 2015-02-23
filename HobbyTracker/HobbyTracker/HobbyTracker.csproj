@@ -166,6 +166,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
+    <Compile Include="Controllers\CollectionItemController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
@@ -190,9 +191,18 @@
     <Compile Include="Migrations\201502222330368_ConnectUserItem.Designer.cs">
       <DependentUpon>201502222330368_ConnectUserItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502232020249_uncoupleItemUser.cs" />
+    <Compile Include="Migrations\201502232020249_uncoupleItemUser.Designer.cs">
+      <DependentUpon>201502232020249_uncoupleItemUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502232055104_addCollectionItem.cs" />
+    <Compile Include="Migrations\201502232055104_addCollectionItem.Designer.cs">
+      <DependentUpon>201502232055104_addCollectionItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
+    <Compile Include="Models\CollectionItem.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
@@ -275,6 +285,11 @@
     <Content Include="Views\Genre\Details.cshtml" />
     <Content Include="Views\Genre\Edit.cshtml" />
     <Content Include="Views\Genre\Index.cshtml" />
+    <Content Include="Views\CollectionItem\Create.cshtml" />
+    <Content Include="Views\CollectionItem\Delete.cshtml" />
+    <Content Include="Views\CollectionItem\Details.cshtml" />
+    <Content Include="Views\CollectionItem\Edit.cshtml" />
+    <Content Include="Views\CollectionItem\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -298,6 +313,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502222330368_ConnectUserItem.resx">
       <DependentUpon>201502222330368_ConnectUserItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502232020249_uncoupleItemUser.resx">
+      <DependentUpon>201502232020249_uncoupleItemUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502232055104_addCollectionItem.resx">
+      <DependentUpon>201502232055104_addCollectionItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
