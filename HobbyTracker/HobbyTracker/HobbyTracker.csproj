@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201502221938356_updateCollItem.Designer.cs">
       <DependentUpon>201502221938356_updateCollItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201502222330368_ConnectUserItem.cs" />
+    <Compile Include="Migrations\201502222330368_ConnectUserItem.Designer.cs">
+      <DependentUpon>201502222330368_ConnectUserItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -290,6 +294,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201502221938356_updateCollItem.resx">
       <DependentUpon>201502221938356_updateCollItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502222330368_ConnectUserItem.resx">
+      <DependentUpon>201502222330368_ConnectUserItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
