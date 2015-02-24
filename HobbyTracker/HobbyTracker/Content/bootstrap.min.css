@@ -27,7 +27,6 @@ header{
 main{
 	float:left;
 	width:480px;
-	background: white;
 	margin-left: 10px;
 }
 
@@ -63,7 +62,7 @@ footer{
 	font-size: .70em;
 	padding-top: 10px;
 	text-align:center;
-	background: #669999;
+	background: gray;
 	
 
 }
@@ -80,6 +79,7 @@ Formatting for wrap div.
  "auto" makes the left and right margins center the wrapper 
  */
 #wrap{
+    background: white;
 	margin-top:0;
 	margin-bottom:0;
 	margin-left:auto;
@@ -92,21 +92,33 @@ Formatting for wrap div.
 
 
 /*an id to make a div float to the right as a sidebar */
-#sidebar{
+#nav{
 	font-size: 12pt;
 	font-family: sans-serif;
 	position: absolute;
 	left: 1%;
 	width:230px;
 	padding:10px;
-    color: white;
-	background-color:black;
+    background-color: white;
 	font-style: italic;
+    border-style: solid;
+    border-radius: 25px;
+    border-width: 2px;
+
+    /*take away the bullet points*/
+    list-style-type: none;
+    text-decoration: none;
+    
+}
+#nav a{  /*make the links in the nav id have no underline*/
+
+    text-decoration: none;
 }
 
 #large{
 	font-size: 20pt;
 }
+
 
 /*
 A media query to select for typical tablet device viewport size

@@ -11,7 +11,9 @@
 <body>
     <div id="wrap">
        
-       <ul id="sidebar">
+
+        
+       <ul id="nav">
            <li>@Html.Partial("_LoginPartial")</li>
            <li>@Html.ActionLink("Home", "Index", "Home")</li>
            <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -21,6 +23,9 @@
            <li>@Html.ActionLink("Genres", "Index", "Genre")</li>
            <li>@Html.ActionLink("CollectionItems", "Index", "CollectionItem")</li>
        </ul>
+        
+       
+    
 
 
         <main>
@@ -32,7 +37,7 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - Hobby Tracker by WOU Crew</p>
         </footer>
-    </div>
+    </div> <!--end div id wrap-->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
