@@ -25,25 +25,15 @@ header{
 
 /*formatting for the main page */
 main{
-	float:left;
-	width:480px;
-	margin-left: 10px;
+	
+	
 }
 
 /* Padding for the p tags */
 p{
-	padding: 5px;
-}
-/*formatting for image tags*/
-img{
 	padding: 10px;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 250px;
-	max-height: 250px;
-	
 }
+
 
 /*formatting for h1 header tags */
 h1{
@@ -51,6 +41,10 @@ h1{
 	font-family: arial, times;
 	text-align: center;
 	
+}
+
+h3{
+    text-align: center;
 }
 
 
@@ -118,6 +112,28 @@ Formatting for wrap div.
 #large{
 	font-size: 20pt;
 }
+
+#getStarted{
+
+    font-size: 50px;
+    text-align: center;
+    
+}
+
+
+button {
+    background: #ff0000;
+
+color: #ffffff;
+
+border: 0px;
+
+border-radius: 10px
+
+
+
+}
+
 
 
 /*
