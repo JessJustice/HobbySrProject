@@ -16,9 +16,28 @@ namespace HobbyTracker.Controllers
         private HobbyContext db = new HobbyContext();
 
         // GET: Item
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            return View(db.Items.ToList());
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DescriptionSortParm = sortOrder == "Description" ? "desc_desc" : "Description";
+            var items = from s in db.Items
+                           select s;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    items = items.OrderByDescending(s => s.ItemName);
+                    break;
+                case "Description":
+                    items = items.OrderBy(s => s.ItemDesc);
+                    break;
+                case "desc_desc":
+                    items = items.OrderByDescending(s => s.ItemDesc);
+                    break;
+                default:
+                    items = items.OrderBy(s => s.ItemName);
+                    break;
+            }
+            return View(items.ToList());
         }
 
         // GET: Item/Details/5
