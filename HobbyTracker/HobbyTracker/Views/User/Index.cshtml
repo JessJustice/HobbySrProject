@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HobbyTracker.Models.User>
+﻿@model HobbyTracker.ViewModels.UserIndexData
 
 @{
     ViewBag.Title = "Users";
@@ -11,18 +11,22 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
+        <th>User Name</th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
+@foreach (var item in Model.Users) {
+    string selectedRow = "";
+    if (item.UserID == ViewBag.UserId)
+    {
+        selectedRow = "success";
+    }
+    <tr class="@selectedRow">
         <td>
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
+            @Html.ActionLink("Select", "Index", new { id = item.UserID}) |
             @Html.ActionLink("Edit", "Edit", new { id=item.UserID }) |
             @Html.ActionLink("Details", "Details", new { id=item.UserID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.UserID })
@@ -30,3 +34,31 @@
     </tr>
 }
 </table>
+
+@if (Model.Collections != null)
+{
+    <h3>Collections Belonging to Selected User</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Collection Name</th>
+        </tr>
+
+    @foreach (var item in Model.Collections)
+    {
+        string selectedRow = "";
+        if (item.CollectionID == ViewBag.CollectionID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.ActionLink("Select", "Index", new { CollectionID = item.CollectionID })
+            </td>
+            <td>
+                @item.CollectionName
+            </td>
+        </tr>
+    }
+    </table>
+}
