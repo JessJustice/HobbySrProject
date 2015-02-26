@@ -209,6 +209,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Views\UserPage\Class1.cs" />
     <Compile Include="ViewModels\UserData.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +293,7 @@
     <Content Include="Views\CollectionItem\Details.cshtml" />
     <Content Include="Views\CollectionItem\Edit.cshtml" />
     <Content Include="Views\CollectionItem\Index.cshtml" />
+    <Content Include="Views\User\UserPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

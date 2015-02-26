@@ -1,0 +1,41 @@
+﻿@model HobbyTracker.ViewModels.UserIndexData
+
+@{
+    ViewBag.Title = "Users";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>UserPage</title>
+</head>
+<body>
+    <div>
+        <h2>Personal User Page</h2>
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Your Collections</th>
+            </tr>
+            @foreach (var item in Model.Collections)
+            {
+                string selectedRow = "";
+                if (item.CollectionID == ViewBag.CollectionID)
+                {
+                    selectedRow = "success";
+                }
+                <tr class="@selectedRow">
+                    <td>
+                        @Html.ActionLink("Select", "UserPage", new { CollectionID = item.CollectionID })
+                    </td>
+                    <td>
+                        @item.CollectionName
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

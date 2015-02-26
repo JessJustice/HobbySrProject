@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HobbyTracker.DAL;
 using HobbyTracker.Models;
+using HobbyTracker.ViewModels;
 
 namespace HobbyTracker.Controllers
 {
@@ -16,9 +17,25 @@ namespace HobbyTracker.Controllers
         private HobbyContext db = new HobbyContext();
 
         // GET: User
-        public ActionResult Index()
+        public ActionResult Index(int? id, int? collectionID)
         {
-            return View(db.Users.ToList());
+            var viewModel = new UserIndexData();
+            viewModel.Users = db.Users
+                .Include(u => u.Collections)
+                .OrderBy(u => u.UserName);
+
+            if(id != null)
+            {
+                ViewBag.UserId = id.Value;
+                viewModel.Collections = viewModel.Users.Where(u => u.UserID == id.Value).Single().Collections;
+            }
+
+            //if (collectionID != null)
+            //{
+            //    ViewBag.CollectionID = collectionID.Value;
+            //}
+
+            return View(viewModel);
         }
 
         // GET: User/Details/5
@@ -29,11 +46,46 @@ namespace HobbyTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = db.Users.Find(id);
+            
             if (user == null)
             {
                 return HttpNotFound();
             }
+
             return View(user);
+        }
+
+        public ActionResult UserPage()
+        {
+            var userEmail = HttpContext.User.Identity.Name;
+            string[] nameArray = userEmail.Split('@');
+            string userName = nameArray[0];
+
+            if (userName == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var viewModel = new UserIndexData();
+
+            viewModel.Users = db.Users
+                .Include(u => u.Collections)
+                .OrderBy(u => u.UserName);
+
+            if (userName != null)
+                {
+                ViewBag.UserName = userName;
+                viewModel.Collections = viewModel.Users.Where(u => u.UserName == userName).Single().Collections;
+                }
+
+            //User user = db.Users.Find(userName);
+            
+            //if (user == null)
+            //{
+            //    return HttpNotFound();
+            //}
+
+            return View(viewModel);
         }
 
         // GET: User/Create
