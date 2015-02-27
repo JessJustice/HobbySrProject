@@ -6,19 +6,29 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using HobbyTracker.DAL;
 using HobbyTracker.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HobbyTracker.Controllers
 {
+ 
     public class CollectionController : Controller
     {
-        private HobbyContext db = new HobbyContext();
+       // private ApplicationDbContext db = new ApplicationDbContext();
 
+        private ApplicationDbContext db;
+        private UserManager<ApplicationUser> manager;
+
+        public CollectionController()
+        {
+            db = new ApplicationDbContext();
+            manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+        }
         // GET: Collection
         public ActionResult Index()
         {
-            var collections = db.Collections.Include(c => c.Genre).Include(c => c.User);
+            var collections = db.Collections.Include(c => c.Genre);
             return View(collections.ToList());
         }
 
@@ -41,8 +51,6 @@ namespace HobbyTracker.Controllers
         public ActionResult Create()
         {
             ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName");
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
-
             return View();
         }
 
@@ -51,17 +59,18 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CollectionID,CollectionName,UserID,GenreID")] Collection collection)
+        public ActionResult Create([Bind(Include = "CollectionID,CollectionName,GenreID")] Collection collection)
         {
+            var currentUser = manager.FindById(User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
+                collection.User = manager.FindById(User.Identity.GetUserId());
                 db.Collections.Add(collection);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", collection.GenreID);
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", collection.UserID);
             return View(collection);
         }
 
@@ -78,7 +87,6 @@ namespace HobbyTracker.Controllers
                 return HttpNotFound();
             }
             ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", collection.GenreID);
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", collection.UserID);
             return View(collection);
         }
 
@@ -87,7 +95,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CollectionID,CollectionName,UserID,GenreID")] Collection collection)
+        public ActionResult Edit([Bind(Include = "CollectionID,CollectionName,GenreID")] Collection collection)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +104,6 @@ namespace HobbyTracker.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", collection.GenreID);
-            ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", collection.UserID);
             return View(collection);
         }
 

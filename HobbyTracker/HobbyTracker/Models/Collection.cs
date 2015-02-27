@@ -14,14 +14,15 @@ namespace HobbyTracker.Models
         [Display(Name = "Collection")]
         public string CollectionName { get; set; }
         // [Display(Name = "Name")]
-        public int UserID { get; set; }
+  //      public int UserID { get; set; }
         // [Display(Name = "Genre")]
         public int GenreID { get; set; }
         // [Display(Name = "Item")]
-        public int ItemID { get; set; }
+   //     public int ItemID { get; set; }
 
-        public virtual User User { get; set; }
+       // public virtual User User { get; set; }
         public virtual Genre Genre { get; set; }
         public virtual ICollection<CollectionItem> CollectionItems { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }

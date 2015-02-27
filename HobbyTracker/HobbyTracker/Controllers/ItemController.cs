@@ -6,14 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using HobbyTracker.DAL;
 using HobbyTracker.Models;
 
 namespace HobbyTracker.Controllers
 {
     public class ItemController : Controller
     {
-        private HobbyContext db = new HobbyContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Item
         public ActionResult Index(string sortOrder)
@@ -21,7 +20,7 @@ namespace HobbyTracker.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DescriptionSortParm = sortOrder == "Description" ? "desc_desc" : "Description";
             var items = from s in db.Items
-                           select s;
+                        select s;
             switch (sortOrder)
             {
                 case "name_desc":
@@ -58,7 +57,6 @@ namespace HobbyTracker.Controllers
         // GET: Item/Create
         public ActionResult Create()
         {
-         //   ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
             return View();
         }
 
@@ -75,7 +73,6 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-       //     ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", item.UserID);
 
             return View(item);
         }
@@ -92,7 +89,6 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
-         //   ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName");
             return View(item);
         }
 
@@ -109,7 +105,6 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-        //    ViewBag.UserID = new SelectList(db.Users, "UserID", "UserName", item.UserID);
             return View(item);
         }
 

@@ -6,14 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using HobbyTracker.DAL;
 using HobbyTracker.Models;
 
 namespace HobbyTracker.Controllers
 {
     public class GenreController : Controller
     {
-        private HobbyContext db = new HobbyContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Genre
         public ActionResult Index()

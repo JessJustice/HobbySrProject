@@ -28,5 +28,13 @@ namespace HobbyTracker.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.Genre> Genres { get; set; }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.Collection> Collections { get; set; }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.CollectionItem> CollectionItems { get; set; }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.Item> Items { get; set; }
     }
 }

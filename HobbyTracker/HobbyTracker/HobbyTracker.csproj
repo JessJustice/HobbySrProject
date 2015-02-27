@@ -170,34 +170,12 @@
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
-    <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="DAL\HobbyContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201502221030031_InitialCreate.cs" />
-    <Compile Include="Migrations\201502221030031_InitialCreate.Designer.cs">
-      <DependentUpon>201502221030031_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502221930219_updateTables.cs" />
-    <Compile Include="Migrations\201502221930219_updateTables.Designer.cs">
-      <DependentUpon>201502221930219_updateTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502221938356_updateCollItem.cs" />
-    <Compile Include="Migrations\201502221938356_updateCollItem.Designer.cs">
-      <DependentUpon>201502221938356_updateCollItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502222330368_ConnectUserItem.cs" />
-    <Compile Include="Migrations\201502222330368_ConnectUserItem.Designer.cs">
-      <DependentUpon>201502222330368_ConnectUserItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502232020249_uncoupleItemUser.cs" />
-    <Compile Include="Migrations\201502232020249_uncoupleItemUser.Designer.cs">
-      <DependentUpon>201502232020249_uncoupleItemUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201502232055104_addCollectionItem.cs" />
-    <Compile Include="Migrations\201502232055104_addCollectionItem.Designer.cs">
-      <DependentUpon>201502232055104_addCollectionItem.cs</DependentUpon>
+    <Compile Include="Migrations\201502272326161_fixCollection.cs" />
+    <Compile Include="Migrations\201502272326161_fixCollection.Designer.cs">
+      <DependentUpon>201502272326161_fixCollection.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -206,7 +184,6 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Views\UserPage\Class1.cs" />
@@ -268,16 +245,6 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Item\Create.cshtml" />
-    <Content Include="Views\Item\Delete.cshtml" />
-    <Content Include="Views\Item\Details.cshtml" />
-    <Content Include="Views\Item\Edit.cshtml" />
-    <Content Include="Views\Item\Index.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
-    <Content Include="Views\User\Delete.cshtml" />
-    <Content Include="Views\User\Details.cshtml" />
-    <Content Include="Views\User\Edit.cshtml" />
-    <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Collection\Create.cshtml" />
     <Content Include="Views\Collection\Delete.cshtml" />
     <Content Include="Views\Collection\Details.cshtml" />
@@ -293,7 +260,11 @@
     <Content Include="Views\CollectionItem\Details.cshtml" />
     <Content Include="Views\CollectionItem\Edit.cshtml" />
     <Content Include="Views\CollectionItem\Index.cshtml" />
-    <Content Include="Views\User\UserPage.cshtml" />
+    <Content Include="Views\Item\Create.cshtml" />
+    <Content Include="Views\Item\Delete.cshtml" />
+    <Content Include="Views\Item\Details.cshtml" />
+    <Content Include="Views\Item\Edit.cshtml" />
+    <Content Include="Views\Item\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,23 +277,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502221030031_InitialCreate.resx">
-      <DependentUpon>201502221030031_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502221930219_updateTables.resx">
-      <DependentUpon>201502221930219_updateTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502221938356_updateCollItem.resx">
-      <DependentUpon>201502221938356_updateCollItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502222330368_ConnectUserItem.resx">
-      <DependentUpon>201502222330368_ConnectUserItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502232020249_uncoupleItemUser.resx">
-      <DependentUpon>201502232020249_uncoupleItemUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201502232055104_addCollectionItem.resx">
-      <DependentUpon>201502232055104_addCollectionItem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201502272326161_fixCollection.resx">
+      <DependentUpon>201502272326161_fixCollection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
