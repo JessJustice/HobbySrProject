@@ -30,10 +30,11 @@ namespace HobbyTracker.Controllers
                 viewModel.Collections = viewModel.Users.Where(u => u.UserID == id.Value).Single().Collections;
             }
 
-            //if (collectionID != null)
-            //{
-            //    ViewBag.CollectionID = collectionID.Value;
-            //}
+            if (collectionID != null)
+            {
+                ViewBag.CollectionID = collectionID.Value;
+                viewModel.CollectionItems = viewModel.Collections.Where(c => c.CollectionID == collectionID).Single().CollectionItems;
+            }
 
             return View(viewModel);
         }

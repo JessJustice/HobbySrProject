@@ -67,3 +67,22 @@
     }
     </table>
 }
+
+@if (Model.CollectionItems != null)
+{
+    <h3>Items In This Collection</h3>   
+    <table class="table">
+        <tr>
+            <th>Item ID</th>
+        </tr>
+        @foreach (var item in Model.CollectionItems)
+        {
+            <tr>
+                <td>
+                    @item.CollectionID
+                </td>
+                <td></td>
+            </tr>
+        }
+    </table>
+}
