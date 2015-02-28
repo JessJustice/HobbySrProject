@@ -19,6 +19,7 @@ namespace HobbyTracker.Controllers
 
         private ApplicationDbContext db;
         private UserManager<ApplicationUser> manager;
+       // private Item item;
 
         public CollectionController()
         {
@@ -141,5 +142,14 @@ namespace HobbyTracker.Controllers
             }
             base.Dispose(disposing);
         }
+
+        // GET: Item/Create
+        public ActionResult CreateItem()
+        {
+          RedirectToAction("Create,Item");
+            return View();
+        }
+
+      
     }
 }
