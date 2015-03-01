@@ -29,8 +29,18 @@ namespace HobbyTracker.Controllers
         // GET: Collection
         public ActionResult Index()
         {
-            var collections = db.Collections.Include(c => c.Genre);
-            return View(collections.ToList());
+            var userEmail = HttpContext.User.Identity.Name;
+
+            if (userEmail != null)
+            {
+                //var viewModel = new 
+                var collections = db.Collections.Include(c => c.Genre);
+                return View(collections.ToList());
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         // GET: Collection/Details/5
