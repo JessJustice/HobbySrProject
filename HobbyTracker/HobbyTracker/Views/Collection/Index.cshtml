@@ -4,24 +4,20 @@
     ViewBag.Title = "Collections";
 }
 
+<h2>My Collections Page</h2>
+
+<p>
+    @Html.ActionLink("Create A New Collection", "Create") <br />
+    @Html.ActionLink("Create A New Item", "Create", "Item") <br />
+    @Html.ActionLink("Add An Item To My Collection", "Create", "CollectionItem") <br />
+</p>
+
 <h2>My Collections</h2>
-
-<p>
-    Hi, @User.Identity.Name!
-</p>
-
-<p>
-    @Html.ActionLink("Create A New Collection", "Create")
-</p>
-<p>
-     @Html.ActionLink("Create A New Item", "Create", "Item")
-</p>
-<p>
-    @Html.ActionLink("Add An Item To My Collection", "Create", "CollectionItem")
-</p>
 
 <table class="table">
     <tr>
+        <th>
+        </th>
         <th>
             Collection Name
         </th>
@@ -40,6 +36,9 @@
     }
     <tr class="@selectedRow">
         <td>
+            @Html.ActionLink("Select", "Index", new { collectionID = item.CollectionID })
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.CollectionName)
         </td>
         <td>
@@ -52,5 +51,26 @@
         </td>
     </tr>
 }
-
 </table>
+
+@if (Model.CollectionItems != null)
+{
+    <h2>Items in Selected Collection</h2>
+    <table class="table">
+        <tr>
+            <th>Item #</th>
+            <th>Name</th>
+        </tr>
+        @foreach (var item in Model.CollectionItems)
+        {
+            <tr align ="center">
+                <td>
+                    @item.Item.ItemID
+                </td>
+                <td>
+                    @item.Item.ItemName
+                </td>
+            </tr>
+        }
+    </table>
+}

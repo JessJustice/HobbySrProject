@@ -28,7 +28,7 @@ namespace HobbyTracker.Controllers
             manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         }
         // GET: Collection
-        public ActionResult Index()
+        public ActionResult Index(int? collectionID)
         {
             string key = null;
 
@@ -46,6 +46,15 @@ namespace HobbyTracker.Controllers
                 .Include(c => c.User)
                 .Include(c => c.Genre)
                 .OrderBy(c => c.CollectionID);
+
+            viewModel.Collections = viewModel.Collections.Where(c => c.User.Id == key);
+
+            if (collectionID != null)
+            {
+                ViewBag.CollectionID = collectionID.Value;
+                viewModel.CollectionItems = viewModel.Collections.Where(
+                    c => c.CollectionID == collectionID).Single().CollectionItems;
+            }
             //viewModel.Collections = viewModel.Users.Where(u => u.UserName == userName).Single().Collections;
             return View(viewModel);
         }

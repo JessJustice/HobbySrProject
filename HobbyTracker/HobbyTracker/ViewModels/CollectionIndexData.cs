@@ -11,5 +11,6 @@ namespace HobbyTracker.ViewModels
         public IEnumerable<Collection> Collections { get; set; }
         public IEnumerable<Item> Items { get; set; }
         public ApplicationUser User { get; set; }
+        public IEnumerable<CollectionItem> CollectionItems { get; set; }
     }
 }
