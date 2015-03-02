@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HobbyTracker.Models;
+using HobbyTracker.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -29,18 +30,24 @@ namespace HobbyTracker.Controllers
         // GET: Collection
         public ActionResult Index()
         {
-            var userEmail = HttpContext.User.Identity.Name;
+            string key = null;
 
-            if (userEmail != null)
+            if (User.Identity.GetUserId() != null)
             {
-                //var viewModel = new 
-                var collections = db.Collections.Include(c => c.Genre);
-                return View(collections.ToList());
+                key = User.Identity.GetUserId();
             }
-            else
-            {
-                return HttpNotFound();
-            }
+                else
+                {
+                    return Redirect("Account/Register");
+                }
+
+            var viewModel = new CollectionIndexData();
+            viewModel.Collections = db.Collections
+                .Include(c => c.User)
+                .Include(c => c.Genre)
+                .OrderBy(c => c.CollectionID);
+            //viewModel.Collections = viewModel.Users.Where(u => u.UserName == userName).Single().Collections;
+            return View(viewModel);
         }
 
         // GET: Collection/Details/5

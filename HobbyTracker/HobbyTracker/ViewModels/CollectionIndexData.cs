@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using HobbyTracker.Models;
 using System.Linq;
 using System.Web;
+using HobbyTracker.Models;
 
 namespace HobbyTracker.ViewModels
 {
-    public class UserIndexData
+    public class CollectionIndexData
     {
-        //public IEnumerable<User> Users { get; set; }
         public IEnumerable<Collection> Collections { get; set; }
-        public IEnumerable<Genre> Genres { get; set; }
         public IEnumerable<Item> Items { get; set; }
-        public virtual IEnumerable<CollectionItem> CollectionItems { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }
