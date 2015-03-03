@@ -19,7 +19,7 @@
         <th>
         </th>
         <th>
-            Collection Name
+            Name
         </th>
         <th>
             Genre
@@ -55,18 +55,14 @@
 
 @if (Model.CollectionItems != null)
 {
-    <h2>Items in Selected Collection</h2>
+    <h2>Items in the Selected Collection</h2>
     <table class="table">
         <tr>
-            <th>Item #</th>
-            <th>Name</th>
+            <th>Item Name</th>
         </tr>
         @foreach (var item in Model.CollectionItems)
         {
             <tr align ="center">
-                <td>
-                    @item.Item.ItemID
-                </td>
                 <td>
                     @item.Item.ItemName
                 </td>
