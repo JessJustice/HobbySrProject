@@ -15,10 +15,14 @@ namespace HobbyTracker.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Community
-        public ActionResult Index()
+        public ActionResult Index(string test)
         {
+            string val = test;
+            
             return View(db.Communities.ToList());
         }
+
+        
 
         // GET: Community/Details/5
         public ActionResult Details(int? id)
