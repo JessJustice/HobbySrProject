@@ -46,7 +46,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CollectionID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CollectionID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CollectionID })
         </td>
     </tr>
@@ -59,12 +58,17 @@
     <table class="table">
         <tr>
             <th>Item Name</th>
+            <th>Description</th>
+            <th></th>
         </tr>
         @foreach (var item in Model.CollectionItems)
         {
             <tr align ="center">
                 <td>
                     @item.Item.ItemName
+                </td>
+                <td>
+                    @item.Item.ItemDesc
                 </td>
             </tr>
         }
