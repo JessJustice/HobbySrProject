@@ -41,6 +41,8 @@ namespace HobbyTracker.Models
 
         public System.Data.Entity.DbSet<HobbyTracker.Models.Comment> Comments { get; set; }
 
+        public System.Data.Entity.DbSet<HobbyTracker.Models.CommunityComment> CommunityComments { get; set; }
+
         
     }
 }

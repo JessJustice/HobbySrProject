@@ -7,18 +7,18 @@ namespace HobbyTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class Comment_Community_CommunityComment_Models : IMigrationMetadata
+    public sealed partial class CommunityComment : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Comment_Community_CommunityComment_Models));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CommunityComment));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503040158122_Comment_Community_CommunityComment_Models"; }
+            get { return "201503042134258_CommunityComment"; }
         }
         
         string IMigrationMetadata.Source
         {
-            get { return null; }
+            get { return Resources.GetString("Source"); }
         }
         
         string IMigrationMetadata.Target

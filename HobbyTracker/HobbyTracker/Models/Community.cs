@@ -12,6 +12,8 @@ namespace HobbyTracker.Models
         public int CommunityID { get; set; }
 
         public string CommunityName { get; set; }
+        //In community, you can have more thabn one CommunityComment added to it
+        public virtual ICollection<CommunityComment> CommunityComments { get; set; }
 
 
     }

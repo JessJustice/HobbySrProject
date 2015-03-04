@@ -12,9 +12,6 @@ namespace HobbyTracker.Models
         [Key]
         public int CommentID { get; set; }
 
-        [ForeignKey("Community")]
-        public int CommunityID { get; set; }
-
         [DataType(DataType.MultilineText)]
         public string TextInput { get; set; }
 
