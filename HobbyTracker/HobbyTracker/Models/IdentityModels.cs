@@ -36,5 +36,11 @@ namespace HobbyTracker.Models
         public System.Data.Entity.DbSet<HobbyTracker.Models.CollectionItem> CollectionItems { get; set; }
 
         public System.Data.Entity.DbSet<HobbyTracker.Models.Item> Items { get; set; }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.Community> Communities { get; set; }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.Comment> Comments { get; set; }
+
+        public System.Data.Entity.DbSet<HobbyTracker.Models.CommunityComment> CommunityComments { get; set; }
     }
 }
