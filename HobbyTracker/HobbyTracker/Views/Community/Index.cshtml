@@ -4,25 +4,29 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Community Page</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("New Community", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CommunityName)
+            Choose a community that sounds interesting to you!
         </th>
+
+        
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CommunityName)
+            <!--@Html.DisplayFor(modelItem => item.CommunityName)-->
+            @Html.ActionLink(item.CommunityName, "Details", new { id = item.CommunityID }) |
         </td>
         <td>
+            
             @Html.ActionLink("Edit", "Edit", new { id=item.CommunityID }) |
             @Html.ActionLink("Details", "Details", new { id=item.CommunityID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CommunityID })
