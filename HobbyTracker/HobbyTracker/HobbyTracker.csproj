@@ -173,6 +173,7 @@
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\NewUserModelController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -188,6 +189,14 @@
     <Compile Include="Migrations\201503050149261_CommunityIndexData.Designer.cs">
       <DependentUpon>201503050149261_CommunityIndexData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503050448475_NewUserModel.cs" />
+    <Compile Include="Migrations\201503050448475_NewUserModel.Designer.cs">
+      <DependentUpon>201503050448475_NewUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503050452556_NewUserModelFix.cs" />
+    <Compile Include="Migrations\201503050452556_NewUserModelFix.Designer.cs">
+      <DependentUpon>201503050452556_NewUserModelFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -198,6 +207,7 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\NewUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CollectionIndexData.cs" />
@@ -296,6 +306,11 @@
     <Content Include="Views\CommunityComment\Details.cshtml" />
     <Content Include="Views\CommunityComment\Edit.cshtml" />
     <Content Include="Views\CommunityComment\Index.cshtml" />
+    <Content Include="Views\NewUserModel\Create.cshtml" />
+    <Content Include="Views\NewUserModel\Delete.cshtml" />
+    <Content Include="Views\NewUserModel\Details.cshtml" />
+    <Content Include="Views\NewUserModel\Edit.cshtml" />
+    <Content Include="Views\NewUserModel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,6 +331,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503050149261_CommunityIndexData.resx">
       <DependentUpon>201503050149261_CommunityIndexData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503050448475_NewUserModel.resx">
+      <DependentUpon>201503050448475_NewUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503050452556_NewUserModelFix.resx">
+      <DependentUpon>201503050452556_NewUserModelFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

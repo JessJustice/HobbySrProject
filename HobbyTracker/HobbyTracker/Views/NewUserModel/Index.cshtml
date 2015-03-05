@@ -1,0 +1,33 @@
+﻿@model IEnumerable<HobbyTracker.Models.NewUserModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Welcome!</h1>
+
+<p>
+    We are glad to have you here at WOU Crew's Hobby Tracker! Allow us to show you around!
+</p>
+
+<p>
+    Over on the left you will find a stationary sidebar that holds the main navigation. The first button is the 
+    home button. This will bring you back to the starting page.
+</p>
+
+<p>
+    Here, you will also find the "My Collections" button. Click here to see your collections of hobby items.
+    From here you can create a new collection to add items to.
+</p>
+
+<p>
+    Then comes the Community button. Click here to see the different communities that share similar interests 
+    with you! You never know, you might find some groups with hobbies you've never even heard of!
+</p>
+
+<p>
+    Below that is the button that will enable you to add your comment to a certain community if you so choose.
+</p>
+
+Would you like to get started making your first collection? If so, @Html.ActionLink("Click Here", "Create", "Collection");
+
