@@ -45,7 +45,8 @@
             @Html.DisplayFor(modelItem => item.Genre.GenreName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CollectionID }) |
+            @Html.ActionLink("Add", "Create", "CollectionItem") |
+            @Html.ActionLink("Edit", "Edit", new { id = item.CollectionID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CollectionID })
         </td>
     </tr>
@@ -69,6 +70,9 @@
                 </td>
                 <td>
                     @item.Item.ItemDesc
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "CollectionItem", new { id = item.CollectionItemID })
                 </td>
             </tr>
         }

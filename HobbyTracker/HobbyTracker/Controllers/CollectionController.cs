@@ -74,6 +74,8 @@ namespace HobbyTracker.Controllers
             return View(collection);
         }
 
+     
+
         // GET: Collection/Create
         public ActionResult Create()
         {
