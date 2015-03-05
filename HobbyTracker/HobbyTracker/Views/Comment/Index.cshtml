@@ -4,16 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Comments</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TextInput)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -21,11 +19,15 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.TextInput)
+           
         </td>
         <td>
+            <!--Commented out
             @Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) |
             @Html.ActionLink("Details", "Details", new { id=item.CommentID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CommentID })
+            End of comment-->
+
         </td>
     </tr>
 }
