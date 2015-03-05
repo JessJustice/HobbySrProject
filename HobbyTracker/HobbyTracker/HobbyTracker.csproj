@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201503042134258_CommunityComment.Designer.cs">
       <DependentUpon>201503042134258_CommunityComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503050149261_CommunityIndexData.cs" />
+    <Compile Include="Migrations\201503050149261_CommunityIndexData.Designer.cs">
+      <DependentUpon>201503050149261_CommunityIndexData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -197,6 +201,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CollectionIndexData.cs" />
+    <Compile Include="ViewModels\CommunityIndexData.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -308,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503042134258_CommunityComment.resx">
       <DependentUpon>201503042134258_CommunityComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503050149261_CommunityIndexData.resx">
+      <DependentUpon>201503050149261_CommunityIndexData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
