@@ -24,17 +24,21 @@
         
         <tr class="@selectedRow">            
             <td>
-                @Html.DisplayFor(modelItem => item.CommunityName)
+                <!--@Html.DisplayFor(modelItem => item.CommunityName) -->
             </td>
             
             <td>
                 
             </td>
             <td>
-                @Html.ActionLink("Select", "Index", new { id = item.CommunityID }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
+                @Html.ActionLink( item.CommunityName, "Index", new { id = item.CommunityID }) |
+               
+                <!-- Commented out
+                    @Html.ActionLink("Select", "Index", new { id = item.CommunityID })|                
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
+                end comment-->
             </td>
         </tr>
     }
