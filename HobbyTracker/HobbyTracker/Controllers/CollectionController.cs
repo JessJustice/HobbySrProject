@@ -18,8 +18,8 @@ namespace HobbyTracker.Controllers
     {
        // private ApplicationDbContext db = new ApplicationDbContext();
 
-        private ApplicationDbContext db;
-        private UserManager<ApplicationUser> manager;
+       private ApplicationDbContext db;
+       private UserManager<ApplicationUser> manager;
        // private Item item;
 
         public CollectionController()
@@ -41,19 +41,22 @@ namespace HobbyTracker.Controllers
                     return Redirect("Account/Register");
                 }
 
+            // Create a view model for the related information that needs to be displayed on this page
             var viewModel = new CollectionIndexData();
+            
+            // Set up the view model to include some related data
             viewModel.Collections = db.Collections
                 .Include(c => c.User)
-                .Include(c => c.Genre)
-                .OrderBy(c => c.CollectionID);
+                .Include(c => c.Genre) // The genre of the collection
+                .OrderBy(c => c.CollectionID); // Order by the ID number of the collection
 
-            viewModel.Collections = viewModel.Collections.Where(c => c.User.Id == key);
+            viewModel.Collections = viewModel.Collections.Where(c => c.User.Id == key); // Show only the collections
 
-            if (collectionID != null)
+            if (collectionID != null) // Show the collections for the specified user
             {
                 ViewBag.CollectionID = collectionID.Value;
                 viewModel.CollectionItems = viewModel.Collections.Where(
-                    c => c.CollectionID == collectionID).Single().CollectionItems;
+                    c => c.CollectionID == collectionID).Single().CollectionItems; // Show the items in the collection
             }
             //viewModel.Collections = viewModel.Users.Where(u => u.UserName == userName).Single().Collections;
             return View(viewModel);
