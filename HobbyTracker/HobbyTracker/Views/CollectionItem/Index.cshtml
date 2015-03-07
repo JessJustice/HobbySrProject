@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<HobbyTracker.Models.CollectionItem>
+@using Microsoft.AspNet.Identity
 
 @{
     ViewBag.Title = "Index";
@@ -32,7 +33,11 @@
             @Html.DisplayFor(modelItem => item.Item.ItemName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CollectionItemID }) |
+           @if (Request.IsAuthenticated)
+           {
+            @Html.ActionLink("Edit", "Edit", new { id = item.CollectionItemID })
+           }
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.CollectionItemID })*@ |
             @Html.ActionLink("Details", "Details", new { id=item.CollectionItemID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CollectionItemID })
         </td>

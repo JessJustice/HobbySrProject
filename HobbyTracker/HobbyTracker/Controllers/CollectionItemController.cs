@@ -22,6 +22,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: CollectionItem/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +38,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: CollectionItem/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName");
@@ -47,6 +49,7 @@ namespace HobbyTracker.Controllers
         // POST: CollectionItem/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
@@ -64,6 +67,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: CollectionItem/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -83,6 +87,7 @@ namespace HobbyTracker.Controllers
         // POST: CollectionItem/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
@@ -99,6 +104,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: CollectionItem/Delete/5
+       [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,6 +120,7 @@ namespace HobbyTracker.Controllers
         }
 
         // POST: CollectionItem/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

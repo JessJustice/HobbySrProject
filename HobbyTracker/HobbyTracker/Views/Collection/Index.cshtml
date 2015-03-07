@@ -71,10 +71,12 @@
                 <td>
                     @item.Item.ItemDesc
                 </td>
+                
                 <td>
-                    @Html.ActionLink("Delete", "Delete", "CollectionItem", new { id = item.CollectionItemID })
+                    @Html.ActionLink("Delete this Item", "Delete", "CollectionItem", new { id = item.CollectionItemID })
                 </td>
             </tr>
         }
     </table>
 }
+
