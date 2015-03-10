@@ -93,6 +93,7 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CollectionID,CollectionName,GenreID")] Collection collection)
         {
+            //!!!!!!!! Get the current loged in user !!!!!!
             var currentUser = manager.FindById(User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
