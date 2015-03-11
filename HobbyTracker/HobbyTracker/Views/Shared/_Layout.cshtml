@@ -20,7 +20,12 @@
            
            @if (Request.IsAuthenticated)
            {
-            <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" }) </li>
+               using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                   @Html.AntiForgeryToken()
+                     <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" }) </li>
+                       <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                }
            }
            
            @if (Request.IsAuthenticated == false)
@@ -29,13 +34,14 @@
             <li>@Html.ActionLink("Register", "Register", "Account")</li>
            }
            
+           <li><hr /></li>
            <li>@Html.ActionLink("Home", "Index", "Home")</li>
            <li>@Html.ActionLink("About", "About", "Home")</li>
            <li>@Html.ActionLink("My Collections", "Index", "Collection")</li>
            <li>@Html.ActionLink("Community", "Index", "Community")</li>
            <li>@Html.ActionLink("Add Community Comment", "Index", "CommunityComment")</li>
        </ul>
-        
+       
        
     
 
