@@ -17,7 +17,8 @@ namespace HobbyTracker.Controllers
         // GET: Comment
         public ActionResult Index()
         {
-            return View(db.Comments.ToList());
+            var comments = db.Comments.Include(c => c.Community);
+            return View(comments.ToList());
         }
 
         // GET: Comment/Details/5
@@ -38,6 +39,7 @@ namespace HobbyTracker.Controllers
         // GET: Comment/Create
         public ActionResult Create()
         {
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommentID,TextInput")] Comment comment)
+        public ActionResult Create([Bind(Include = "CommentID,TextInput,CommunityID")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace HobbyTracker.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
             return View(comment);
         }
 
@@ -70,6 +73,7 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
             return View(comment);
         }
 
@@ -78,7 +82,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CommentID,TextInput")] Comment comment)
+        public ActionResult Edit([Bind(Include = "CommentID,TextInput,CommunityID")] Comment comment)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
             return View(comment);
         }
 

@@ -1,78 +1,33 @@
-﻿@model HobbyTracker.ViewModels.CommunityIndexData
+﻿@model IEnumerable<HobbyTracker.Models.Community>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Communities</h2>
+<h2>Index</h2>
+
 <p>
-    Select a community that looks interesting to you and share your valuable opinion!
-<br />
-    Or @Html.ActionLink("Create a New Community", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CommunityName)
+        </th>
+        <th></th>
+    </tr>
 
-    @foreach (var item in Model.Communities)
-    {
-        string selectedRow = "";
-        if (item.CommunityID == ViewBag.CommunityID)
-        {
-            selectedRow = "success"; 
-        }
-        
-        
-        <tr class="@selectedRow">            
-            <td>
-                <!--@Html.DisplayFor(modelItem => item.CommunityName) -->
-            </td>
-            
-            <td>
-                
-            </td>
-            <td>
-                @Html.ActionLink( item.CommunityName, "Index", new { id = item.CommunityID }) 
-               
-                <!-- Commented out
-                    @Html.ActionLink("Select", "Index", new { id = item.CommunityID })|                
-                    @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
-                end comment-->
-            </td>
-        </tr>
-    }
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CommunityName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CommunityID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CommunityID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CommunityID })
+        </td>
+    </tr>
+}
 
 </table>
-
-@if (Model.Comments != null)
-{
-        <h3>Comments from this Community</h3>
-        <table class="table">
-            <tr>
-                
-            </tr>
-
-        
-            @Html.ActionLink("Add Comment", "Index", "Comment")
-
-
-
-        @foreach (var item in Model.Comments)
-        {
-            string selectedRow = "";
-            if (item.CommentID == ViewBag.CommentID)
-            {
-                selectedRow = "success";
-            }
-                <tr class="@selectedRow">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TextInput); <!--display text input field of the Comment-->
-                        
-                    </td>
-                    
-                </tr>
-        }
-
-        </table>
-}

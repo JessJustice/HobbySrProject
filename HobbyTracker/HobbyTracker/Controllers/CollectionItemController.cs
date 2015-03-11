@@ -21,6 +21,13 @@ namespace HobbyTracker.Controllers
             return View(collectionItems.ToList());
         }
 
+        //// GET: CollectionItem
+        //public ActionResult Index()
+        //{
+        //    var collectionItems = db.CollectionItems.Include(c => c.Collection).Include(c => c.Item);
+        //    return View(collectionItems.ToList());
+        //}
+
         // GET: CollectionItem/Details/5
         [Authorize]
         public ActionResult Details(int? id)
@@ -58,12 +65,13 @@ namespace HobbyTracker.Controllers
             {
                 db.CollectionItems.Add(collectionItem);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Collection");
             }
 
             ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
-            return View(collectionItem);
+          //  return View(collectionItem);
+            return RedirectToAction("Index", "Collection");
         }
 
         // GET: CollectionItem/Edit/5

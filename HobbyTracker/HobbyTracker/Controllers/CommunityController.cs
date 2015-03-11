@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HobbyTracker.Models;
-using HobbyTracker.ViewModels;
 
 namespace HobbyTracker.Controllers
 {
@@ -16,31 +15,10 @@ namespace HobbyTracker.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Community
-        public ActionResult Index(int? id, int? commentID)
+        public ActionResult Index()
         {
-            var viewModel = new CommunityIndexData();
-            viewModel.Communities = db.Communities
-                .Include(i => i.CommunityComments)
-                .OrderBy(i => i.CommunityName);
-
-            if (id != null)
-            {
-                ViewBag.CommunityID = id.Value;
-                viewModel.Comments = viewModel.Communities.Where(
-                    i => i.CommunityID == id.Value).Single().CommunityComments.Select(c =>c.Comment);
-            }
-
-            if (commentID != null)
-            {
-                ViewBag.CommentID = commentID.Value;
-                //viewModel.Enrollments = viewModel.Courses.Where(
-                //    x => x.CourseID == courseID).Single().Enrollments;
-            }
-
-            return View(viewModel);
+            return View(db.Communities.ToList());
         }
-
-        
 
         // GET: Community/Details/5
         public ActionResult Details(int? id)

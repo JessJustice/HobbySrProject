@@ -168,7 +168,6 @@
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\CollectionItemController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
-    <Compile Include="Controllers\CommunityCommentController.cs" />
     <Compile Include="Controllers\CommunityController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -197,13 +196,20 @@
     <Compile Include="Migrations\201503050452556_NewUserModelFix.Designer.cs">
       <DependentUpon>201503050452556_NewUserModelFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503120658156_removeCommentCommunity.cs" />
+    <Compile Include="Migrations\201503120658156_removeCommentCommunity.Designer.cs">
+      <DependentUpon>201503120658156_removeCommentCommunity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503120710247_addCommunityIDinComment.cs" />
+    <Compile Include="Migrations\201503120710247_addCommunityIDinComment.Designer.cs">
+      <DependentUpon>201503120710247_addCommunityIDinComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
     <Compile Include="Models\CollectionItem.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Community.cs" />
-    <Compile Include="Models\CommunityComment.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
@@ -291,26 +297,22 @@
     <Content Include="Views\Item\Edit.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
     <Content Include="Views\UserPage\UserPage.cshtml" />
-    <Content Include="Views\Community\Create.cshtml" />
-    <Content Include="Views\Community\Delete.cshtml" />
-    <Content Include="Views\Community\Details.cshtml" />
-    <Content Include="Views\Community\Edit.cshtml" />
-    <Content Include="Views\Community\Index.cshtml" />
-    <Content Include="Views\Comment\Create.cshtml" />
-    <Content Include="Views\Comment\Delete.cshtml" />
-    <Content Include="Views\Comment\Details.cshtml" />
-    <Content Include="Views\Comment\Edit.cshtml" />
-    <Content Include="Views\Comment\Index.cshtml" />
-    <Content Include="Views\CommunityComment\Create.cshtml" />
-    <Content Include="Views\CommunityComment\Delete.cshtml" />
-    <Content Include="Views\CommunityComment\Details.cshtml" />
-    <Content Include="Views\CommunityComment\Edit.cshtml" />
-    <Content Include="Views\CommunityComment\Index.cshtml" />
     <Content Include="Views\NewUserModel\Create.cshtml" />
     <Content Include="Views\NewUserModel\Delete.cshtml" />
     <Content Include="Views\NewUserModel\Details.cshtml" />
     <Content Include="Views\NewUserModel\Edit.cshtml" />
     <Content Include="Views\NewUserModel\Index.cshtml" />
+    <Content Include="Views\Collection\Index2.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Comment\Delete.cshtml" />
+    <Content Include="Views\Comment\Details.cshtml" />
+    <Content Include="Views\Comment\Edit.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
+    <Content Include="Views\Community\Create.cshtml" />
+    <Content Include="Views\Community\Delete.cshtml" />
+    <Content Include="Views\Community\Details.cshtml" />
+    <Content Include="Views\Community\Edit.cshtml" />
+    <Content Include="Views\Community\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,6 +339,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503050452556_NewUserModelFix.resx">
       <DependentUpon>201503050452556_NewUserModelFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503120658156_removeCommentCommunity.resx">
+      <DependentUpon>201503120658156_removeCommentCommunity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503120710247_addCommunityIDinComment.resx">
+      <DependentUpon>201503120710247_addCommunityIDinComment.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

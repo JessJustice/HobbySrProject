@@ -28,7 +28,7 @@ namespace HobbyTracker.Controllers
             manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         }
         // GET: Collection
-        public ActionResult Index(int? collectionID)
+        public ActionResult Index(int? collectionID, bool filterByUser = true)
         {
             string key = null;
 
@@ -50,7 +50,7 @@ namespace HobbyTracker.Controllers
                 .Include(c => c.Genre) // The genre of the collection
                 .OrderBy(c => c.CollectionID); // Order by the ID number of the collection
 
-            viewModel.Collections = viewModel.Collections.Where(c => c.User.Id == key); // Show only the collections
+            if(filterByUser) viewModel.Collections = viewModel.Collections.Where(c => c.User.Id == key); // Show only the collections
 
             if (collectionID != null) // Show the collections for the specified user
             {
@@ -59,6 +59,38 @@ namespace HobbyTracker.Controllers
                     c => c.CollectionID == collectionID).Single().CollectionItems; // Show the items in the collection
             }
             //viewModel.Collections = viewModel.Users.Where(u => u.UserName == userName).Single().Collections;
+            return View(viewModel);
+        }
+
+        // GET: Collection
+        public ActionResult Index2(int? collectionID)
+        {
+            //string key = null;
+
+            //if (User.Identity.GetUserId() != null)
+            //{
+            //    key = User.Identity.GetUserId();
+            //}
+            //else
+            //{
+            //    return Redirect("Account/Register");
+            //}
+
+            // Create a view model for the related information that needs to be displayed on this page
+            var viewModel = new CollectionIndexData();
+
+            // Set up the view model to include some related data
+            viewModel.Collections = db.Collections
+                .Include(c => c.User)
+                .Include(c => c.Genre) // The genre of the collection
+                .OrderBy(c => c.CollectionID); // Order by the ID number of the collection
+
+            if (collectionID != null) // Show the collections for the specified user
+            {
+                ViewBag.CollectionID = collectionID.Value;
+                viewModel.CollectionItems = viewModel.Collections.Where(
+                    c => c.CollectionID == collectionID).Single().CollectionItems; // Show the items in the collection
+            }
             return View(viewModel);
         }
 
