@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -14,7 +16,19 @@
 
         
        <ul id="nav">
-           <li>@Html.Partial("_LoginPartial")</li>
+           <!-- <li>@Html.Partial("_LoginPartial")</li>   Took this out -->
+           
+           @if (Request.IsAuthenticated)
+           {
+            <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" }) </li>
+           }
+           
+           @if (Request.IsAuthenticated == false)
+           {
+            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+           }
+           
            <li>@Html.ActionLink("Home", "Index", "Home")</li>
            <li>@Html.ActionLink("About", "About", "Home")</li>
            <li>@Html.ActionLink("My Collections", "Index", "Collection")</li>
