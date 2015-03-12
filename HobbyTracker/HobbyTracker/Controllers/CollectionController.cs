@@ -32,9 +32,9 @@ namespace HobbyTracker.Controllers
         {
             string key = null;
 
-            if (User.Identity.GetUserId() != null)
+            if (User.Identity.GetUserId() != null) //If the current user has an ID
             {
-                key = User.Identity.GetUserId();
+                key = User.Identity.GetUserId(); //The ID of the current user becomes the key
             }
                 else
                 {
