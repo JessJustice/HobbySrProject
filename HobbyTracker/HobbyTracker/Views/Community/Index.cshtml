@@ -1,33 +1,63 @@
-﻿@model IEnumerable<HobbyTracker.Models.Community>
+﻿@model HobbyTracker.ViewModels.CommunityIndexData
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Communities";
 }
 
-<h2>Index</h2>
+<h2>Communities</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CommunityName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
+@foreach (var item in Model.Communities)
+{
+    string selectedRow = "";
+    if (item.CommunityID == ViewBag.CommunityID)
+    {
+        selectedRow = "success";
+    }
+    <tr class="@selectedRow">
+
         <td>
-            @Html.DisplayFor(modelItem => item.CommunityName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CommunityID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CommunityID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CommunityID })
+            <!-- Commented all this stuff out
+            @Html.ActionLink("Select", "Index", new { id = item.CommunityID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
+            end commented out stuff -->
+
+
+            @Html.ActionLink(item.CommunityName, "Index", new { id = item.CommunityID })
         </td>
     </tr>
 }
 
 </table>
+
+
+@if (Model.Comments != null)
+{
+    <h3>Comments from this community</h3>
+    <table class="table">
+       
+
+        @foreach (var item in Model.Comments)
+        {
+            string selectedRow = "";
+            if (item.CommentID == ViewBag.CommentID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                
+                <td>
+                    @item.TextInput
+                </td>
+                
+            </tr>
+        }
+
+    </table>
+}
