@@ -204,6 +204,10 @@
     <Compile Include="Migrations\201503120710247_addCommunityIDinComment.Designer.cs">
       <DependentUpon>201503120710247_addCommunityIDinComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503130800308_addGenreToItem.cs" />
+    <Compile Include="Migrations\201503130800308_addGenreToItem.Designer.cs">
+      <DependentUpon>201503130800308_addGenreToItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -345,6 +349,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503120710247_addCommunityIDinComment.resx">
       <DependentUpon>201503120710247_addCommunityIDinComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503130800308_addGenreToItem.resx">
+      <DependentUpon>201503130800308_addGenreToItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

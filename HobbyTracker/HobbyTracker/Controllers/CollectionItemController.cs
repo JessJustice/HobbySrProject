@@ -21,12 +21,6 @@ namespace HobbyTracker.Controllers
             return View(collectionItems.ToList());
         }
 
-        //// GET: CollectionItem
-        //public ActionResult Index()
-        //{
-        //    var collectionItems = db.CollectionItems.Include(c => c.Collection).Include(c => c.Item);
-        //    return View(collectionItems.ToList());
-        //}
 
         // GET: CollectionItem/Details/5
         [Authorize]
@@ -136,7 +130,7 @@ namespace HobbyTracker.Controllers
             CollectionItem collectionItem = db.CollectionItems.Find(id);
             db.CollectionItems.Remove(collectionItem);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Collection");
         }
 
         protected override void Dispose(bool disposing)

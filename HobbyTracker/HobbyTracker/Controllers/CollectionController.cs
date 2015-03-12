@@ -135,7 +135,7 @@ namespace HobbyTracker.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", collection.GenreID);
+            
             return View(collection);
         }
 

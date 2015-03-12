@@ -14,8 +14,10 @@ namespace HobbyTracker.Models
         public string ItemName { get; set; }
         [Display(Name = "Description")]
         public string ItemDesc { get; set; }
-        
-      //  public virtual IEnumerable<CollectionItem> CollectionItems { get; set; }
+        public int? GenreID { get; set; }
+
+
+        public virtual Genre Genre { get; set; }
         public virtual Collection Collection { get; set; }
     }
 }

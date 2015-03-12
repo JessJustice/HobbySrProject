@@ -19,6 +19,7 @@ namespace HobbyTracker.Controllers
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DescriptionSortParm = sortOrder == "Description" ? "desc_desc" : "Description";
+            ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
             var items = from s in db.Items
                         select s;
             switch (sortOrder)
@@ -31,6 +32,13 @@ namespace HobbyTracker.Controllers
                     break;
                 case "desc_desc":
                     items = items.OrderByDescending(s => s.ItemDesc);
+                    break;
+
+                case "Genre":
+                    items = items.OrderBy(s => s.GenreID);
+                    break;
+                case "genre_desc":
+                    items = items.OrderByDescending(s => s.GenreID);
                     break;
                 default:
                     items = items.OrderBy(s => s.ItemName);
@@ -57,6 +65,7 @@ namespace HobbyTracker.Controllers
         // GET: Item/Create
         public ActionResult Create()
         {
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName");
             return View();
         }
 
@@ -65,7 +74,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemID,ItemName,ItemDesc")] Item item)
+        public ActionResult Create([Bind(Include = "ItemID,ItemName,ItemDesc,GenreID")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +82,7 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", item.GenreID);
             return View(item);
         }
 
@@ -89,6 +98,7 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", item.GenreID);
             return View(item);
         }
 
@@ -97,7 +107,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemID,ItemName,ItemDesc")] Item item)
+        public ActionResult Edit([Bind(Include = "ItemID,ItemName,ItemDesc,GenreID")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -105,6 +115,7 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", item.GenreID);
             return View(item);
         }
 
