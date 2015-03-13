@@ -7,13 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HobbyTracker.Models;
+using HobbyTracker.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HobbyTracker.Controllers
 {
     public class CollectionItemController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+      //   private ApplicationDbContext db;
+       private UserManager<ApplicationUser> manager;
+       // private Item item;
 
+        public CollectionItemController()
+        {
+            db = new ApplicationDbContext();
+            manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
+        }
         // GET: CollectionItem
         public ActionResult Index()
         {
@@ -42,6 +53,8 @@ namespace HobbyTracker.Controllers
         [Authorize]
         public ActionResult Create()
         {
+            
+
             ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName");
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName");
             return View();
@@ -55,8 +68,11 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
         {
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+
             if (ModelState.IsValid)
             {
+                collectionItem.User = manager.FindById(User.Identity.GetUserId());
                 db.CollectionItems.Add(collectionItem);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Collection");

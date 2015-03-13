@@ -1,4 +1,5 @@
-﻿@model HobbyTracker.ViewModels.CommunityIndexData
+﻿@model IEnumerable<HobbyTracker.Models.Community>
+@*@model HobbyTracker.ViewModels.CommunityIndexData*@
 
 @{
     ViewBag.Title = "Communities";
@@ -10,8 +11,23 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-
-@foreach (var item in Model.Communities)
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CommunityName)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommunityName)
+            </td>
+        </tr>
+    }
+    </table>
+    
+@*@foreach (var item in Model.Communities)
 {
     string selectedRow = "";
     if (item.CommunityID == ViewBag.CommunityID)
@@ -20,24 +36,24 @@
     }
     <tr class="@selectedRow">
 
-        <td>
-            <!-- Commented all this stuff out
-            @Html.ActionLink("Select", "Index", new { id = item.CommunityID })
+        <td>*@
+           
+            @*@Html.ActionLink("Select", "Index", new { id = item.CommunityID })
             @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
             @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
-            end commented out stuff -->
+            @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })*@
+            
 
 
-            @Html.ActionLink(item.CommunityName, "Index", new { id = item.CommunityID })
+            @*@Html.ActionLink(item.CommunityName, "Index", new { id = item.CommunityID })
         </td>
     </tr>
 }
 
-</table>
+</table>*@
 
 
-@if (Model.Comments != null)
+@*@if (Model.Comments != null)
 {
     <h3>Comments from this community</h3>
     <table class="table">
@@ -60,4 +76,4 @@
         }
 
     </table>
-}
+}*@

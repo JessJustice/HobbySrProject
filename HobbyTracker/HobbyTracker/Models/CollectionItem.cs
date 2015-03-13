@@ -21,5 +21,6 @@ namespace HobbyTracker.Models
 
         public virtual Collection Collection { get; set; }
         public virtual Item Item { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }
