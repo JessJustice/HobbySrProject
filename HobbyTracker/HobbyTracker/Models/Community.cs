@@ -16,6 +16,8 @@ namespace HobbyTracker.Models
 
       //  public string CommunityLocation { get; set; }
         public string CommunityLoc { get; set; }
+
+        public string testField { get; set; }
         
         public virtual ICollection<Comment> Comments { get; set; }
 
