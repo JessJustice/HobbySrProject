@@ -24,14 +24,19 @@
         }
         <tr class="@selectedRow">
             <td>
-                @Html.DisplayFor(modelItem => item.CommunityName)
+                
+                <!--@Html.DisplayFor(modelItem => item.CommunityName) -->
+                @Html.ActionLink(item.CommunityName, "Index", new { id = item.CommunityID })
             </td>
            
             <td>
+                <!--
                 @Html.ActionLink("Select", "Index", new { id = item.CommunityID }) |
                 @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
+
+                -->
             </td>
         </tr>
     }
