@@ -16,31 +16,33 @@ namespace HobbyTracker.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Community
-        public ActionResult Index()
-        {
-            return View(db.Communities.ToList());
-        }
-        //public ActionResult Index(int? id, int? commentID)
+        //public ActionResult Index()
         //{
-        //    var viewModel = new CommunityIndexData();
-        //    viewModel.Communities = db.Communities
-        //        .OrderBy(i => i.CommunityName);
-
-        //    if (id != null)
-        //    {
-        //        ViewBag.CommunityID = id.Value;
-        //        viewModel.Comments = viewModel.Communities.Where(
-        //            i => i.CommunityID == id.Value).Single().Comments;
-        //    }
-
-        //    if (commentID != null)
-        //    {
-        //        ViewBag.CommentID = commentID.Value;
-
-        //    }
-
-        //    return View(viewModel);
+            //return View(db.Communities.ToList());
         //}
+        
+        
+        public ActionResult Index(int? id, int? commentID)
+        {
+            var viewModel = new CommunityIndexData();
+            viewModel.Communities = db.Communities
+                .OrderBy(i => i.CommunityName);
+
+            if (id != null)
+            {
+                ViewBag.CommunityID = id.Value;
+                viewModel.Comments = viewModel.Communities.Where(
+                    i => i.CommunityID == id.Value).Single().Comments;
+            }
+
+            if (commentID != null)
+            {
+                ViewBag.CommentID = commentID.Value;
+
+            }
+
+            return View(viewModel);
+        }
 
         // GET: Community/Details/5
         public ActionResult Details(int? id)

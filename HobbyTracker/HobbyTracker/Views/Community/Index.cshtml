@@ -1,5 +1,4 @@
-﻿@model IEnumerable<HobbyTracker.Models.Community>
-@*@model HobbyTracker.ViewModels.CommunityIndexData*@
+﻿@model HobbyTracker.ViewModels.CommunityIndexData
 
 @{
     ViewBag.Title = "Communities";
@@ -12,52 +11,43 @@
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CommunityName)
-        </th>
+        <th>Communities</th>
         <th></th>
     </tr>
-    @foreach (var item in Model)
+
+    @foreach (var item in Model.Communities)
     {
-        <tr>
+        string selectedRow = "";
+        if (item.CommunityID == ViewBag.ID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
             <td>
                 @Html.DisplayFor(modelItem => item.CommunityName)
             </td>
+           
+            <td>
+                @Html.ActionLink("Select", "Index", new { id = item.CommunityID }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
+            </td>
         </tr>
     }
-    </table>
-    
-@*@foreach (var item in Model.Communities)
+
+</table>
+
+@if (Model.Comments != null)
 {
-    string selectedRow = "";
-    if (item.CommunityID == ViewBag.CommunityID)
-    {
-        selectedRow = "success";
-    }
-    <tr class="@selectedRow">
-
-        <td>*@
-           
-            @*@Html.ActionLink("Select", "Index", new { id = item.CommunityID })
-            @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })*@
-            
-
-
-            @*@Html.ActionLink(item.CommunityName, "Index", new { id = item.CommunityID })
-        </td>
-    </tr>
-}
-
-</table>*@
-
-
-@*@if (Model.Comments != null)
-{
-    <h3>Comments from this community</h3>
+    <h3>Courses Taught by Selected Instructor</h3>
     <table class="table">
-       
+        <tr>
+            <th></th>
+            <th>Number</th>
+            <th>Title</th>
+            <th>Department</th>
+        </tr>
 
         @foreach (var item in Model.Comments)
         {
@@ -67,7 +57,12 @@
                 selectedRow = "success";
             }
             <tr class="@selectedRow">
-                
+                <td>
+                    @Html.ActionLink("Select", "Index", new { courseID = item.CommentID })
+                </td>
+                <td>
+                    @item.CommentID
+                </td>
                 <td>
                     @item.TextInput
                 </td>
@@ -76,4 +71,4 @@
         }
 
     </table>
-}*@
+}
