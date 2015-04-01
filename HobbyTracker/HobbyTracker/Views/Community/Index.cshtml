@@ -25,12 +25,16 @@
         <tr class="@selectedRow">
             <td>
                 
-                <!--@Html.DisplayFor(modelItem => item.CommunityName) -->
+                <!--@Html.DisplayFor(modelItem => item.CommunityName) Commented out -->
+
+                <!--make the community name that is displayed a link so that when clicked, the comments show up instead
+                    of clicking a "select" link. Looks better this way.-->
                 @Html.ActionLink(item.CommunityName, "Index", new { id = item.CommunityID })
             </td>
            
             <td>
-                <!--
+                <!-- Commented out this section, but left it in for reference. Shouldn't have these options as a user.
+                    Could add an if statement to check if administrator though...
                 @Html.ActionLink("Select", "Index", new { id = item.CommunityID }) |
                 @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
@@ -45,15 +49,16 @@
 
 @if (Model.Comments != null)
 {
-    <h3>Courses Taught by Selected Instructor</h3>
+    <h3>Comments</h3>
+    
+    <!--a horizontal line-->
+    <hr>
+    
     <table class="table">
         <tr>
-            <th></th>
-            <th>Number</th>
-            <th>Title</th>
-            <th>Department</th>
+            
         </tr>
-
+        <!--display the comments one by one-->
         @foreach (var item in Model.Comments)
         {
             string selectedRow = "";
@@ -63,16 +68,22 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    @Html.ActionLink("Select", "Index", new { courseID = item.CommentID })
-                </td>
-                <td>
-                    @item.CommentID
-                </td>
-                <td>
-                    @item.TextInput
+                    <!--@Html.ActionLink("Select", "Index", new { courseID = item.CommentID }) Commented out. But left in for reference-->
                 </td>
                 
+                <td>
+                    <!--display the text in the comment.-->
+                    @item.TextInput
+
+                    <!--a horizontal line to divide the comments-->
+                    <hr>
+                </td>
+
+                
+                
             </tr>
+
+            
         }
 
     </table>
