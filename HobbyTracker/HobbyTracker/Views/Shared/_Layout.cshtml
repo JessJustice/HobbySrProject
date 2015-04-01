@@ -34,14 +34,20 @@
             <li>@Html.ActionLink("Register", "Register", "Account")</li>
            }
            
+           <!--static menu items-->
            <li><hr /></li>
            <li>@Html.ActionLink("Home", "Index", "Home")</li>
            <li>@Html.ActionLink("About", "About", "Home")</li>
            <li>@Html.ActionLink("My Collections", "Index", "Collection")</li>
            <li>@Html.ActionLink("Other Collections", "Index2", "Collection")</li> 
            <li>@Html.ActionLink("Community", "Index", "Community")</li>
-           <li>@Html.ActionLink("Comment", "Index", "Comment")</li>
-           @*<li>@Html.ActionLink("Add Community Comment", "Index", "CommunityComment")</li>*@
+
+           <!--Check to see if logged on user is an administrator. If so, add the menu item to edit all comments-->
+            @if(User.Identity.Name == "administrator@hobbytracker.com")
+            {
+                <li>@Html.ActionLink("All Comments", "Index", "Comment")</li>
+            }
+           
        </ul>
        
        

@@ -29,9 +29,13 @@
             @Html.DisplayFor(modelItem => item.TextInput)
         </td>
         <td>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CommentID }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.CommentID })
+            @if(User.Identity.Name == "administrator@hobbytracker.com")
+            {
+                @Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) 
+                @Html.ActionLink("Details", "Details", new { id=item.CommentID }) 
+                @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
+            }
+            
         </td>
     </tr>
 }

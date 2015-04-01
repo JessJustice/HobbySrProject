@@ -4,6 +4,7 @@
     ViewBag.Title = "Communities";
 }
 
+
 <h2>Communities</h2>
 
 <p>
@@ -33,14 +34,19 @@
             </td>
            
             <td>
-                <!-- Commented out this section, but left it in for reference. Shouldn't have these options as a user.
-                    Could add an if statement to check if administrator though...
-                @Html.ActionLink("Select", "Index", new { id = item.CommunityID }) |
-                @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.CommunityID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
+                
 
-                -->
+                
+                <!--Check to see if logged on user is an administrator. If so, display more editing options-->
+                @if(User.Identity.Name == "administrator@hobbytracker.com")
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CommunityID })
+                    @Html.ActionLink("Details", "Details", new { id = item.CommunityID })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.CommunityID })
+                }
+                
+
+               
             </td>
         </tr>
     }
@@ -70,7 +76,7 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    <!--@Html.ActionLink("Select", "Index", new { courseID = item.CommentID }) Commented out. But left in for reference-->
+                   
                 </td>
                 
                 <td>
