@@ -32,7 +32,7 @@ namespace HobbyTracker.Controllers
             {
                 ViewBag.CommunityID = id.Value;
                 viewModel.Comments = viewModel.Communities.Where(
-                    i => i.CommunityID == id.Value).Single().Comments;
+                    i => i.CommunityID == id.Value).Single().Comments.Take(5);
             }
 
             if (commentID != null)
