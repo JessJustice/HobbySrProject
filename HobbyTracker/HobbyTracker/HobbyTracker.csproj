@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201503132148242_testField.Designer.cs">
       <DependentUpon>201503132148242_testField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504030010066_huh.cs" />
+    <Compile Include="Migrations\201504030010066_huh.Designer.cs">
+      <DependentUpon>201504030010066_huh.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Collection.cs" />
@@ -248,6 +252,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\HobbyTracker %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\HobbyTracker %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker22.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker4465.pubxml" />
@@ -375,6 +380,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503132148242_testField.resx">
       <DependentUpon>201503132148242_testField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504030010066_huh.resx">
+      <DependentUpon>201504030010066_huh.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

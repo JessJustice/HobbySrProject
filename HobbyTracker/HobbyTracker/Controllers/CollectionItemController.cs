@@ -68,20 +68,43 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
         {
-            var currentUser = manager.FindById(User.Identity.GetUserId());
-
-            if (ModelState.IsValid)
-            {
-                collectionItem.User = manager.FindById(User.Identity.GetUserId());
-                db.CollectionItems.Add(collectionItem);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Collection");
-            }
 
             ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
-          //  return View(collectionItem);
-            return RedirectToAction("Index", "Collection");
+
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            var testCollection = (from n in db.Collections 
+                                  where collectionItem.CollectionID == n.CollectionID 
+                                  select n.GenreID).First();
+            var testItem = (from s in db.Items 
+                            where collectionItem.ItemID == s.ItemID 
+                            select s.GenreID).First();
+
+         
+
+            if (testCollection.Equals(testItem))
+            {
+                if (ModelState.IsValid)
+                {
+                    collectionItem.User = manager.FindById(User.Identity.GetUserId());
+                    db.CollectionItems.Add(collectionItem);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Collection");
+                }
+
+
+                //  return View(collectionItem);
+                return RedirectToAction("Index", "Collection");
+            }
+            else
+            {
+                ViewBag.Message = "Genres don't match.";
+
+               // return View();
+                return RedirectToAction("Index", "Collection");
+
+
+            }
         }
 
         // GET: CollectionItem/Edit/5
