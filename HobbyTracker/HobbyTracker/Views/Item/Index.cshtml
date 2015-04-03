@@ -13,6 +13,14 @@
     @Html.ActionLink("Back to My Collection", "Index", "Collection")
 </p>
 
+@using (Html.BeginForm())
+{
+    <p>
+        Find by genre: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>

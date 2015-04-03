@@ -15,13 +15,26 @@ namespace HobbyTracker.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Item
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DescriptionSortParm = sortOrder == "Description" ? "desc_desc" : "Description";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
             var items = from s in db.Items
                         select s;
+
+
+            //var genre = from g in db.Items
+            //            where g.GenreID == g.ItemID
+            //            select g.GenreID;
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                  items = items.Where(s => s.Genre.GenreName.Contains(searchString));
+            }
+
+
             switch (sortOrder)
             {
                 case "name_desc":
