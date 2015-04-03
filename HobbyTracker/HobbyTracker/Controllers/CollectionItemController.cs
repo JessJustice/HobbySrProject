@@ -98,10 +98,10 @@ namespace HobbyTracker.Controllers
             }
             else
             {
-                ViewBag.Message = "Genres don't match.";
-
-               // return View();
-                return RedirectToAction("Index", "Collection");
+                
+                ModelState.AddModelError("", "Your collection genre and item genre do not match.");
+                return View();
+               // return RedirectToAction("Index", "Collection");
 
 
             }
