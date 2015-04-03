@@ -251,12 +251,7 @@
     <Content Include="images\HobbyTrackerLogo.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Properties\PublishProfiles\HobbyTracker %283%29.pubxml" />
-    <None Include="Properties\PublishProfiles\HobbyTracker %284%29.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker.pubxml" />
-    <None Include="Properties\PublishProfiles\HobbyTracker22.pubxml" />
-    <None Include="Properties\PublishProfiles\HobbyTracker4465.pubxml" />
-    <None Include="Properties\PublishProfiles\hobbytrackertest.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
