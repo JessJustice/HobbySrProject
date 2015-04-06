@@ -89,13 +89,26 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ItemID,ItemName,ItemDesc,GenreID")] Item item)
         {
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", item.GenreID);
+            var itemName = (from n in db.Items
+                                  //where item.ItemName ==  n.ItemName
+                                  select n.ItemName);
+
+ //           itemName returns and array.  Check item.name against array (using contains?) if false continue, if true throw error
+            if(itemName.Contains(item.ItemName) == false){
             if (ModelState.IsValid)
             {
                 db.Items.Add(item);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", item.GenreID);
+        }
+            else{
+                ModelState.AddModelError("", "You have the same item already exists");
+                return View();
+            }
+             //   return View("Index");           
+            
             return View(item);
         }
 
