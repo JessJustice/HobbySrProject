@@ -92,8 +92,13 @@ namespace HobbyTracker.Controllers
             ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", item.GenreID);
             var itemName = (from n in db.Items
                                   select n.ItemName);
+            var itemDesc = (from n in db.Items
+                            select n.ItemDesc);
+            var itemGenre = (from n in db.Items
+                             select n.GenreID);
 
-   if(itemName.Contains(item.ItemName) == false){
+
+   if(itemName.Contains(item.ItemName) == false || itemDesc.Contains(item.ItemDesc) == false || itemGenre.Contains(item.GenreID) == false){
             if (ModelState.IsValid)
             {
                 db.Items.Add(item);
