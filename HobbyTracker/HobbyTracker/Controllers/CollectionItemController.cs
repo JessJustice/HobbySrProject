@@ -53,7 +53,8 @@ namespace HobbyTracker.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            
+            // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
+           
 
             ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName");
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName");
@@ -68,7 +69,7 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
         {
-
+            // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
             ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
 
@@ -107,10 +108,74 @@ namespace HobbyTracker.Controllers
             }
         }
 
+        // GET: CollectionItem/Create2
+        [Authorize]
+        public ActionResult Create2()
+        {
+
+            // ************** If you make changes here, be sure to check Create1 and Edit for complete change set*********
+           
+            ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName");
+     
+            return View();
+        }
+
+        // POST: CollectionItem/Create2
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create2([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
+        {
+            // ************** If you make changes here, be sure to check Create1 and Edit for complete change set*********
+           
+            Item newItem = TempData["passItem"] as Item;
+         
+            collectionItem.ItemID = newItem.ItemID;
+
+            ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
+            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
+
+            var currentUser = manager.FindById(User.Identity.GetUserId());
+            var testCollection = (from n in db.Collections
+                                  where collectionItem.CollectionID == n.CollectionID
+                                  select n.GenreID).First();
+       
+            var testItem = (from s in db.Items
+                            where newItem.ItemID == s.ItemID
+                            select s.GenreID).First();
+
+
+            if (testCollection.Equals(testItem))
+            {
+                if (ModelState.IsValid)
+                {
+                    collectionItem.User = manager.FindById(User.Identity.GetUserId());
+                    db.CollectionItems.Add(collectionItem);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Collection");
+                }
+
+
+                //  return View(collectionItem);
+                return RedirectToAction("Index", "Collection");
+            }
+            else
+            {
+
+                ModelState.AddModelError("", "Your collection genre and item genre do not match.");
+                return View();
+                // return RedirectToAction("Index", "Collection");
+
+            }
+        }
+
         // GET: CollectionItem/Edit/5
         [Authorize]
         public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
