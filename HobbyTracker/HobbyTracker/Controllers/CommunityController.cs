@@ -28,9 +28,15 @@ namespace HobbyTracker.Controllers
             viewModel.Communities = db.Communities
                 .OrderBy(i => i.CommunityName);
 
+            String CommName = null;
+
             if (id != null)
             {
+                CommName = (from n in db.Communities 
+                                  where n.CommunityID == id.Value 
+                                  select n.CommunityName).First();
                 ViewBag.CommunityID = id.Value;
+                ViewBag.CommunityName = CommName;
                 viewModel.Comments = viewModel.Communities.Where(
                     i => i.CommunityID == id.Value).Single().Comments.Take(5);
             }
@@ -38,7 +44,6 @@ namespace HobbyTracker.Controllers
             if (commentID != null)
             {
                 ViewBag.CommentID = commentID.Value;
-
             }
 
             return View(viewModel);
