@@ -13,6 +13,7 @@
 <table class="table">
     <tr>
         <th>Communities</th>
+        <th>Main Page</th>
         <th></th>
     </tr>
 
@@ -30,9 +31,13 @@
 
                 <!--make the community name that is displayed a link so that when clicked, the comments show up instead
                     of clicking a "select" link. Looks better this way.-->
-                @Html.ActionLink(item.CommunityName, "Index", new { id = item.CommunityID })
+                @Html.ActionLink(item.CommunityName, "Index", new { id = item.CommunityID }):
             </td>
            
+            <td>
+                @Html.ActionLink("View Page", "Details", new { id = item.CommunityID })
+            </td>
+
             <td>
                 <!--Check to see if logged on user is an administrator. If so, display more editing options-->
                 @if(User.Identity.Name == "administrator@hobbytracker.com")

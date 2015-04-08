@@ -4,23 +4,31 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.CommunityName) Community</h2>
 
 <div>
-    <h4>Community</h4>
+    <h4>Details:</h4>
+    <p>This section is under construction. Please check back later for additional features!</p>
     <hr />
+    <h4>Comments:</h4>
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CommunityName)
-        </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.CommunityName)
+            <table class="table">
+                <tr>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Comments)
+                {
+                    <tr>
+                        <td>
+                            @item.TextInput
+                        </td>
+                    </tr>
+                }
+            </table>
         </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CommunityID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

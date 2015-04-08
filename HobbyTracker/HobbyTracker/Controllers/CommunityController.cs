@@ -21,7 +21,6 @@ namespace HobbyTracker.Controllers
             //return View(db.Communities.ToList());
         //}
         
-        
         public ActionResult Index(int? id, int? commentID)
         {
             var viewModel = new CommunityIndexData();
