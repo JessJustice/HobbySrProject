@@ -332,6 +332,7 @@
     <Content Include="Views\Community\Edit.cshtml" />
     <Content Include="Views\Community\Index.cshtml" />
     <Content Include="Views\CollectionItem\Create2.cshtml" />
+    <Content Include="Views\Comment\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

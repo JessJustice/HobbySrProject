@@ -1,0 +1,46 @@
+﻿@model HobbyTracker.Models.Comment
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Thanks";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+</head>
+<body>
+    @{
+        try
+        {
+            WebMail.SmtpServer = "smtp-mail.outlook.com";
+            WebMail.SmtpPort = 587;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "zhaoqi0904@hotmail.com";
+            WebMail.Password = "xxxx";
+            WebMail.From = "zhaoqi0904@hotmail.cxxom";
+
+            WebMail.Send(@User.Identity.GetUserName(), "Your comment:", Model.TextInput + " is sent to" + Model.Community);
+        }
+        catch (Exception)
+        {
+            @:<b> Sorry - we couldn't send the email to confirm your RSVP.</b>
+        }
+    }
+    <div class="text-center">
+        <h1> Thank you, @User.Identity.GetUserName()</h1>
+        <div class="lead">    
+                Your comment has been posted. A confirmation has been sent to your email. 
+        </div>
+
+    </div>
+    <p>
+        Go Back to see all comments.
+    </p>
+    @Html.ActionLink("→", "Index")
+
+</body>
+</html>

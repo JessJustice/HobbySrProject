@@ -54,7 +54,7 @@ namespace HobbyTracker.Controllers
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return View("Thanks",comment);
             }
 
             ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
