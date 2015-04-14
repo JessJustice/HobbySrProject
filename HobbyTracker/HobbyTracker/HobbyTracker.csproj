@@ -204,21 +204,9 @@
     <Compile Include="Migrations\201503120710247_addCommunityIDinComment.Designer.cs">
       <DependentUpon>201503120710247_addCommunityIDinComment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503122316383_CommunityLocationFieldAdded.cs" />
-    <Compile Include="Migrations\201503122316383_CommunityLocationFieldAdded.Designer.cs">
-      <DependentUpon>201503122316383_CommunityLocationFieldAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503130800308_addGenreToItem.cs" />
-    <Compile Include="Migrations\201503130800308_addGenreToItem.Designer.cs">
-      <DependentUpon>201503130800308_addGenreToItem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503131003246_fix3.cs" />
-    <Compile Include="Migrations\201503131003246_fix3.Designer.cs">
-      <DependentUpon>201503131003246_fix3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504142232528_fix4.cs" />
-    <Compile Include="Migrations\201504142232528_fix4.Designer.cs">
-      <DependentUpon>201504142232528_fix4.cs</DependentUpon>
+    <Compile Include="Migrations\201504142241534_fix2New.cs" />
+    <Compile Include="Migrations\201504142241534_fix2New.Designer.cs">
+      <DependentUpon>201504142241534_fix2New.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -363,17 +351,8 @@
     <EmbeddedResource Include="Migrations\201503120710247_addCommunityIDinComment.resx">
       <DependentUpon>201503120710247_addCommunityIDinComment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503122316383_CommunityLocationFieldAdded.resx">
-      <DependentUpon>201503122316383_CommunityLocationFieldAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503130800308_addGenreToItem.resx">
-      <DependentUpon>201503130800308_addGenreToItem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503131003246_fix3.resx">
-      <DependentUpon>201503131003246_fix3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504142232528_fix4.resx">
-      <DependentUpon>201504142232528_fix4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504142241534_fix2New.resx">
+      <DependentUpon>201504142241534_fix2New.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
