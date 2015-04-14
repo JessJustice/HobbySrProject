@@ -3,7 +3,7 @@ namespace HobbyTracker.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class testField : DbMigration
+    public partial class fix4 : DbMigration
     {
         public override void Up()
         {
