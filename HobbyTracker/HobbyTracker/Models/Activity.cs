@@ -5,6 +5,8 @@ namespace PartyInvites.Models
 {
     public class Activity
     {
+        [Key]
+        public int ActivityID { get; set; }
         [Required(ErrorMessage = "Please enter your activity name")]
         public string ActName { get; set; }
         [Required(ErrorMessage = "Please enter your email address")]

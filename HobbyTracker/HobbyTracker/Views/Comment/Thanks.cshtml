@@ -23,7 +23,7 @@
             WebMail.Password = "xxxx";
             WebMail.From = "zhaoqi0904@hotmail.cxxom";
 
-            WebMail.Send(@User.Identity.GetUserName(), "Your comment:", Model.TextInput + " is sent to" + Model.Community);
+            WebMail.Send(@User.Identity.GetUserName(), "Your comment:", Model.TextInput + " is sent to the comment board");
         }
         catch (Exception)
         {
