@@ -234,6 +234,10 @@
     <Compile Include="Migrations\201504162314570_activityControllerAdded.Designer.cs">
       <DependentUpon>201504162314570_activityControllerAdded.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504162317270_CommunityActivitiesField.cs" />
+    <Compile Include="Migrations\201504162317270_CommunityActivitiesField.Designer.cs">
+      <DependentUpon>201504162317270_CommunityActivitiesField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -408,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504162314570_activityControllerAdded.resx">
       <DependentUpon>201504162314570_activityControllerAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504162317270_CommunityActivitiesField.resx">
+      <DependentUpon>201504162317270_CommunityActivitiesField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

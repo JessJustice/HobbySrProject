@@ -22,5 +22,7 @@ namespace HobbyTracker.Models
         public string DescriptionField { get; set; }
         
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<Activity> Activities { get; set; }
     }
 }

@@ -44,6 +44,7 @@
            <li>@Html.ActionLink("My Collections", "Index", "Collection")</li>
            <li>@Html.ActionLink("Other Collections", "Index2", "Collection")</li> 
            <li>@Html.ActionLink("Community", "Index", "Community")</li>
+           <li>@Html.ActionLink("Activities", "Index", "Activity")</li>
 
            <!--Check to see if logged on user is an administrator. If so, add the menu item Administrator tools-->
             @if(User.Identity.Name == "administrator@hobbytracker.com")
