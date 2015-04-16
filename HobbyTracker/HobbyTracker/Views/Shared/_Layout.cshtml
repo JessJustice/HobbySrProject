@@ -48,6 +48,7 @@
            <!--Check to see if logged on user is an administrator. If so, add the menu item to edit all comments-->
             @if(User.Identity.Name == "administrator@hobbytracker.com")
             {
+                <li>@Html.ActionLink("Administrator Tools","Index", "Administrator")</li>
                 <li>@Html.ActionLink("All Comments", "Index", "Comment")</li>
             }
            

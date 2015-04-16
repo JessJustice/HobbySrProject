@@ -165,6 +165,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\CollectionItemController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
@@ -212,9 +213,18 @@
     <Compile Include="Migrations\201504142341227_Activity.Designer.cs">
       <DependentUpon>201504142341227_Activity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504162110583_administrator.cs" />
+    <Compile Include="Migrations\201504162110583_administrator.Designer.cs">
+      <DependentUpon>201504162110583_administrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504162112114_administrator2.cs" />
+    <Compile Include="Migrations\201504162112114_administrator2.Designer.cs">
+      <DependentUpon>201504162112114_administrator2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
+    <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\Collection.cs" />
     <Compile Include="Models\CollectionItem.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -322,6 +332,11 @@
     <Content Include="Views\Community\Index.cshtml" />
     <Content Include="Views\CollectionItem\Create2.cshtml" />
     <Content Include="Views\Comment\Thanks.cshtml" />
+    <Content Include="Views\Administrator\Create.cshtml" />
+    <Content Include="Views\Administrator\Delete.cshtml" />
+    <Content Include="Views\Administrator\Details.cshtml" />
+    <Content Include="Views\Administrator\Edit.cshtml" />
+    <Content Include="Views\Administrator\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,6 +375,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504142341227_Activity.resx">
       <DependentUpon>201504142341227_Activity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504162110583_administrator.resx">
+      <DependentUpon>201504162110583_administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504162112114_administrator2.resx">
+      <DependentUpon>201504162112114_administrator2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

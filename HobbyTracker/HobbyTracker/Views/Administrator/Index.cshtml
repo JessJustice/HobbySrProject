@@ -1,0 +1,32 @@
+﻿@model IEnumerable<HobbyTracker.Models.Administrator>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (User.Identity.Name == "administrator@hobbytracker.com")
+{ 
+<h2>Administrator Tools</h2>
+
+<p>
+    <!--@Html.ActionLink("Create New", "Create") Commented out -->
+</p>
+<table class="table">
+    <tr><th>@Html.ActionLink("Edit Communities", "Index", "Community")</th></tr>
+    <tr><th>@Html.ActionLink("Edit Comments", "Index", "Comment")</th></tr>
+    <tr><th>@Html.ActionLink("Edit Items", "Index", "Item")</th></tr>
+    <tr><th>@Html.ActionLink("Edit Collections", "Index", "Collection")</th></tr>
+    
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AdminID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AdminID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AdminID })
+        </td>
+    </tr>
+}
+
+</table>
+}
