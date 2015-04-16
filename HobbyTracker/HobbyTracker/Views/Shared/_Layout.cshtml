@@ -45,11 +45,10 @@
            <li>@Html.ActionLink("Other Collections", "Index2", "Collection")</li> 
            <li>@Html.ActionLink("Community", "Index", "Community")</li>
 
-           <!--Check to see if logged on user is an administrator. If so, add the menu item to edit all comments-->
+           <!--Check to see if logged on user is an administrator. If so, add the menu item Administrator tools-->
             @if(User.Identity.Name == "administrator@hobbytracker.com")
             {
                 <li>@Html.ActionLink("Administrator Tools","Index", "Administrator")</li>
-                <li>@Html.ActionLink("All Comments", "Index", "Comment")</li>
             }
            
        </ul>
