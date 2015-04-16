@@ -47,6 +47,8 @@ namespace HobbyTracker.Models
 
         public System.Data.Entity.DbSet<HobbyTracker.Models.Administrator> Administrators { get; set; }
 
+        public System.Data.Entity.DbSet<HobbyTracker.Models.Activity> Activities { get; set; }
+
         
     }
 }
