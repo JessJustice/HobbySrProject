@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201504162112114_administrator2.Designer.cs">
       <DependentUpon>201504162112114_administrator2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504162200526_descriptionField.cs" />
+    <Compile Include="Migrations\201504162200526_descriptionField.Designer.cs">
+      <DependentUpon>201504162200526_descriptionField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -381,6 +385,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504162112114_administrator2.resx">
       <DependentUpon>201504162112114_administrator2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504162200526_descriptionField.resx">
+      <DependentUpon>201504162200526_descriptionField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
