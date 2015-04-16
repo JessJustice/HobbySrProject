@@ -225,6 +225,10 @@
     <Compile Include="Migrations\201504162200526_descriptionField.Designer.cs">
       <DependentUpon>201504162200526_descriptionField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504162312489_ActivityFix.cs" />
+    <Compile Include="Migrations\201504162312489_ActivityFix.Designer.cs">
+      <DependentUpon>201504162312489_ActivityFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -388,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504162200526_descriptionField.resx">
       <DependentUpon>201504162200526_descriptionField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504162312489_ActivityFix.resx">
+      <DependentUpon>201504162312489_ActivityFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

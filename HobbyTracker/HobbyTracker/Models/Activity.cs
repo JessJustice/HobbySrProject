@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.ComponentModel.DataAnnotations;
 
-namespace PartyInvites.Models
+namespace HobbyTracker.Models
 {
     public class Activity
     {
