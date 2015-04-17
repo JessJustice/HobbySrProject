@@ -182,61 +182,9 @@
     <Compile Include="Migrations\201502272326161_fixCollection.Designer.cs">
       <DependentUpon>201502272326161_fixCollection.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503042134258_CommunityComment.cs" />
-    <Compile Include="Migrations\201503042134258_CommunityComment.Designer.cs">
-      <DependentUpon>201503042134258_CommunityComment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503050149261_CommunityIndexData.cs" />
-    <Compile Include="Migrations\201503050149261_CommunityIndexData.Designer.cs">
-      <DependentUpon>201503050149261_CommunityIndexData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503050448475_NewUserModel.cs" />
-    <Compile Include="Migrations\201503050448475_NewUserModel.Designer.cs">
-      <DependentUpon>201503050448475_NewUserModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503050452556_NewUserModelFix.cs" />
-    <Compile Include="Migrations\201503050452556_NewUserModelFix.Designer.cs">
-      <DependentUpon>201503050452556_NewUserModelFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503120658156_removeCommentCommunity.cs" />
-    <Compile Include="Migrations\201503120658156_removeCommentCommunity.Designer.cs">
-      <DependentUpon>201503120658156_removeCommentCommunity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201503120710247_addCommunityIDinComment.cs" />
-    <Compile Include="Migrations\201503120710247_addCommunityIDinComment.Designer.cs">
-      <DependentUpon>201503120710247_addCommunityIDinComment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504142241534_fix2New.cs" />
-    <Compile Include="Migrations\201504142241534_fix2New.Designer.cs">
-      <DependentUpon>201504142241534_fix2New.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504142341227_Activity.cs" />
-    <Compile Include="Migrations\201504142341227_Activity.Designer.cs">
-      <DependentUpon>201504142341227_Activity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504162110583_administrator.cs" />
-    <Compile Include="Migrations\201504162110583_administrator.Designer.cs">
-      <DependentUpon>201504162110583_administrator.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504162112114_administrator2.cs" />
-    <Compile Include="Migrations\201504162112114_administrator2.Designer.cs">
-      <DependentUpon>201504162112114_administrator2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504162200526_descriptionField.cs" />
-    <Compile Include="Migrations\201504162200526_descriptionField.Designer.cs">
-      <DependentUpon>201504162200526_descriptionField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504162312489_ActivityFix.cs" />
-    <Compile Include="Migrations\201504162312489_ActivityFix.Designer.cs">
-      <DependentUpon>201504162312489_ActivityFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504162314570_activityControllerAdded.cs" />
-    <Compile Include="Migrations\201504162314570_activityControllerAdded.Designer.cs">
-      <DependentUpon>201504162314570_activityControllerAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504162317270_CommunityActivitiesField.cs" />
-    <Compile Include="Migrations\201504162317270_CommunityActivitiesField.Designer.cs">
-      <DependentUpon>201504162317270_CommunityActivitiesField.cs</DependentUpon>
+    <Compile Include="Migrations\201504171917394_fix2.cs" />
+    <Compile Include="Migrations\201504171917394_fix2.Designer.cs">
+      <DependentUpon>201504171917394_fix2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -267,6 +215,7 @@
     <Content Include="images\HobbyTrackerLogo.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\HobbyTracker %282%29.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -361,7 +310,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -374,47 +322,8 @@
     <EmbeddedResource Include="Migrations\201502272326161_fixCollection.resx">
       <DependentUpon>201502272326161_fixCollection.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503042134258_CommunityComment.resx">
-      <DependentUpon>201503042134258_CommunityComment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503050149261_CommunityIndexData.resx">
-      <DependentUpon>201503050149261_CommunityIndexData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503050448475_NewUserModel.resx">
-      <DependentUpon>201503050448475_NewUserModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503050452556_NewUserModelFix.resx">
-      <DependentUpon>201503050452556_NewUserModelFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503120658156_removeCommentCommunity.resx">
-      <DependentUpon>201503120658156_removeCommentCommunity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503120710247_addCommunityIDinComment.resx">
-      <DependentUpon>201503120710247_addCommunityIDinComment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504142241534_fix2New.resx">
-      <DependentUpon>201504142241534_fix2New.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504142341227_Activity.resx">
-      <DependentUpon>201504142341227_Activity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504162110583_administrator.resx">
-      <DependentUpon>201504162110583_administrator.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504162112114_administrator2.resx">
-      <DependentUpon>201504162112114_administrator2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504162200526_descriptionField.resx">
-      <DependentUpon>201504162200526_descriptionField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504162312489_ActivityFix.resx">
-      <DependentUpon>201504162312489_ActivityFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504162314570_activityControllerAdded.resx">
-      <DependentUpon>201504162314570_activityControllerAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504162317270_CommunityActivitiesField.resx">
-      <DependentUpon>201504162317270_CommunityActivitiesField.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201504171917394_fix2.resx">
+      <DependentUpon>201504171917394_fix2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
