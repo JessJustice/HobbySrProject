@@ -14,7 +14,7 @@ namespace HobbyTracker.Models
         public string CommunityName { get; set; }
         //In community, you can have more than one CommunityComment added to it
 
-        //  public string CommunityLocation { get; set; }
+        public string CommunityLocation { get; set; }
         public string CommunityLoc { get; set; }
 
         //public string? creator { get; set; }

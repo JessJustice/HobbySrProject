@@ -54,9 +54,9 @@ namespace HobbyTracker.Controllers
         public ActionResult Create()
         {
             // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
-           
 
-            ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName");
+            var key = User.Identity.GetUserId();
+            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName");
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName");
             return View();
         }
@@ -70,7 +70,8 @@ namespace HobbyTracker.Controllers
         public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
         {
             // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
-            ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
+            var key = User.Identity.GetUserId();
+            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName", collectionItem.CollectionID);
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
@@ -114,8 +115,8 @@ namespace HobbyTracker.Controllers
         {
 
             // ************** If you make changes here, be sure to check Create1 and Edit for complete change set*********
-           
-            ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName");
+            var key = User.Identity.GetUserId();
+            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName");
      
             return View();
         }
@@ -134,7 +135,8 @@ namespace HobbyTracker.Controllers
          
             collectionItem.ItemID = newItem.ItemID;
 
-            ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
+            var key = User.Identity.GetUserId();
+            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName", collectionItem.CollectionID);
             ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
