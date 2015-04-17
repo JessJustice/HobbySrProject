@@ -57,17 +57,16 @@
 {
 
 
-    //The name of the community that has been selected
+   
 
-    //Why does this not work???!!!??? "CommunityName" displays, shouldn't "DescriptionField" display too??
     <h3>Description</h3>
 
-    @Html.Display("DescriptionField")
+    @Html.Display("DescriptionField") //this is pulled from the controller index method where it is taken from the database with an sql querry
 
 
     if ("CommunityName" != null)
     {
-        <h3>Comments For @Html.Display("CommunityName")</h3>
+        <h3>Comments For @Html.Display("CommunityName")</h3>   //The name of the community that has been selected
     }
     @Html.ActionLink("Add new", "Create", "Comment")
 

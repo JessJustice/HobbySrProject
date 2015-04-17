@@ -28,7 +28,7 @@ namespace HobbyTracker.Controllers
                 .OrderBy(i => i.CommunityName);
 
             String CommName = null;
-
+            
             if (id != null)
             {
                 CommName = (from n in db.Communities 
@@ -39,6 +39,17 @@ namespace HobbyTracker.Controllers
                 viewModel.Comments = viewModel.Communities.Where(
                     i => i.CommunityID == id.Value).Single().Comments.Take(5);
             }
+
+            String CommDesc = null;
+            if(id != null) // grab the information from the database when it is clicked
+            {
+                CommDesc = (from n in db.Communities
+                            where n.CommunityID == id.Value
+                            select n.DescriptionField).First(); //always returns an array, so take the first element
+                ViewBag.CommunityID = id.Value;
+                ViewBag.DescriptionField = CommDesc;
+            }
+            
 
             if (commentID != null)
             {
