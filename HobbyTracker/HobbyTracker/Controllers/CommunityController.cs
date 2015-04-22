@@ -21,7 +21,7 @@ namespace HobbyTracker.Controllers
             //return View(db.Communities.ToList());
         //}
         
-        public ActionResult Index(int? id, int? commentID)
+        public ActionResult Index(int? id, int? commentID, int? communityID)
         {
             var viewModel = new CommunityIndexData();
             viewModel.Communities = db.Communities
@@ -56,7 +56,17 @@ namespace HobbyTracker.Controllers
                 ViewBag.CommentID = commentID.Value;
             }
 
+
+            if(communityID != null)
+            {
+                ViewBag.CommunityID = communityID.Value;
+            }
+
+
             return View(viewModel);
+
+
+
         }
 
         // GET: Community/Details/5

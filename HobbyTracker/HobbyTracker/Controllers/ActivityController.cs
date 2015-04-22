@@ -17,7 +17,8 @@ namespace HobbyTracker.Controllers
         // GET: Activity
         public ActionResult Index()
         {
-            return View(db.Activities.ToList());
+            var activities = db.Activities.Include(c => c.Community);
+            return View(activities.ToList());
         }
 
         // GET: Activity/Details/5
@@ -38,6 +39,7 @@ namespace HobbyTracker.Controllers
         // GET: Activity/Create
         public ActionResult Create()
         {
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName");
             return View();
         }
 
@@ -46,7 +48,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend")] Activity activity)
+        public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID")] Activity activity)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +57,7 @@ namespace HobbyTracker.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", activity.CommunityID);
             return View(activity);
         }
 
@@ -70,6 +73,7 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", activity.CommunityID);
             return View(activity);
         }
 
@@ -78,7 +82,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend")] Activity activity)
+        public ActionResult Edit([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID")] Activity activity)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +90,7 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", activity.CommunityID);
             return View(activity);
         }
 

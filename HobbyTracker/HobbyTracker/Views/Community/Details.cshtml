@@ -35,6 +35,31 @@
             </table>
         </dd>
     </dl>
+
+    <h4>Activities:</h4>
+    <dl class="dl-horizontal">
+        <dd>
+            <table class="table">
+                <tr>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Activities)
+                {
+                    <tr>
+                        <td>
+                            @item.ActName
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.Phone
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
 </div>
 <p>
     @Html.ActionLink("Back to List", "Index")

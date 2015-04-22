@@ -17,5 +17,10 @@ namespace HobbyTracker.Models
         public string Phone { get; set; }
         [Required(ErrorMessage = "Please specify wheter you'll attend")]
         public bool? WillAttend { get; set; }
+
+        public int CommunityID { get; set; }
+
+
+        public virtual Community Community { get; set; } //to keep track of which community this activity is a part of
     }
 }
