@@ -29,8 +29,10 @@ namespace HobbyTracker.Controllers
 
             String CommName = null;
             
+            
             if (id != null)
             {
+                //CommName is the name of the community that is being selected. id.value is the community id
                 CommName = (from n in db.Communities 
                                   where n.CommunityID == id.Value 
                                   select n.CommunityName).First();
@@ -38,6 +40,10 @@ namespace HobbyTracker.Controllers
                 ViewBag.CommunityName = CommName;
                 viewModel.Comments = viewModel.Communities.Where(
                     i => i.CommunityID == id.Value).Single().Comments.Take(5);
+
+                //pick up CommunID/Name for use in comment create
+                var CommuID = id.Value;
+                TempData["commuID"] = CommuID;
             }
 
             String CommDesc = null;
@@ -48,6 +54,8 @@ namespace HobbyTracker.Controllers
                             select n.DescriptionField).First(); //always returns an array, so take the first element
                 ViewBag.CommunityID = id.Value;
                 ViewBag.DescriptionField = CommDesc;
+
+  
             }
             
 

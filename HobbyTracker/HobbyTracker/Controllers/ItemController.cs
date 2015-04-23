@@ -103,10 +103,7 @@ namespace HobbyTracker.Controllers
             {
                 db.Items.Add(item);
                 db.SaveChanges();
-                //var newItemID = (from n in db.Items
-                //                 where item.ItemName == 
-
-                //                 select n.ItemID).Last();
+          
                 TempData["passItem"] = item;
                 return RedirectToAction("Create2", "CollectionItem"); //, new { name = itemName });
             }

@@ -52,6 +52,12 @@ namespace HobbyTracker.Controllers
         {
             if (ModelState.IsValid)
             {
+                //pick up CommuID from add comment / commmentCreate
+                var selectedCommu = TempData["commuID"];
+               //bind comunityID to new comment being made.
+               comment.CommunityID = Convert.ToInt32(selectedCommu.ToString());
+     
+
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 return View("Thanks",comment);
@@ -60,6 +66,34 @@ namespace HobbyTracker.Controllers
             ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
             return View(comment);
         }
+
+    
+
+        //Original create method....
+        //// GET: Comment/Create
+        //public ActionResult Create()
+        //{
+        //    ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName");
+        //    return View();
+        //}
+
+        //// POST: Comment/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Create([Bind(Include = "CommentID,TextInput,CommunityID")] Comment comment)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Comments.Add(comment);
+        //        db.SaveChanges();
+        //        return View("Thanks", comment);
+        //    }
+
+        //    ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
+        //    return View(comment);
+        //}
 
         // GET: Comment/Edit/5
         public ActionResult Edit(int? id)
