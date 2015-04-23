@@ -10,12 +10,13 @@
     <link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
     <title>Collections</title>
 </head>
+
 <body>
-    <div class=" panel panel-sucess">
+    <div class=" panel panel-warning">
         <div class="panel-heading text-center"><h2>My Collection Page</h2></div>
         <div class="panel-bady">
 
-            <p>
+            <p class="text-danger">
                 @Html.ActionLink("Create A New Collection", "Create") <br />
                 @Html.ActionLink("Browse Items", "Index", "Item") <br />
                 @Html.ActionLink("Create A New Item", "Create", "Item") <br />
@@ -65,7 +66,7 @@
 
             @if (Model.CollectionItems != null)
             {
-                
+
                 <div class="panel-heading text-center"><h2>Items in the Selected Collection</h2></div>
                 <table class="table table-bordered table table-striped table-hover">
                     <tr>
