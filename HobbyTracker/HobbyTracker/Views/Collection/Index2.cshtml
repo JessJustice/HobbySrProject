@@ -4,73 +4,90 @@
     ViewBag.Title = "Collections";
 }
 
-<h2>All Collections Page</h2>
 
-<p>
-    @Html.ActionLink("Create A New Collection", "Create") <br />
-    @Html.ActionLink("Create A New Item", "Create", "Item") <br />
-    @Html.ActionLink("Add An Item To My Collection", "Create", "CollectionItem") <br />
-</p>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+    <title>Collections</title>
+</head>
 
-<h2>All Collections</h2>
+<body>
+    <div class=" panel panel-sucess">
+        <div class="panel-heading text-center"><h2>All Collections Page</h2></div>
+        <div class="panel-bady">
+            
 
-<table class="table">
-    <tr>
-        <th>
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            Genre
-        </th>
-        <th></th>
-    </tr>
+            <p>
+                @Html.ActionLink("Create A New Collection", "Create") <br />
+                @Html.ActionLink("Create A New Item", "Create", "Item") <br />
+                @Html.ActionLink("Add An Item To My Collection", "Create", "CollectionItem") <br />
+            </p>
 
-    @foreach (var item in Model.Collections)
-    {
-        string selectedRow = "";
-        if (item.CollectionID == ViewBag.CollectionID)
-        {
-            selectedRow = "success";
-        }
-        <tr class="@selectedRow">
-            <td>
-                @Html.ActionLink("Select", "Index2", new { collectionID = item.CollectionID })
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CollectionName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Genre.GenreName)
-            </td>
+            <h2>All Collections</h2>
 
-        </tr>
-    }
-</table>
+            <table class="table">
+                <tr>
+                    <th>
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Genre
+                    </th>
+                    <th></th>
+                </tr>
 
-@if (Model.CollectionItems != null)
-{
-    <h2>Items in the Selected Collection</h2>
-    <table class="table">
-        <tr>
-            <th>Item Name</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model.CollectionItems)
-        {
-            <tr align="center">
-                <td>
-                    @item.Item.ItemName
-                </td>
-                <td>
-                    @item.Item.ItemDesc
-                </td>
+                @foreach (var item in Model.Collections)
+                {
+                    string selectedRow = "";
+                    if (item.CollectionID == ViewBag.CollectionID)
+                    {
+                        selectedRow = "success";
+                    }
+                    <tr class="@selectedRow">
+                        <td>
+                            @Html.ActionLink("Select", "Index2", new { collectionID = item.CollectionID })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CollectionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Genre.GenreName)
+                        </td>
+
+                    </tr>
+                }
+            </table>
+
+            @if (Model.CollectionItems != null)
+            {
+                <h2>Items in the Selected Collection</h2>
+                <table class="table">
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.CollectionItems)
+                    {
+                        <tr align="center">
+                            <td>
+                                @item.Item.ItemName
+                            </td>
+                            <td>
+                                @item.Item.ItemDesc
+                            </td>
 
 
-            </tr>
-        }
-    </table>
-}
+                        </tr>
+                    }
+                </table>
+            }
+            </div>
+        </div>
+    </body>
+
 

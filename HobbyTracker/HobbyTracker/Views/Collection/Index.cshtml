@@ -3,81 +3,93 @@
 @{
     ViewBag.Title = "Collections";
 }
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+    <title>Collections</title>
+</head>
+<body>
+    <div class=" panel panel-sucess">
+        <div class="panel-heading text-center"><h2>My Collection Page</h2></div>
+        <div class="panel-bady">
 
-<h2>My Collections Page</h2>
+            <p>
+                @Html.ActionLink("Create A New Collection", "Create") <br />
+                @Html.ActionLink("Browse Items", "Index", "Item") <br />
+                @Html.ActionLink("Create A New Item", "Create", "Item") <br />
+                @Html.ActionLink("Add An Item To My Collection", "Create", "CollectionItem") <br />
+            </p>
 
-<p>
-    @Html.ActionLink("Create A New Collection", "Create") <br />
-    @Html.ActionLink("Browse Items", "Index", "Item") <br />
-    @Html.ActionLink("Create A New Item", "Create", "Item") <br />
-    @Html.ActionLink("Add An Item To My Collection", "Create", "CollectionItem") <br />
-</p>
+            <div class="panel-heading text-center"><h2>My Collections</h2></div>
 
-<h2>My Collections</h2>
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Genre
+                    </th>
+                    <th></th>
+                </tr>
 
-<table class="table">
-    <tr>
-        <th>
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            Genre
-        </th>
-        <th></th>
-    </tr>
+                @foreach (var item in Model.Collections)
+                {
+                    string selectedRow = "";
+                    if (item.CollectionID == ViewBag.CollectionID)
+                    {
+                        selectedRow = "success";
+                    }
+                    <tr class="@selectedRow">
+                        <td>
+                            @Html.ActionLink("Select", "Index", new { collectionID = item.CollectionID })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CollectionName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Genre.GenreName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Add", "Create", "CollectionItem") |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CollectionID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CollectionID })
+                        </td>
+                    </tr>
+                }
+            </table>
 
-@foreach (var item in Model.Collections) 
-{
-    string selectedRow = "";
-    if (item.CollectionID == ViewBag.CollectionID)
-    {
-        selectedRow = "success";
-    }
-    <tr class="@selectedRow">
-        <td>
-            @Html.ActionLink("Select", "Index", new { collectionID = item.CollectionID })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CollectionName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre.GenreName)
-        </td>
-        <td>
-            @Html.ActionLink("Add", "Create", "CollectionItem") |
-            @Html.ActionLink("Edit", "Edit", new { id = item.CollectionID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CollectionID })
-        </td>
-    </tr>
-}
-</table>
-
-@if (Model.CollectionItems != null)
-{
-    <h2>Items in the Selected Collection</h2>
-    <table class="table">
-        <tr>
-            <th>Item Name</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-        @foreach (var item in Model.CollectionItems)
-        {
-            <tr align ="center">
-                <td>
-                    @item.Item.ItemName
-                </td>
-                <td>
-                    @item.Item.ItemDesc
-                </td>
+            @if (Model.CollectionItems != null)
+            {
                 
-                <td>
-                    @Html.ActionLink("Delete this Item", "Delete", "CollectionItem", new { id = item.CollectionItemID },null)
-                </td>
-            </tr>
-        }
-    </table>
-}
+                <div class="panel-heading text-center"><h2>Items in the Selected Collection</h2></div>
+                <table class="table table-bordered table table-striped table-hover">
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.CollectionItems)
+                    {
+                        <tr align="center">
+                            <td>
+                                @item.Item.ItemName
+                            </td>
+                            <td>
+                                @item.Item.ItemDesc
+                            </td>
 
+                            <td>
+                                @Html.ActionLink("Delete this Item", "Delete", "CollectionItem", new { id = item.CollectionItemID }, null)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+    </div>
+</body>
