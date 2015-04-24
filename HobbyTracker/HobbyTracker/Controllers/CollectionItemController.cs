@@ -56,8 +56,14 @@ namespace HobbyTracker.Controllers
             // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
 
             var key = User.Identity.GetUserId();
-        
-            ViewBag.ItemID = new SelectList(db.Items.Where(c => c.GenreID == id), "ItemID", "ItemName");
+
+            //i'm pulling in a 5, this is the collection id
+            // I need to get the genre id of the collection selected
+            var collGenre = (from s in db.Collections
+                             where s.CollectionID == id
+                             select s).First();
+          //  ViewBag.ItemID = new SelectList(collGenre, "ItemID", "ItemName");
+           ViewBag.ItemID = new SelectList(db.Items.Where(c => c.GenreID == collGenre.GenreID), "ItemID", "ItemName");
 
             if (id == null)
             {
