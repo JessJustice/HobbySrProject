@@ -24,11 +24,6 @@ namespace HobbyTracker.Controllers
                         select s;
 
 
-            //var genre = from g in db.Items
-            //            where g.GenreID == g.ItemID
-            //            select g.GenreID;
-
-
             if (!String.IsNullOrEmpty(searchString))
             {
                   items = items.Where(s => s.Genre.GenreName.Contains(searchString));

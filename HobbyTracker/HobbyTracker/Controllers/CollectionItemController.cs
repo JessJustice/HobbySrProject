@@ -49,15 +49,26 @@ namespace HobbyTracker.Controllers
             return View(collectionItem);
         }
 
-        // GET: CollectionItem/Create
+        // GET: CollectionItem/Create   For adding items from select lists
         [Authorize]
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
 
             var key = User.Identity.GetUserId();
-            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName");
-            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName");
+        
+            ViewBag.ItemID = new SelectList(db.Items.Where(c => c.GenreID == id), "ItemID", "ItemName");
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CollectionItem collectionItem = db.CollectionItems.Find(id);
+            if (collectionItem == null)
+            {
+                return HttpNotFound();
+            }
+         //   return View(collection);
             return View();
         }
 
@@ -67,12 +78,13 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
+        public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem, int id)
         {
             // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
             var key = User.Identity.GetUserId();
-            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName", collectionItem.CollectionID);
-            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
+           ViewBag.ItemID = new SelectList(db.Items.Where(c => c.GenreID == id), "ItemID", "ItemName", collectionItem.ItemID);
+           collectionItem.CollectionID = id;
+
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var testCollection = (from n in db.Collections 
@@ -109,15 +121,20 @@ namespace HobbyTracker.Controllers
             }
         }
 
-        // GET: CollectionItem/Create2
+        // GET: CollectionItem/Create2       Used directly after creating a new item, item preselected to add
         [Authorize]
         public ActionResult Create2()
         {
 
             // ************** If you make changes here, be sure to check Create1 and Edit for complete change set*********
             var key = User.Identity.GetUserId();
-            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName");
-     
+           
+
+            Item newItem = TempData["passItem"] as Item;
+            ViewBag.ItemID = newItem.ItemID;
+            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key && c.GenreID == newItem.GenreID), "CollectionID", "CollectionName");
+            TempData["passItem2"] = newItem;
+            //  ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName");
             return View();
         }
 
@@ -131,13 +148,14 @@ namespace HobbyTracker.Controllers
         {
             // ************** If you make changes here, be sure to check Create1 and Edit for complete change set*********
            
-            Item newItem = TempData["passItem"] as Item;
-         
-            collectionItem.ItemID = newItem.ItemID;
+            Item newItem = TempData["passItem2"] as Item;
+
+             collectionItem.ItemID = newItem.ItemID;
+      
 
             var key = User.Identity.GetUserId();
-            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName", collectionItem.CollectionID);
-            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
+            ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key && c.GenreID == newItem.GenreID), "CollectionID", "CollectionName", collectionItem.CollectionID);
+            ViewBag.ItemID = new SelectList(db.Items.Where(c => c.Collection.GenreID == newItem.GenreID), "ItemID", "ItemName", collectionItem.ItemID);
 
             var currentUser = manager.FindById(User.Identity.GetUserId());
             var testCollection = (from n in db.Collections

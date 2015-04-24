@@ -28,6 +28,7 @@ namespace HobbyTracker.Controllers
             manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         }
         // GET: Collection
+        // FOr My collections
         public ActionResult Index(int? collectionID, bool filterByUser = true)
         {
             string key = null;
@@ -63,18 +64,10 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: Collection
+        //For other collections
         public ActionResult Index2(int? collectionID)
         {
-            //string key = null;
-
-            //if (User.Identity.GetUserId() != null)
-            //{
-            //    key = User.Identity.GetUserId();
-            //}
-            //else
-            //{
-            //    return Redirect("Account/Register");
-            //}
+          
 
             // Create a view model for the related information that needs to be displayed on this page
             var viewModel = new CollectionIndexData();
