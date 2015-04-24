@@ -54,6 +54,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Genre.GenreName)
                         </td>
+                      
                         <td>
                             @Html.ActionLink("Add Item", "Create", "CollectionItem", new { id = item.CollectionID }, new { }) |
                             @Html.ActionLink("Edit", "Edit", new { id = item.CollectionID }) |
@@ -71,6 +72,7 @@
                     <tr>
                         <th>Item Name</th>
                         <th>Description</th>
+                        <th>Notes</th>
                         <th></th>
                     </tr>
                     @foreach (var item in Model.CollectionItems)
@@ -82,6 +84,10 @@
                             <td>
                                 @item.Item.ItemDesc
                             </td>
+                            <td>
+                                @item.Note
+                            </td>
+                           
 
                             <td>
                                 @Html.ActionLink("Delete this Item", "Delete", "CollectionItem", new { id = item.CollectionItemID }, null)

@@ -57,12 +57,9 @@ namespace HobbyTracker.Controllers
 
             var key = User.Identity.GetUserId();
 
-            //i'm pulling in a 5, this is the collection id
-            // I need to get the genre id of the collection selected
             var collGenre = (from s in db.Collections
                              where s.CollectionID == id
                              select s).First();
-          //  ViewBag.ItemID = new SelectList(collGenre, "ItemID", "ItemName");
            ViewBag.ItemID = new SelectList(db.Items.Where(c => c.GenreID == collGenre.GenreID), "ItemID", "ItemName");
 
             if (id == null)
@@ -84,7 +81,7 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem, int id)
+        public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note")] CollectionItem collectionItem, int id)
         {
             // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
             var key = User.Identity.GetUserId();
@@ -150,7 +147,7 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create2([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
+        public ActionResult Create2([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note")] CollectionItem collectionItem)
         {
             // ************** If you make changes here, be sure to check Create1 and Edit for complete change set*********
            
@@ -191,7 +188,7 @@ namespace HobbyTracker.Controllers
             {
 
                 ModelState.AddModelError("", "Your collection genre and item genre do not match.");
-                return View();
+                return View(collectionItem);
                 // return RedirectToAction("Index", "Collection");
 
             }

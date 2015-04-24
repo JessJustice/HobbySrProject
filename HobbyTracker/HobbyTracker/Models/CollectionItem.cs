@@ -18,6 +18,7 @@ namespace HobbyTracker.Models
         [ForeignKey("Item")]
         [Column(Order = 2)]
         public int ItemID { get; set; }
+        public String Note { get; set; }
 
         public virtual Collection Collection { get; set; }
         public virtual Item Item { get; set; }

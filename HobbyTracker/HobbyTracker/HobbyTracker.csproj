@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201504221738056_activitiesAndCommunities.Designer.cs">
       <DependentUpon>201504221738056_activitiesAndCommunities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201504240154487_addNote.cs" />
+    <Compile Include="Migrations\201504240154487_addNote.Designer.cs">
+      <DependentUpon>201504240154487_addNote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504221738056_activitiesAndCommunities.resx">
       <DependentUpon>201504221738056_activitiesAndCommunities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504240154487_addNote.resx">
+      <DependentUpon>201504240154487_addNote.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
