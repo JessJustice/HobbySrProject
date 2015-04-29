@@ -204,12 +204,15 @@ namespace HobbyTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             CollectionItem collectionItem = db.CollectionItems.Find(id);
+           // collectionItem.ItemID = 
             if (collectionItem == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
-            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
+       
+          //  ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
+          //  ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
+           
             return View(collectionItem);
         }
 
@@ -219,16 +222,25 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID,ItemID")] CollectionItem collectionItem)
+        public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note")] CollectionItem collectionItem)
         {
+            var holdNote = collectionItem.Note;
+            CollectionItem newItem = (from s in db.CollectionItems
+                               where collectionItem.CollectionItemID == s.CollectionItemID
+                               select s).First();
+
+            collectionItem = newItem;
+            collectionItem.Note = holdNote;
             if (ModelState.IsValid)
             {
                 db.Entry(collectionItem).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Collection");
             }
-            ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
-            ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
+           // ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
+           // ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
+            ViewBag.CollectionID = collectionItem.CollectionID;
+            ViewBag.ItemID = collectionItem.ItemID;
             return View(collectionItem);
         }
 
