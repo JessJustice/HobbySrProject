@@ -20,36 +20,22 @@
         <th>
             @Html.DisplayNameFor(model => model.ActName)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.WillAttend)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ActName)
+           @*@Html.DisplayFor(modelItem => item.ActName) *@
+            @Html.ActionLink(item.ActName, "Details", new { id = item.ActivityID })
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.WillAttend)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ActivityID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ActivityID }) |
+        @if (User.Identity.Name == "administrator@hobbytracker.com")
+        {
+            @Html.ActionLink("Edit", "Edit", new { id=item.ActivityID }) 
             @Html.ActionLink("Delete", "Delete", new { id=item.ActivityID })
+        }
+            
         </td>
     </tr>
 }
