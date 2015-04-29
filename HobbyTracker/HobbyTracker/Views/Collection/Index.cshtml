@@ -46,10 +46,7 @@
                     }
                     <tr class="@selectedRow">
                         <td>
-                            @Html.ActionLink("Select", "Index", new { collectionID = item.CollectionID })
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CollectionName)
+                            @Html.ActionLink(item.CollectionName, "Index", new { collectionID = item.CollectionID })
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Genre.GenreName)
