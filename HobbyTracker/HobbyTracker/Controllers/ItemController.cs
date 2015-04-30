@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HobbyTracker.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HobbyTracker.Controllers
 {
@@ -92,14 +94,24 @@ namespace HobbyTracker.Controllers
             var itemGenre = (from n in db.Items
                              select n.GenreID);
 
+            if(itemName.Contains(item.ItemName) == false || itemDesc.Contains(item.ItemDesc) == false || itemGenre.Contains(item.GenreID) == false){
 
-   if(itemName.Contains(item.ItemName) == false || itemDesc.Contains(item.ItemDesc) == false || itemGenre.Contains(item.GenreID) == false){
+                var key = User.Identity.GetUserId();
+                var collCheck = (from s in db.Collections
+                                where s.User.Id == key && s.GenreID == item.GenreID
+                                select s.CollectionID);
+                
             if (ModelState.IsValid)
             {
                 db.Items.Add(item);
                 db.SaveChanges();
           
                 TempData["passItem"] = item;
+                if (collCheck == null)
+                {
+                    return RedirectToAction("Index", "About");
+                }
+
                 return RedirectToAction("Create2", "CollectionItem"); //, new { name = itemName });
             }
         }

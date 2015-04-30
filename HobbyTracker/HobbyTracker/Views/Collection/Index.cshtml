@@ -70,6 +70,7 @@
                         <th>Item Name</th>
                         <th>Description</th>
                         <th>Notes</th>
+                        <th>I own?</th>
                         <th></th>
                     </tr>
                     @foreach (var item in Model.CollectionItems)
@@ -85,7 +86,9 @@
                                 @item.Note
                             </td>
                            
-
+                            <td>
+                                @item.IOwn
+                            </td>
                             <td>
                                 @Html.ActionLink("Delete this Item", "Delete", "CollectionItem", new { id = item.CollectionItemID }, null)
                             </td>

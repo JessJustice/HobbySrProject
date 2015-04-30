@@ -16,9 +16,7 @@ namespace HobbyTracker.Controllers
     public class CollectionItemController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-      //   private ApplicationDbContext db;
        private UserManager<ApplicationUser> manager;
-       // private Item item;
 
         public CollectionItemController()
         {
@@ -81,7 +79,7 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note")] CollectionItem collectionItem, int id)
+        public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note,IOwn")] CollectionItem collectionItem, int id)
         {
             // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
             var key = User.Identity.GetUserId();
@@ -136,9 +134,16 @@ namespace HobbyTracker.Controllers
             Item newItem = TempData["passItem"] as Item;
             ViewBag.ItemID = newItem.ItemID;
             ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key && c.GenreID == newItem.GenreID), "CollectionID", "CollectionName");
+           var collCheck = from s in db.Collections
+                           where s.User.Id == key && s.GenreID ==  newItem.GenreID 
+                           select s.CollectionID;
+            if (collCheck == null)
+            {
+                return RedirectToAction("Index", "Community");
+            }
+            
             TempData["passItem2"] = newItem;
-            //  ViewBag.CollectionID = new SelectList(db.Collections.Where(c => c.User.Id == key), "CollectionID", "CollectionName");
-            return View();
+           return View();
         }
 
         // POST: CollectionItem/Create2
@@ -147,7 +152,7 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create2([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note")] CollectionItem collectionItem)
+        public ActionResult Create2([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note,IOwn")] CollectionItem collectionItem)
         {
             // ************** If you make changes here, be sure to check Create1 and Edit for complete change set*********
            
@@ -169,6 +174,13 @@ namespace HobbyTracker.Controllers
                             where newItem.ItemID == s.ItemID
                             select s.GenreID).First();
 
+            var collCheck = from s in db.Collections
+                            where s.User.Id == key && s.GenreID == newItem.GenreID
+                            select s.CollectionID;
+            if (collCheck == null)
+            {
+                return RedirectToAction("Index", "Community");
+            }
 
             if (testCollection.Equals(testItem))
             {
@@ -204,15 +216,12 @@ namespace HobbyTracker.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             CollectionItem collectionItem = db.CollectionItems.Find(id);
-           // collectionItem.ItemID = 
+         
             if (collectionItem == null)
             {
                 return HttpNotFound();
             }
        
-          //  ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
-          //  ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
-           
             return View(collectionItem);
         }
 
@@ -222,23 +231,26 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note")] CollectionItem collectionItem)
+        public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note,IOwn")] CollectionItem collectionItem)
         {
+            //This is a wierd instance!!!! collectionItem is not holding its values, so this is a hack around. Jess
             var holdNote = collectionItem.Note;
+            var holdOwn = collectionItem.IOwn;
+
             CollectionItem newItem = (from s in db.CollectionItems
                                where collectionItem.CollectionItemID == s.CollectionItemID
                                select s).First();
 
             collectionItem = newItem;
             collectionItem.Note = holdNote;
+            collectionItem.IOwn = holdOwn;
             if (ModelState.IsValid)
             {
                 db.Entry(collectionItem).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index", "Collection");
             }
-           // ViewBag.CollectionID = new SelectList(db.Collections, "CollectionID", "CollectionName", collectionItem.CollectionID);
-           // ViewBag.ItemID = new SelectList(db.Items, "ItemID", "ItemName", collectionItem.ItemID);
+ 
             ViewBag.CollectionID = collectionItem.CollectionID;
             ViewBag.ItemID = collectionItem.ItemID;
             return View(collectionItem);

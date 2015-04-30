@@ -54,6 +54,7 @@ namespace HobbyTracker.Controllers
             {
                 //pick up CommuID from add comment / commmentCreate
                 var selectedCommu = TempData["commuID"];
+                
                //bind comunityID to new comment being made.
                comment.CommunityID = Convert.ToInt32(selectedCommu.ToString());
      
@@ -62,8 +63,9 @@ namespace HobbyTracker.Controllers
                 db.SaveChanges();
                 return View("Thanks",comment);
             }
+            ViewBag.CommunityID = comment.CommunityID;
 
-            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
+            //ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
             return View(comment);
         }
 
@@ -122,7 +124,7 @@ namespace HobbyTracker.Controllers
             {
                 db.Entry(comment).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Community");
             }
             ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
             return View(comment);

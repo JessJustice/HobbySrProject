@@ -34,6 +34,12 @@
             </div>
         </div>
    
+        <div class="form-group">
+            @Html.RadioButtonFor(model => model.IOwn, "True") I own this.
+        </div>
+        <div class="form-group">
+            @Html.RadioButtonFor(model => model.IOwn, "False") I don't own this.
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

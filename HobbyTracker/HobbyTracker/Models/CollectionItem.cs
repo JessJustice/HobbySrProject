@@ -19,6 +19,7 @@ namespace HobbyTracker.Models
         [Column(Order = 2)]
         public int ItemID { get; set; }
         public String Note { get; set; }
+        public bool IOwn { get; set; }
 
         public virtual Collection Collection { get; set; }
         public virtual Item Item { get; set; }
