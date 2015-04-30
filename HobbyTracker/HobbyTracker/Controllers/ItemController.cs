@@ -97,22 +97,26 @@ namespace HobbyTracker.Controllers
             if(itemName.Contains(item.ItemName) == false || itemDesc.Contains(item.ItemDesc) == false || itemGenre.Contains(item.GenreID) == false){
 
                 var key = User.Identity.GetUserId();
-                var collCheck = (from s in db.Collections
+                var collCheck =  (from s in db.Collections
                                 where s.User.Id == key && s.GenreID == item.GenreID
                                 select s.CollectionID);
-                
+
+                //Trying to use this in error message below, can't figure out how to get a string back
+               // String genName = item.Genre.GenreName.ToString();
+
             if (ModelState.IsValid)
             {
                 db.Items.Add(item);
                 db.SaveChanges();
           
                 TempData["passItem"] = item;
-                if (collCheck == null)
+                if (collCheck.Any())
                 {
-                    return RedirectToAction("Index", "About");
+                    return RedirectToAction("Create2", "CollectionItem"); //, new { name = itemName });
                 }
-
-                return RedirectToAction("Create2", "CollectionItem"); //, new { name = itemName });
+                ModelState.AddModelError("", "You don't have a collection of this genre, do you want to create one? After you create a new collection, you can add this item to it.");
+                return View();
+               
             }
         }
             else{
