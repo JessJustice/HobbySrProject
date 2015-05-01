@@ -15,8 +15,7 @@ namespace HobbyTracker.Models
         [Display(Name = "Description")]
         public string ItemDesc { get; set; }
         public int? GenreID { get; set; }
-    //    public int CollectionID { get; set; } cause circluar?
-
+        // public int CollectionID { get; set; } cause circular?
 
         public virtual Genre Genre { get; set; }
         public virtual Collection Collection { get; set; }

@@ -12,8 +12,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HobbyTracker.Controllers
-{
- 
+{ 
     public class CollectionController : Controller
     {
        // private ApplicationDbContext db = new ApplicationDbContext();
@@ -65,18 +64,18 @@ namespace HobbyTracker.Controllers
 
         // GET: Collection
         //For other collections
-        public ActionResult Index2(int? collectionID)
+        public ActionResult Index2(int? collectionID, bool privacy = true)
         {
-          
-
             // Create a view model for the related information that needs to be displayed on this page
             var viewModel = new CollectionIndexData();
 
             // Set up the view model to include some related data
-            viewModel.Collections = db.Collections
+            viewModel.Collections = db.Collections.Where(c => c.Private == false)
                 .Include(c => c.User)
                 .Include(c => c.Genre) // The genre of the collection
                 .OrderBy(c => c.CollectionID); // Order by the ID number of the collection
+
+            if (privacy) viewModel.Collections = viewModel.Collections.Where(c => c.Private == false);
 
             if (collectionID != null) // Show the collections for the specified user
             {
@@ -107,7 +106,7 @@ namespace HobbyTracker.Controllers
         // GET: Collection/Create
         public ActionResult Create()
         {
-            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName");
+            ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", "Private");
             return View();
         }
 
@@ -116,9 +115,9 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CollectionID,CollectionName,GenreID")] Collection collection)
+        public ActionResult Create([Bind(Include = "CollectionID,CollectionName,GenreID,Private")] Collection collection)
         {
-            //!!!!!!!! Get the current loged in user !!!!!!
+            //!!!!!!!! Get the currently logged-in user !!!!!!
             var currentUser = manager.FindById(User.Identity.GetUserId());
             if (ModelState.IsValid)
             {
@@ -153,7 +152,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CollectionID,CollectionName,GenreID")] Collection collection)
+        public ActionResult Edit([Bind(Include = "CollectionID,CollectionName,GenreID,Private")] Collection collection)
         {
             if (ModelState.IsValid)
             {
@@ -191,8 +190,6 @@ namespace HobbyTracker.Controllers
             return RedirectToAction("Index");
         }
 
-        
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -208,7 +205,5 @@ namespace HobbyTracker.Controllers
           RedirectToAction("Create,Item");
             return View();
         }
-
-      
     }
 }

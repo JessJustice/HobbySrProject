@@ -202,6 +202,10 @@
     <Compile Include="Migrations\201504300138520_changeToBool.Designer.cs">
       <DependentUpon>201504300138520_changeToBool.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505010339529_Private attribute.cs" />
+    <Compile Include="Migrations\201505010339529_Private attribute.Designer.cs">
+      <DependentUpon>201505010339529_Private attribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -353,6 +357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201504300138520_changeToBool.resx">
       <DependentUpon>201504300138520_changeToBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505010339529_Private attribute.resx">
+      <DependentUpon>201505010339529_Private attribute.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

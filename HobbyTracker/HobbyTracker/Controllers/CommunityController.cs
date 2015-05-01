@@ -20,15 +20,23 @@ namespace HobbyTracker.Controllers
         //{
             //return View(db.Communities.ToList());
         //}
-        
-        public ActionResult Index(int? id, int? commentID, int? communityID)
+
+        public ActionResult Index(int? id, int? commentID, int? communityID, string sortOrder, string searchString)
         {
             var viewModel = new CommunityIndexData();
-            viewModel.Communities = db.Communities
-                .OrderBy(i => i.CommunityName);
+            viewModel.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
+
+            switch (sortOrder)
+            {
+                case "Name_desc":
+                    viewModel.Communities = db.Communities.OrderByDescending(i => i.CommunityName);
+                    break;
+                default:
+                    viewModel.Communities = db.Communities.OrderBy(i => i.CommunityName);
+                    break;
+            }
 
             String CommName = null;
-            
             
             if (id != null)
             {
@@ -54,27 +62,19 @@ namespace HobbyTracker.Controllers
                             select n.DescriptionField).First(); //always returns an array, so take the first element
                 ViewBag.CommunityID = id.Value;
                 ViewBag.DescriptionField = CommDesc;
-
-  
             }
             
-
             if (commentID != null)
             {
                 ViewBag.CommentID = commentID.Value;
             }
-
 
             if(communityID != null)
             {
                 ViewBag.CommunityID = communityID.Value;
             }
 
-
             return View(viewModel);
-
-
-
         }
 
         // GET: Community/Details/5

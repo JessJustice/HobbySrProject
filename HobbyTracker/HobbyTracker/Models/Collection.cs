@@ -15,7 +15,7 @@ namespace HobbyTracker.Models
         public string CollectionName { get; set; }
         // [Display(Name = "Genre")]
         public int GenreID { get; set; }
-
+        public bool Private { get; set; }
 
         public virtual Genre Genre { get; set; }
         public virtual ICollection<CollectionItem> CollectionItems { get; set; }

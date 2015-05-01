@@ -25,12 +25,10 @@ namespace HobbyTracker.Controllers
             var items = from s in db.Items
                         select s;
 
-
             if (!String.IsNullOrEmpty(searchString))
             {
                   items = items.Where(s => s.Genre.GenreName.Contains(searchString));
             }
-
 
             switch (sortOrder)
             {
@@ -43,7 +41,6 @@ namespace HobbyTracker.Controllers
                 case "desc_desc":
                     items = items.OrderByDescending(s => s.ItemDesc);
                     break;
-
                 case "Genre":
                     items = items.OrderBy(s => s.GenreID);
                     break;

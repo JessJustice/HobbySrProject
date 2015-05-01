@@ -18,10 +18,11 @@
 </p>
 <table class="table table-condensed table-hover">
     <tr>
-        <th>Communities</th>
+        <th>@Html.ActionLink("Community", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</th>
         <th>Main Page</th>
         <th></th>
     </tr>
+
 
     @foreach (var item in Model.Communities)
     {
@@ -31,9 +32,8 @@
             selectedRow = "success";
         }
         <tr class="@selectedRow">
-            <td>
-                
-                <!--@Html.DisplayFor(modelItem => item.CommunityName) Commented out -->
+            <td>        
+                <!--@Html.DisplayFor(modelItem => item.CommunityName) commented out-->
 
                 <!--make the community name that is displayed a link so that when clicked, the comments show up instead
                     of clicking a "select" link. Looks better this way.-->
