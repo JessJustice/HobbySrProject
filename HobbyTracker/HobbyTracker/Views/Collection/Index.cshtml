@@ -26,7 +26,19 @@
 
             <table class="table table-hover">
                 <tr>
+               
                     <th>
+                        @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreSortParm})
+                    </th>
+                    <th>
+                        @Html.ActionLink("Private?", "Index", new { sortOrder = ViewBag.PrivateSortParm })
+                    </th>
+                    <th></th>
+                </tr>
+                    @*<th>
                         Name
                     </th>
                     <th>
@@ -36,7 +48,7 @@
                         Private?
                     </th>
                     <th></th>
-                </tr>
+                </tr>*@
 
                 @foreach (var item in Model.Collections)
                 {
@@ -47,10 +59,10 @@
                     }
                     <tr class="@selectedRow">
                         <td>
-                            @Html.ActionLink(item.CollectionName, "Index", new { collectionID = item.CollectionID })
+                          @Html.ActionLink(item.CollectionName, "Index", new { collectionID = item.CollectionID })
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Genre.GenreName)
+                          @Html.DisplayFor(modelItem => item.Genre.GenreName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Private)
@@ -88,10 +100,12 @@
                             <td>
                                 @item.Note
                             </td>
-                           
                             <td>
-                                @item.IOwn
+                                @Html.DisplayFor(modelItem => item.IOwn)
                             </td>
+                            @*<td>
+                                @item.IOwn
+                            </td>*@
                             <td>
                                 @Html.ActionLink("Delete this Item", "Delete", "CollectionItem", new { id = item.CollectionItemID }, null)
                             </td>

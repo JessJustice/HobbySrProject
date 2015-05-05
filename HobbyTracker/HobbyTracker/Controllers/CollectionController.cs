@@ -27,11 +27,21 @@ namespace HobbyTracker.Controllers
             manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
         }
         // GET: Collection
-        // FOr My collections
-        public ActionResult Index(int? collectionID, bool filterByUser = true)
+        // FOr My collections  if you make changes here, look to see if you need to make them index2 as well
+        public ActionResult Index(string sortOrder, int? collectionID, bool filterByUser = true )
         {
-            string key = null;
+            var collections = new List<Collection>();
 
+            collections = db.Collections
+                .Include(s => s.Genre)
+              //  .Include(s => s.Private)
+              //  .Include(s => s.CollectionName)
+                .ToList();
+            //collections = from s in db.Collections
+            //             select s;
+
+            string key = null;
+            
             if (User.Identity.GetUserId() != null) //If the current user has an ID
             {
                 key = User.Identity.GetUserId(); //The ID of the current user becomes the key
@@ -42,14 +52,21 @@ namespace HobbyTracker.Controllers
                 }
 
             // Create a view model for the related information that needs to be displayed on this page
-            var viewModel = new CollectionIndexData();
+            var viewModel = new CollectionIndexData
+            {
+                Collections = collections.ToList(),
+               // TotalPages = totalPages
+            };
+
             
             // Set up the view model to include some related data
             viewModel.Collections = db.Collections
                 .Include(c => c.User)
                 .Include(c => c.Genre) // The genre of the collection
-                .OrderBy(c => c.CollectionID); // Order by the ID number of the collection
+                .OrderBy(c => c.CollectionID) // Order by the ID number of the collection
+                .ToList();
 
+     
             if(filterByUser) viewModel.Collections = viewModel.Collections.Where(c => c.User.Id == key); // Show only the collections
 
             if (collectionID != null) // Show the collections for the specified user
@@ -58,12 +75,45 @@ namespace HobbyTracker.Controllers
                 viewModel.CollectionItems = viewModel.Collections.Where(
                     c => c.CollectionID == collectionID).Single().CollectionItems; // Show the items in the collection
             }
-            //viewModel.Collections = viewModel.Users.Where(u => u.UserName == userName).Single().Collections;
+
+            //*************************************************
+            //Top half sorting
+            //*************************************************
+   
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
+            ViewBag.PrivateSortParm = sortOrder == "Private" ? "private_dec" : "Private";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    collections = collections.OrderByDescending(s => s.CollectionName).ToList();
+                    break;
+                case "Genre":
+                    collections = collections.OrderBy(s => s.GenreID).ToList();
+                    break;
+                case "genre_desc":
+                    collections = collections.OrderByDescending(s => s.GenreID).ToList();
+                    break;
+                case "Private":
+                    collections = collections.OrderBy(s => s.Private).ToList();
+                    break;
+                case "private_desc":
+                    collections = collections.OrderByDescending(s => s.Private).ToList();
+                    break;
+                default:
+                    collections = collections.OrderBy(s => s.CollectionName).ToList();
+                    break;
+            }
+       
             return View(viewModel);
         }
 
+
+
+  
         // GET: Collection
-        //For other collections
+        //For other collections  if you make changes here, check to see if you need to make changes for index as well!!
         public ActionResult Index2(int? collectionID, bool privacy = true)
         {
             // Create a view model for the related information that needs to be displayed on this page
