@@ -33,16 +33,14 @@ namespace HobbyTracker.Controllers
 
         // GET: CollectionItem/Details/5
         [Authorize]
-        public ActionResult Details(int? id)
+        public ActionResult Details(string sortOrder, string search, int? id)
         {
-            var something = id;
-           // //ViewBag.CollectionID = collectionId.Value;
-           //var collection = db.Collections.Where(
-           //     c => c.CollectionID == collectionId).Single().CollectionItems;
-
-           var collection2 = from s in db.CollectionItems
+            
+         
+           var collectionItems = from s in db.CollectionItems
                              where s.CollectionID == id
                              select s;
+           
 
             if (id == null)
             {
@@ -53,16 +51,52 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
-            return View(collection2.ToList());
+
+            if (!String.IsNullOrEmpty(search))
+            {
+              //  collectionItems = collectionItems.Where(s => s..Contains(search));
+            }
+
+            //Sorting
+         
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DescSortParm = sortOrder == "Description" ? "description_desc" : "Description";
+            ViewBag.NoteSortParm = sortOrder == "Note" ? "note_desc" : "Note";
+            ViewBag.OwnSortParm = sortOrder == "Own" ? "own_desc" : "Own";
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    collectionItems = collectionItems.OrderByDescending(s => s.Item.ItemName);
+                    break;
+                case "Descritpion":
+                    collectionItems = collectionItems.OrderBy(s => s.Item.ItemDesc);
+                    break;
+                case "description_desc":
+                    collectionItems = collectionItems.OrderByDescending(s => s.Item.ItemDesc);
+                    break;
+                case "Note":
+                    collectionItems = collectionItems.OrderBy(s => s.Note);
+                    break;
+                case "note_desc":
+                    collectionItems = collectionItems.OrderByDescending(s => s.Note);
+                    break;
+                case "Own":
+                    collectionItems = collectionItems.OrderBy(s => s.IOwn);
+                    break;
+                case "own_desc":
+                    collectionItems = collectionItems.OrderByDescending(s => s.IOwn);
+                    break;
+                default:
+                    collectionItems = collectionItems.OrderBy(s => s.Item.ItemName);
+                    break;
+            }
+            return View(collectionItems.ToList());
         }
 
         public ActionResult Details2(int? id)
         {
-            var something = id;
-            // //ViewBag.CollectionID = collectionId.Value;
-            //var collection = db.Collections.Where(
-            //     c => c.CollectionID == collectionId).Single().CollectionItems;
-
+           
             var collection2 = from s in db.CollectionItems
                               where s.CollectionID == id
                               select s;

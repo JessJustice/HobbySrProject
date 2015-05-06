@@ -60,7 +60,7 @@ namespace HobbyTracker.Controllers
          
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
-            ViewBag.PrivateSortParm = sortOrder == "Private" ? "private_dec" : "Private";
+            ViewBag.PrivateSortParm = sortOrder == "Private" ? "private_desc" : "Private";
 
             switch (sortOrder)
             {
