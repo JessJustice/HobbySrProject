@@ -46,7 +46,9 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Genre.GenreName)
                         </td>
-
+                        <td>
+                        @Html.ActionLink("Details", "Details2", "CollectionItem", new { id = item.CollectionID }, new { })
+                            </td>
                     </tr>
                 }
             </table>
@@ -69,7 +71,7 @@
                             <td>
                                 @item.Item.ItemDesc
                             </td>
-
+                            
 
                         </tr>
                     }

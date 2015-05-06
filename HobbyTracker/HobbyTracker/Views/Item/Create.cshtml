@@ -33,11 +33,13 @@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.ItemDesc, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10 " >
+                        <div class="col-md-10 id=" note" name="note" class="hasHelp validate " placeholder="" maxlength="1000" aria-required="false" aria-describedby="counterContainer" rows="1" style="height: 46px; margin: 0px 0px 15px; width: 600px;" ">
                             @Html.EditorFor(model => model.ItemDesc, new { htmlAttributes = new { @class = "form-control"} })
                             @Html.ValidationMessageFor(model => model.ItemDesc, "", new { @class = "text-danger" })
                         </div>
                     </div>
+
+                    <textarea id="note" name="note" class="hasHelp validate " placeholder="" maxlength="1000" aria-required="false" aria-describedby="counterContainer" rows="1" style="height: 46px; margin: 0px 0px 15px; width: 600px;"></textarea>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.GenreID, "Genre:", htmlAttributes: new { @class = "control-label col-md-2" })

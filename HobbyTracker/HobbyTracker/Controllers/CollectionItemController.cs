@@ -35,6 +35,15 @@ namespace HobbyTracker.Controllers
         [Authorize]
         public ActionResult Details(int? id)
         {
+            var something = id;
+           // //ViewBag.CollectionID = collectionId.Value;
+           //var collection = db.Collections.Where(
+           //     c => c.CollectionID == collectionId).Single().CollectionItems;
+
+           var collection2 = from s in db.CollectionItems
+                             where s.CollectionID == id
+                             select s;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -44,7 +53,30 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
-            return View(collectionItem);
+            return View(collection2.ToList());
+        }
+
+        public ActionResult Details2(int? id)
+        {
+            var something = id;
+            // //ViewBag.CollectionID = collectionId.Value;
+            //var collection = db.Collections.Where(
+            //     c => c.CollectionID == collectionId).Single().CollectionItems;
+
+            var collection2 = from s in db.CollectionItems
+                              where s.CollectionID == id
+                              select s;
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CollectionItem collectionItem = db.CollectionItems.Find(id);
+            if (collectionItem == null)
+            {
+                return HttpNotFound();
+            }
+            return View(collection2.ToList());
         }
 
         // GET: CollectionItem/Create   For adding items from select lists

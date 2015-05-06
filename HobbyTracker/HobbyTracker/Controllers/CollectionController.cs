@@ -30,15 +30,7 @@ namespace HobbyTracker.Controllers
         // FOr My collections  if you make changes here, look to see if you need to make them index2 as well
         public ActionResult Index(string sortOrder, int? collectionID, bool filterByUser = true )
         {
-            var collections = new List<Collection>();
-
-            collections = db.Collections
-                .Include(s => s.Genre)
-              //  .Include(s => s.Private)
-              //  .Include(s => s.CollectionName)
-                .ToList();
-            //collections = from s in db.Collections
-            //             select s;
+          
 
             string key = null;
             
@@ -51,34 +43,37 @@ namespace HobbyTracker.Controllers
                     return Redirect("Account/Register");
                 }
 
-            // Create a view model for the related information that needs to be displayed on this page
-            var viewModel = new CollectionIndexData
-            {
-                Collections = collections.ToList(),
-               // TotalPages = totalPages
-            };
+            var collections = from s in db.Collections
+                              select s;
+         
 
             
             // Set up the view model to include some related data
-            viewModel.Collections = db.Collections
-                .Include(c => c.User)
-                .Include(c => c.Genre) // The genre of the collection
-                .OrderBy(c => c.CollectionID) // Order by the ID number of the collection
-                .ToList();
+            //var collections2 = new List<Collection>();
+            //collections2 = db.Collections
+            //    .Include(c => c.User)
+            //    .Include(c => c.Genre) // The genre of the collection
+            //    .OrderBy(c => c.CollectionID) // Order by the ID number of the collection
+            //    .ToList();
 
-     
-            if(filterByUser) viewModel.Collections = viewModel.Collections.Where(c => c.User.Id == key); // Show only the collections
+            //var collections3 = from a in db.Collections
+            //                   selec
 
-            if (collectionID != null) // Show the collections for the specified user
-            {
-                ViewBag.CollectionID = collectionID.Value;
-                viewModel.CollectionItems = viewModel.Collections.Where(
-                    c => c.CollectionID == collectionID).Single().CollectionItems; // Show the items in the collection
-            }
+            if (filterByUser) collections = collections.Where(c => c.User.Id == key); // Show only the collections
+
+           
 
             //*************************************************
             //Top half sorting
             //*************************************************
+            //var collections = new List<Collection>();
+
+            //collections = db.Collections
+            //    .Include(s => s.Genre)
+            //    //  .Include(s => s.Private)
+            //    //  .Include(s => s.CollectionName)
+            //    .ToList();
+            
    
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
@@ -87,26 +82,26 @@ namespace HobbyTracker.Controllers
             switch (sortOrder)
             {
                 case "name_desc":
-                    collections = collections.OrderByDescending(s => s.CollectionName).ToList();
+                    collections = collections.OrderByDescending(s => s.CollectionName);
                     break;
                 case "Genre":
-                    collections = collections.OrderBy(s => s.GenreID).ToList();
+                    collections = collections.OrderBy(s => s.GenreID);
                     break;
                 case "genre_desc":
-                    collections = collections.OrderByDescending(s => s.GenreID).ToList();
+                    collections = collections.OrderByDescending(s => s.GenreID);
                     break;
                 case "Private":
-                    collections = collections.OrderBy(s => s.Private).ToList();
+                    collections = collections.OrderBy(s => s.Private);
                     break;
                 case "private_desc":
-                    collections = collections.OrderByDescending(s => s.Private).ToList();
+                    collections = collections.OrderByDescending(s => s.Private);
                     break;
                 default:
-                    collections = collections.OrderBy(s => s.CollectionName).ToList();
+                    collections = collections.OrderBy(s => s.CollectionName);
                     break;
             }
        
-            return View(viewModel);
+            return View(collections.ToList());
         }
 
 
