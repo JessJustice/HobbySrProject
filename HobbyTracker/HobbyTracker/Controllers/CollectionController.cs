@@ -28,7 +28,7 @@ namespace HobbyTracker.Controllers
         }
         // GET: Collection
         // FOr My collections  if you make changes here, look to see if you need to make them index2 as well
-        public ActionResult Index(string sortOrder, int? collectionID, bool filterByUser = true )
+        public ActionResult Index(string sortOrder, string search, int? collectionID, bool filterByUser = true )
         {
           
 
@@ -48,7 +48,11 @@ namespace HobbyTracker.Controllers
          
             if (filterByUser) collections = collections.Where(c => c.User.Id == key); // Show only the collections
 
-           
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                collections = collections.Where(s => s.CollectionName.Contains(search));
+            }
 
             //*************************************************
             // sorting
@@ -88,12 +92,18 @@ namespace HobbyTracker.Controllers
   
         // GET: Collection
         //For other collections  if you make changes here, check to see if you need to make changes for index as well!!
-        public ActionResult Index2(string sortOrder, int? collectionID, bool privacy = true)
+        public ActionResult Index2(string sortOrder, string search, int? collectionID, bool privacy = true)
         {
 
             var collections = from s in db.Collections
                               where s.Private == false
                               select s;
+            
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                collections = collections.Where(s => s.CollectionName.Contains(search));
+            }
         
             //Sorting
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
