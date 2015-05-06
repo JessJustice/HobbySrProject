@@ -92,13 +92,10 @@ namespace HobbyTracker.Controllers
         {
 
             var collections = from s in db.Collections
+                              where s.Private == false
                               select s;
         
-
-
-       //     if (privacy) collections.Collections = collections.Collections.Where(c => c.Private == false);
-
-      
+            //Sorting
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
             ViewBag.PrivateSortParm2= sortOrder == "Private" ? "private_dec" : "Private";
