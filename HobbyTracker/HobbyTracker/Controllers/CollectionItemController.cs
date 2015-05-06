@@ -54,6 +54,8 @@ namespace HobbyTracker.Controllers
 
             if (!String.IsNullOrEmpty(search))
             {
+                collectionItems = collectionItems.Where(s => s.Item.ItemName.Contains(search)
+                    || s.Note.Contains(search) || s.Item.ItemDesc.Contains(search));
               //  collectionItems = collectionItems.Where(s => s..Contains(search));
             }
 
