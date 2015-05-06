@@ -46,35 +46,14 @@ namespace HobbyTracker.Controllers
             var collections = from s in db.Collections
                               select s;
          
-
-            
-            // Set up the view model to include some related data
-            //var collections2 = new List<Collection>();
-            //collections2 = db.Collections
-            //    .Include(c => c.User)
-            //    .Include(c => c.Genre) // The genre of the collection
-            //    .OrderBy(c => c.CollectionID) // Order by the ID number of the collection
-            //    .ToList();
-
-            //var collections3 = from a in db.Collections
-            //                   selec
-
             if (filterByUser) collections = collections.Where(c => c.User.Id == key); // Show only the collections
 
            
 
             //*************************************************
-            //Top half sorting
+            // sorting
             //*************************************************
-            //var collections = new List<Collection>();
-
-            //collections = db.Collections
-            //    .Include(s => s.Genre)
-            //    //  .Include(s => s.Private)
-            //    //  .Include(s => s.CollectionName)
-            //    .ToList();
-            
-   
+         
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
             ViewBag.PrivateSortParm = sortOrder == "Private" ? "private_dec" : "Private";
@@ -109,26 +88,43 @@ namespace HobbyTracker.Controllers
   
         // GET: Collection
         //For other collections  if you make changes here, check to see if you need to make changes for index as well!!
-        public ActionResult Index2(int? collectionID, bool privacy = true)
+        public ActionResult Index2(string sortOrder, int? collectionID, bool privacy = true)
         {
-            // Create a view model for the related information that needs to be displayed on this page
-            var viewModel = new CollectionIndexData();
 
-            // Set up the view model to include some related data
-            viewModel.Collections = db.Collections.Where(c => c.Private == false)
-                .Include(c => c.User)
-                .Include(c => c.Genre) // The genre of the collection
-                .OrderBy(c => c.CollectionID); // Order by the ID number of the collection
+            var collections = from s in db.Collections
+                              select s;
+        
 
-            if (privacy) viewModel.Collections = viewModel.Collections.Where(c => c.Private == false);
 
-            if (collectionID != null) // Show the collections for the specified user
+       //     if (privacy) collections.Collections = collections.Collections.Where(c => c.Private == false);
+
+      
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
+            ViewBag.PrivateSortParm2= sortOrder == "Private" ? "private_dec" : "Private";
+
+            switch (sortOrder)
             {
-                ViewBag.CollectionID = collectionID.Value;
-                viewModel.CollectionItems = viewModel.Collections.Where(
-                    c => c.CollectionID == collectionID).Single().CollectionItems; // Show the items in the collection
+                case "name_desc":
+                    collections = collections.OrderByDescending(s => s.CollectionName);
+                    break;
+                case "Genre":
+                    collections = collections.OrderBy(s => s.GenreID);
+                    break;
+                case "genre_desc":
+                    collections = collections.OrderByDescending(s => s.GenreID);
+                    break;
+                case "Private":
+                    collections = collections.OrderBy(s => s.Private);
+                    break;
+                case "private_desc":
+                    collections = collections.OrderByDescending(s => s.Private);
+                    break;
+                default:
+                    collections = collections.OrderBy(s => s.CollectionName);
+                    break;
             }
-            return View(viewModel);
+            return View(collections.ToList());
         }
 
         // GET: Collection/Details/5

@@ -53,7 +53,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.Genre.GenreName)
         </td>
-   
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ItemID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ItemID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ItemID })
+        </td>*@
     </tr>
 }
 

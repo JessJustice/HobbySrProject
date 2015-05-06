@@ -1,4 +1,4 @@
-﻿@model HobbyTracker.ViewModels.CollectionIndexData
+﻿@model IEnumerable<HobbyTracker.Models.Collection>
 
 @{
     ViewBag.Title = "Collections";
@@ -21,62 +21,34 @@
 
             <h2>All Collections</h2>
 
-            <table class="table">
+            <table class="table table-hover">
                 <tr>
+
                     <th>
-                        Name
+                        @Html.ActionLink("Name", "Index2", new { sortOrder = ViewBag.NameSortParm })
                     </th>
                     <th>
-                        Genre
+                        @Html.ActionLink("Genre", "Index2", new { sortOrder = ViewBag.GenreSortParm })
                     </th>
+                 
                     <th></th>
                 </tr>
 
-                @foreach (var item in Model.Collections)
+
+                @foreach (var item in Model)
                 {
-                    string selectedRow = "";
-                    if (item.CollectionID == ViewBag.CollectionID)
-                    {
-                        selectedRow = "success";
-                    }
-                    <tr class="@selectedRow">
+                    <tr>
                         <td>
-                            @Html.ActionLink(item.CollectionName, "Index2", new { collectionID = item.CollectionID })
+                            @Html.DisplayFor(modelItem => item.CollectionName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.Genre.GenreName)
                         </td>
-                        <td>
-                        @Html.ActionLink("Details", "Details2", "CollectionItem", new { id = item.CollectionID }, new { })
-                            </td>
+                  
                     </tr>
                 }
             </table>
-
-            @if (Model.CollectionItems != null)
-            {
-                <h2>Items in the Selected Collection</h2>
-                <table class="table">
-                    <tr>
-                        <th>Item Name</th>
-                        <th>Description</th>
-                        <th></th>
-                    </tr>
-                    @foreach (var item in Model.CollectionItems)
-                    {
-                        <tr align="center">
-                            <td>
-                                @item.Item.ItemName
-                            </td>
-                            <td>
-                                @item.Item.ItemDesc
-                            </td>
-                            
-
-                        </tr>
-                    }
-                </table>
-            }
+            
             </div>
         </div>
     </body>
