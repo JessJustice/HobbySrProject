@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HobbyTracker.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HobbyTracker.Controllers
 {
@@ -57,6 +59,8 @@ namespace HobbyTracker.Controllers
                 
                //bind comunityID to new comment being made.
                comment.CommunityID = Convert.ToInt32(selectedCommu.ToString());
+               
+               comment.CommentUser = User.Identity.GetUserName();
      
 
                 db.Comments.Add(comment);
@@ -69,33 +73,6 @@ namespace HobbyTracker.Controllers
             return View(comment);
         }
 
-    
-
-        //Original create method....
-        //// GET: Comment/Create
-        //public ActionResult Create()
-        //{
-        //    ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName");
-        //    return View();
-        //}
-
-        //// POST: Comment/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "CommentID,TextInput,CommunityID")] Comment comment)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Comments.Add(comment);
-        //        db.SaveChanges();
-        //        return View("Thanks", comment);
-        //    }
-
-        //    ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", comment.CommunityID);
-        //    return View(comment);
-        //}
 
         // GET: Comment/Edit/5
         public ActionResult Edit(int? id)

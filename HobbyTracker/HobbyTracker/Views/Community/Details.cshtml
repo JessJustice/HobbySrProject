@@ -26,8 +26,12 @@
                 @foreach (var item in Model.Comments)
                 {
                     <tr>
+
                         <td>
                             @item.TextInput
+                        </td>
+                        <td>
+                            @item.CommentUser
                         </td>
                     </tr>
                 }

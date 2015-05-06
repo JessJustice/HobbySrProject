@@ -15,6 +15,7 @@ namespace HobbyTracker.Models
         [DataType(DataType.MultilineText)]
         public string TextInput { get; set; }
         public int CommunityID { get; set;}
+        public string CommentUser { get; set; }
 
         public virtual Community Community { get; set; }
     }

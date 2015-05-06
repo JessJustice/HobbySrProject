@@ -89,6 +89,10 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
+            //pick up CommunID/Name for use in comment create
+            var CommuID = id.Value;
+            TempData["commuID"] = CommuID;
+
             return View(community);
         }
 

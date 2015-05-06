@@ -10,6 +10,15 @@
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
     <hr />
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
+        </div>
+    </div>
+    <p>User name will be visible to others.</p>
+
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
