@@ -243,6 +243,7 @@
     <None Include="Properties\PublishProfiles\HobbyTracker %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker22.pubxml" />
+    <None Include="Properties\PublishProfiles\hobbytrackerbackup.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
