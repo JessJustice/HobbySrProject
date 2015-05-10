@@ -78,7 +78,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: Community/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string search, int? id)
         {
             if (id == null)
             {
@@ -92,6 +92,24 @@ namespace HobbyTracker.Controllers
             //pick up CommunID/Name for use in comment create
             var CommuID = id.Value;
             TempData["commuID"] = CommuID;
+
+            //search
+            var user = from s in db.Users
+                       select s;
+            ViewBag.comments = from c in db.Comments
+                               where c.CommunityID == id
+                               select c;
+            
+            if (!String.IsNullOrEmpty(search))
+            {         
+                ViewBag.comments = from c in db.Comments
+                                 where c.CommentUser.Contains(search) && c.CommunityID == id
+                                 select c;
+                var   community2 = db.Communities.Where(c => c.CommunityID == id );
+                return View(community);
+            }
+        
+
 
             return View(community);
         }

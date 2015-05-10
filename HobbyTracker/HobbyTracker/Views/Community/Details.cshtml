@@ -19,11 +19,20 @@
     <h4>Comments:</h4>
     <dl class="dl-horizontal">
         <dd>
+            @using (Html.BeginForm())
+            {
+                <p>
+                    Find commenters by user name: @Html.TextBox("Search")
+                    <input type="submit" value="Search" />
+                </p>
+            }
             <table class="table">
                 <tr>
+                    <th>Comment:</th>
+                    <th>User:</th>
                     <th></th>
                 </tr>
-                @foreach (var item in Model.Comments)
+                @foreach (var item in ViewBag.comments)
                 {
                     <tr>
 
