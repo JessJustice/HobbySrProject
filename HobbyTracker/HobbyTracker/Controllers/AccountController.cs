@@ -57,13 +57,13 @@ namespace HobbyTracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.Email, model.Password);
+                var user = await UserManager.FindAsync(model.UserName, model.Password);
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
                     return RedirectToLocal(returnUrl);
                 }
-                else
+                else 
                 {
                     ModelState.AddModelError("", "Invalid username or password.");
                 }
