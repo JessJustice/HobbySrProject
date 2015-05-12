@@ -96,7 +96,7 @@ namespace HobbyTracker.Controllers
             return View(collectionItems.ToList());
         }
 
-        public ActionResult Details2(int? id)
+        public ActionResult Details2(string sortOrder, string search, int? id)
         {
            
             var collection2 = from s in db.CollectionItems
@@ -112,6 +112,40 @@ namespace HobbyTracker.Controllers
             {
                 return HttpNotFound();
             }
+
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                collection2 = collection2.Where(s => s.Item.ItemName.Contains(search)
+                    || s.Item.ItemDesc.Contains(search));
+  
+            }
+
+            //Sorting
+
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DescSortParm = sortOrder == "Description" ? "description_desc" : "Description";
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    collection2 = collection2.OrderByDescending(s => s.Item.ItemName);
+                    break;
+                case "Descritpion":
+                    collection2 = collection2.OrderBy(s => s.Item.ItemDesc);
+                    break;
+                case "description_desc":
+                    collection2 = collection2.OrderByDescending(s => s.Item.ItemDesc);
+                    break;
+                default:
+                    collection2 = collection2.OrderBy(s => s.Item.ItemName);
+                    break;
+            }
+
+
+
+
             return View(collection2.ToList());
         }
 
