@@ -14,10 +14,10 @@
 </head>
 
 <body>
-    <div class=" panel panel-sucess">
+    <div class=" panel panel-warning">
         <div class="panel-heading text-center"><h2>All Collections Page</h2></div>
         <div class="panel-bady">
-            
+
 
             <h2>All Collections</h2>
             @using (Html.BeginForm())
@@ -37,7 +37,7 @@
                     <th>
                         @Html.ActionLink("Genre", "Index2", new { sortOrder = ViewBag.GenreSortParm })
                     </th>
-                 
+
                     <th></th>
                 </tr>
 
@@ -51,11 +51,13 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Genre.GenreName)
                         </td>
-                  
+                        <td>
+                            @Html.ActionLink("Details", "Details2", "CollectionItem", new { id = item.CollectionID }, new { })
+                        </td>
                     </tr>
                 }
             </table>
-            
-            </div>
+
         </div>
+    </div>
     </body>
