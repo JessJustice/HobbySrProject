@@ -30,7 +30,7 @@
                 <tr>
                     <th>Item Name</th>
                     <th>Description</th>
-                    <th>Notes</th>
+                    @*<th>Notes</th>*@
                     @*<th>I own?</th>*@
                     <th></th>
                 </tr>
@@ -43,9 +43,9 @@
                         <td>
                             @item.Item.ItemDesc
                         </td>
-                        <td>
+                        @*<td>
                             @item.Note
-                        </td>
+                        </td>*@
                         @*<td>
                         @Html.DisplayFor(modelItem => item.IOwn)
                     </td>*@
