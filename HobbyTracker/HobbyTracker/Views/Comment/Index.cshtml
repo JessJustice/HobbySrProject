@@ -4,40 +4,57 @@
     ViewBag.Title = "Comments";
 }
 
-<h2>Comments</h2>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+    <title>Details</title>
+</head>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Community Name
-        </th>
-        <th>
-            Comment
-        </th>
-        <th></th>
-    </tr>
+<body>
+    <div class=" panel panel-warning">
+        <div class="panel-heading text-center"><h2>Comments</h2></div>
+        <div class="panel-bady">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Community.CommunityName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TextInput)
-        </td>
-        <td>
-            @if(User.Identity.Name == "administrator@hobbytracker.com")
-            {
-                @Html.ActionLink("Edit", "Edit", new { id=item.CommentID }) 
-                @Html.ActionLink("Details", "Details", new { id=item.CommentID }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
-            }
-            
-        </td>
-    </tr>
-}
+          
 
-</table>
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table table-hover">
+                <tr>
+                    <th>
+                        Community Name
+                    </th>
+                    <th>
+                        Comment
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Community.CommunityName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TextInput)
+                        </td>
+                        <td>
+                            @if (User.Identity.Name == "administrator@hobbytracker.com")
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.CommentID })
+                                @Html.ActionLink("Details", "Details", new { id = item.CommentID })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CommentID })
+                            }
+
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            </div>
+        </div>
+    </body>
