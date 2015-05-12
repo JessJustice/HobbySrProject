@@ -60,7 +60,7 @@
                             @if (User.Identity.Name == "administrator@hobbytracker.com")
                             {
                                 @Html.ActionLink("Edit", "Edit ", new { id = item.CommunityID })
-                                @Html.ActionLink("Details", "Details ", new { id = item.CommunityID })
+                                @*@Html.ActionLink("Details", "Details ", new { id = item.CommunityID })*@
                                 @Html.ActionLink("Delete", "Delete ", new { id = item.CommunityID })
                             }
                         </td>

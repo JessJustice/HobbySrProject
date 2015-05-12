@@ -78,6 +78,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: Community/Details/5
+        [Authorize]
         public ActionResult Details(string search, int? id)
         {
             if (id == null)
@@ -115,6 +116,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: Community/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -138,6 +140,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: Community/Edit/5
+        [Authorize] 
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -156,6 +159,7 @@ namespace HobbyTracker.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CommunityID,CommunityName,DescriptionField")] Community community)
         {
@@ -169,6 +173,7 @@ namespace HobbyTracker.Controllers
         }
 
         // GET: Community/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -184,6 +189,7 @@ namespace HobbyTracker.Controllers
         }
 
         // POST: Community/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
