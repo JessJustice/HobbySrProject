@@ -60,9 +60,10 @@
                         </td>
                         <td>
                             @*@Html.ActionLink("Add Item", "Create", "CollectionItem", new { id = item.CollectionID }, new { }) |*@
+                            @Html.ActionLink("See Item in My Colletion", "Details", "CollectionItem", new { id = item.CollectionID }, new { })|
                             @Html.ActionLink("Edit", "Edit", new { id = item.CollectionID }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.CollectionID })
-                            @Html.ActionLink("Details", "Details", "CollectionItem", new { id = item.CollectionID }, new { })
+                            
                         </td>
                     </tr>
                 }

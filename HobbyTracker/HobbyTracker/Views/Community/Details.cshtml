@@ -4,75 +4,94 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.CommunityName) Community</h2>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
+    <title>Details</title>
+</head>
 
-<p>
-    Description <br />
-    @Html.DisplayFor(model => model.DescriptionField)
+<body>
+    <div class=" panel panel-warning">
+        <div class="panel-heading text-center"><h2>@Html.DisplayFor(model => model.CommunityName) Community</h2></div>
+        <div class="panel-bady">
 
-</p>
+            
+
+            <p>
+                Description <br />
+                @Html.DisplayFor(model => model.DescriptionField)
+
+            </p>
 
 
-<div>
- 
-    <hr />
-    <h4>Comments:</h4>
-    <dl class="dl-horizontal">
-        <dd>
-            @using (Html.BeginForm())
-            {
-                <p>
-                    Find commenters by user name: @Html.TextBox("Search")
-                    <input type="submit" value="Search" />
-                </p>
-            }
-            <table class="table">
-                <tr>
-                    <th>Comment:</th>
-                    <th>User:</th>
-                    <th></th>
-                </tr>
-                @foreach (var item in ViewBag.comments)
+            <div>
+                @using (Html.BeginForm())
                 {
+                    <p>
+                        Find commenters by user name: @Html.TextBox("Search")
+                        <input type="submit" value="Search" />
+                    </p>
+                }
+                <table class="table table-hover">
                     <tr>
+                        <th>Comment</th>
+                        <th>User</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in ViewBag.comments)
+                    {
+                        <tr>
 
-                        <td>
-                            @item.TextInput
-                        </td>
-                        <td>
-                            @item.CommentUser
-                        </td>
-                    </tr>
-                }
-            </table>
-        </dd>
-    </dl>
-    @Html.ActionLink("Add new comment", "Create", "Comment")
-    <h4>Activities:</h4>
-    <dl class="dl-horizontal">
-        <dd>
-            <table class="table">
-                <tr>
-                    <th></th>
-                </tr>
-                @foreach (var item in Model.Activities)
-                {
-                    <tr>
-                        <td>
-                            @item.ActName
-                        </td>
-                        <td>
-                            @item.Email
-                        </td>
-                        <td>
-                            @item.Phone
-                        </td>
-                    </tr>
-                }
-            </table>
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                            <td>
+                                @item.TextInput
+                            </td>
+                            <td>
+                                @item.CommentUser
+                            </td>
+                        </tr>
+                    }
+                </table>
+                </div>
+
+
+                @Html.ActionLink("Add new comment", "Create", "Comment")
+                </div>
+            </div>
+        </body>
+
+                <body>
+                    <div class=" panel panel-warning">
+                        <div class="panel-heading text-center"><h2>Activities</h2></div>
+                        <div class="panel-bady">
+
+                            <table class="table table-hover">
+                                <tr>
+                                    <th></th>
+                                </tr>
+                                @foreach (var item in Model.Activities)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.ActName
+                                        </td>
+                                        <td>
+                                            @item.Email
+                                        </td>
+                                        <td>
+                                            @item.Phone
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+
+
+
+                            <p>
+                                @Html.ActionLink("Back to List", "Index")
+                            </p>
+                        </div>
+                    </div>
+
+    </body>
