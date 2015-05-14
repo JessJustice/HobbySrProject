@@ -53,7 +53,13 @@
                         </td>
                         <td>
                             @Html.ActionLink("Details", "Details2", "CollectionItem", new { id = item.CollectionID }, new { })
+                            @if (User.Identity.Name == "administrator@hobbytracker.com")
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.CollectionID })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.CollectionID })
+                            }
                         </td>
+                        
                     </tr>
                 }
             </table>
