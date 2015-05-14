@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HobbyTracker.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HobbyTracker.Controllers
 {
@@ -24,6 +26,11 @@ namespace HobbyTracker.Controllers
         // GET: Activity/Details/5
         public ActionResult Details(int? id)
         {
+            if (User.Identity.GetUserId() != null) //If the current user has an ID
+            {
+                key = User.Identity.GetUserId(); //The ID of the current user becomes the key
+            }
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
