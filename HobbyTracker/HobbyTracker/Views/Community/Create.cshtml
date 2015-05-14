@@ -38,6 +38,12 @@
                 @Html.EditorFor(model => model.DescriptionField, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DescriptionField, "", new { @class = "text-danger" })
             </div>
+
+            @Html.LabelFor(model => model.CommunityLoc, htmlAttributes: new { @class = "control-label col-md-3"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CommunityLoc, new { htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.DescriptionField, "", new { @class = "text-danger" })
+            </div>
         </div>
 
         <div class="form-group">

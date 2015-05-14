@@ -127,7 +127,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CommunityID,CommunityName,DescriptionField")] Community community)
+        public ActionResult Create([Bind(Include = "CommunityID,CommunityName,DescriptionField,CommunityLoc")] Community community)
         {
             if (ModelState.IsValid)
             {
@@ -161,7 +161,7 @@ namespace HobbyTracker.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CommunityID,CommunityName,DescriptionField")] Community community)
+        public ActionResult Edit([Bind(Include = "CommunityID,CommunityName,DescriptionField,CommunityLoc")] Community community)
         {
             if (ModelState.IsValid)
             {

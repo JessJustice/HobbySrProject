@@ -20,11 +20,15 @@
             
 
             <p>
-                Description <br />
+                Description: <br />
                 @Html.DisplayFor(model => model.DescriptionField)
 
             </p>
 
+            <p>
+                Location: <br />
+                @Html.DisplayFor(model => model.CommunityLoc)
+            </p>
 
             <div>
                 @using (Html.BeginForm())
