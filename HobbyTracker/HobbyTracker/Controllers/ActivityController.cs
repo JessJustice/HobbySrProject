@@ -19,6 +19,13 @@ namespace HobbyTracker.Controllers
         // GET: Activity
         public ActionResult Index()
         {
+            string key = null;
+
+            if (User.Identity.GetUserId() != null) //If the current user has an ID
+            {
+                key = User.Identity.GetUserId(); //The ID of the current user becomes the key
+            }
+
             var activities = db.Activities.Include(c => c.Community);
             return View(activities.ToList());
         }
@@ -26,15 +33,19 @@ namespace HobbyTracker.Controllers
         // GET: Activity/Details/5
         public ActionResult Details(int? id)
         {
-            if (User.Identity.GetUserId() != null) //If the current user has an ID
-            {
-                key = User.Identity.GetUserId(); //The ID of the current user becomes the key
-            }
 
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            string key = null;
+
+            if (User.Identity.GetUserId() != null) //If the current user has an ID
+            {
+                key = User.Identity.GetUserId(); //The ID of the current user becomes the key
+            }
+
             Activity activity = db.Activities.Find(id);
             if (activity == null)
             {
@@ -57,7 +68,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID")] Activity activity)
+        public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,Username")] Activity activity)
         {
             if (ModelState.IsValid)
             {
@@ -74,6 +85,7 @@ namespace HobbyTracker.Controllers
         // GET: Activity/Edit/5
         public ActionResult Edit(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

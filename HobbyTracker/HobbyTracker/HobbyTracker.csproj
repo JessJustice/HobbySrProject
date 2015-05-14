@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201505060606126_addCommentUser.Designer.cs">
       <DependentUpon>201505060606126_addCommentUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505140432531_AddsUserNameToActivity.cs" />
+    <Compile Include="Migrations\201505140432531_AddsUserNameToActivity.Designer.cs">
+      <DependentUpon>201505140432531_AddsUserNameToActivity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -371,6 +375,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505060606126_addCommentUser.resx">
       <DependentUpon>201505060606126_addCommentUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505140432531_AddsUserNameToActivity.resx">
+      <DependentUpon>201505140432531_AddsUserNameToActivity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -25,6 +25,8 @@ namespace HobbyTracker.Models
         public bool? WillAttend { get; set; }
         [DisplayName("Community Name")]
         public int CommunityID { get; set; }
+        [DisplayName("Username")]
+        public string UserName { get; set; }
 
         public virtual Community Community { get; set; } //to keep track of which community this activity is a part of
     }
