@@ -35,7 +35,12 @@
 <p>
     @if (User.Identity.Name == Model.UserName)
     {
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ActivityID })
-    @Html.ActionLink("Delete", "Delete", new { id = Model.ActivityID }) };
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ActivityID }) }
+    
+     | 
+        @if (User.Identity.Name == Model.UserName)
+    {
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ActivityID }) }
+
     | @Html.ActionLink("Back to List", "Index")
 </p>
