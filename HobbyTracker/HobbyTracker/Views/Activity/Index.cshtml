@@ -12,35 +12,44 @@
     <title>Index</title>
 </head>
 
-<p>Here is a list of activities that are being hosted. Make sure to RSVP!</p>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table table-hover table-condensed">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ActName)
-        </th>
-        <th>
-        </th>
-        <th></th>
-    </tr>
+<body>
+    <div class=" panel panel-warning">
+        <div class="panel-heading text-center"><h2>Activity</h2></div>
+        <div class="panel-bady">
+            <p>Here is a list of activities that are being hosted. Make sure to RSVP!</p>
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table table-hover table-condensed">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ActName)
+                    </th>
+                    <th>
+                    </th>
+                    <th></th>
+                </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-           @*@Html.DisplayFor(modelItem => item.ActName) *@
-            @Html.ActionLink(item.ActName, "Details", new { id = item.ActivityID })
-        </td>
-        <td>
-        @if (User.Identity.Name == "administrator@hobbytracker.com")
-        {
-            @Html.ActionLink("Edit", "Edit", new { id=item.ActivityID }) 
-            @Html.ActionLink("Delete", "Delete", new { id=item.ActivityID })
-        }
-            
-        </td>
-    </tr>
-}
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.ActName) *@
+                            @Html.ActionLink(item.ActName, "Details", new { id = item.ActivityID })
+                        </td>
+                        <td>
+                            @if (User.Identity.Name == "administrator@hobbytracker.com")
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ActivityID })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.ActivityID })
+                            }
 
-</table>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+            </div>
+        </div>
+    </body>
