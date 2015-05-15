@@ -132,7 +132,7 @@ namespace HobbyTracker.Controllers
                 case "name_desc":
                     collection2 = collection2.OrderByDescending(s => s.Item.ItemName);
                     break;
-                case "Descritpion":
+                case "Description":
                     collection2 = collection2.OrderBy(s => s.Item.ItemDesc);
                     break;
                 case "description_desc":
@@ -142,9 +142,6 @@ namespace HobbyTracker.Controllers
                     collection2 = collection2.OrderBy(s => s.Item.ItemName);
                     break;
             }
-
-
-
 
             return View(collection2.ToList());
         }
