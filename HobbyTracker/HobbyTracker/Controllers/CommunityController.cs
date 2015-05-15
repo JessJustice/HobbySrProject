@@ -41,7 +41,7 @@ namespace HobbyTracker.Controllers
             if (id != null)
             {
                 //CommName is the name of the community that is being selected. id.value is the community id
-                CommName = (from n in db.Communities 
+                CommName = (from n in db.Communities
                                   where n.CommunityID == id.Value 
                                   select n.CommunityName).First();
                 ViewBag.CommunityID = id.Value;
