@@ -56,6 +56,7 @@
                         </div>
                     </div>
 
+                    @*  dont give the option to edit user name. Pulled directly from the controller as the person who is logged in.
                     <div class="form-group">
                         @Html.LabelFor(model => model.UserName, htmlAttributes: new {@class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -63,6 +64,8 @@
                             @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger"})
                         </div>
                     </div>
+
+                        *@
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.WillAttend, htmlAttributes: new { @class = "control-label col-md-2" })

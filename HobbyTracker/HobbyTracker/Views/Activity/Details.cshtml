@@ -33,7 +33,7 @@
     </dl>
 </div>
 <p>
-    @if (User.Identity.Name == Model.UserName)
+    @if (User.Identity.Name == Model.UserName) //let the owner edit/delete their own activity
     {
     @Html.ActionLink("Edit", "Edit", new { id = Model.ActivityID }) }
     

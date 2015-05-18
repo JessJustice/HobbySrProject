@@ -70,6 +70,27 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,Username")] Activity activity)
         {
+
+            //get the current user name
+            string key = null;
+            if(User.Identity.GetUserId() == null)
+            {
+                key = User.Identity.GetUserId();
+            }
+            else
+            {
+                return Redirect("Account/Register");
+            }
+
+
+            var userName = (from s in db.Users
+                           where s.Id == key
+                           select s.UserName).First(); // only one thing in the list so pull the first thing
+
+
+            activity.UserName = userName;
+            //done getting user name
+
             if (ModelState.IsValid)
             {
                 db.Activities.Add(activity);
