@@ -247,7 +247,9 @@
     <Content Include="images\HobbyTrackerLogo.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\hobbytester %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\hobbytester.pubxml" />
+    <None Include="Properties\PublishProfiles\hobbytester2.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker.pubxml" />
     <None Include="Properties\PublishProfiles\HobbyTracker22.pubxml" />

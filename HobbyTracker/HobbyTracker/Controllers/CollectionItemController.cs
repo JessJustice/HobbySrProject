@@ -330,7 +330,7 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note,IOwn")] CollectionItem collectionItem)
+        public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID, ItemID, Note,IOwn")] CollectionItem collectionItem)
         {
             //This is a wierd instance!!!! collectionItem is not holding its values, so this is a hack around. Jess
             var holdNote = collectionItem.Note;

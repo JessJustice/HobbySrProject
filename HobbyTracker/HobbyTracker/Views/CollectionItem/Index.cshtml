@@ -17,6 +17,7 @@
 
 <h2>Add Items to Collections</h2>
 
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -47,7 +48,7 @@
         <td>
            @if (Request.IsAuthenticated)
            {
-            @Html.ActionLink("Edit", "Edit", new { id = item.CollectionItemID })
+            @Html.ActionLink("Edit", "Edit", "CollectionItem", new { id = item.CollectionItemID })
            }
             @if (Request.IsAuthenticated)
             {
