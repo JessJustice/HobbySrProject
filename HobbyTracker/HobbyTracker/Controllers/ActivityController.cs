@@ -70,7 +70,7 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,Username")] Activity activity)
         {
-
+            /*
             //get the current user name
             string key = null;
             if(User.Identity.GetUserId() == null)
@@ -90,7 +90,7 @@ namespace HobbyTracker.Controllers
 
             activity.UserName = userName;
             //done getting user name
-
+            */
             if (ModelState.IsValid)
             {
                 db.Activities.Add(activity);

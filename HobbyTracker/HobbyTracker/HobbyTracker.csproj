@@ -218,6 +218,10 @@
     <Compile Include="Migrations\201505142135395_ActivityModelEdit.Designer.cs">
       <DependentUpon>201505142135395_ActivityModelEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505181855213_CommunityFix.cs" />
+    <Compile Include="Migrations\201505181855213_CommunityFix.Designer.cs">
+      <DependentUpon>201505181855213_CommunityFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -387,6 +391,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505142135395_ActivityModelEdit.resx">
       <DependentUpon>201505142135395_ActivityModelEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505181855213_CommunityFix.resx">
+      <DependentUpon>201505181855213_CommunityFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
