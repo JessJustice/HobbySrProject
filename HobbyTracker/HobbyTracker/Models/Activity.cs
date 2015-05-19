@@ -13,15 +13,8 @@ namespace HobbyTracker.Models
         [Required(ErrorMessage = "Please enter your activity name")]
         public string ActName { get; set; }
 
-        /*  Dont need this any more because The email address for the activity is now being pulled automatically below.
-        [Required(ErrorMessage = "Please enter your email address")]
-        [RegularExpression(".+\\@.+\\..+",
-          ErrorMessage = "Please enter a valid email address")]
-        [DisplayName("Email Address")]
-        public string Email { get; set; } 
-         */
-
-
+        [RegularExpression(".+\\-.+\\-.+",
+          ErrorMessage = "Please enter a valid phone number")]
         [Required(ErrorMessage = "Please enter your phone number")]
         [DisplayName("Phone Number")]
         public string Phone { get; set; }
