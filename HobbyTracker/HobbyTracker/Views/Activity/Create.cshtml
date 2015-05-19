@@ -52,6 +52,7 @@
                         @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            <p class="help-block">xxx-xxx-xxxx</p>
                             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                         </div>
                     </div>
