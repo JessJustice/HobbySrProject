@@ -70,10 +70,10 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,Username")] Activity activity)
         {
-            /*
+            
             //get the current user name
             string key = null;
-            if(User.Identity.GetUserId() == null)
+            if(User.Identity.GetUserId() != null) //this needed to be != instead of ==
             {
                 key = User.Identity.GetUserId();
             }
@@ -83,16 +83,17 @@ namespace HobbyTracker.Controllers
             }
 
 
-            var userName = (from s in db.Users
+            var user = (from s in db.Users
                            where s.Id == key
-                           select s.UserName).First(); // only one thing in the list so pull the first thing
+                           select s).First(); // only one thing in the list so pull the first thing
 
 
-            activity.UserName = userName;
+            activity.UserName = user.UserName;
             //done getting user name
-            */
+            
             if (ModelState.IsValid)
             {
+
                 db.Activities.Add(activity);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -126,15 +127,27 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID")] Activity activity)
+        public ActionResult Edit([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,UserName,Community")] Activity activity)
         {
+            //to reattach community to activity, it gets lost in the shuffle somehow.
+            var key = activity.CommunityID;
+            Community findCommun = (from s in db.Communities
+                            where s.CommunityID == key
+                            select s).First(); // only one thing in the list so pull the first thing
+            activity.Community = findCommun;
+            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", activity.CommunityID);
+            if (activity.UserName == null)
+            {
+                activity.UserName = "administrator@hobbytracker.com";
+            }
+
             if (ModelState.IsValid)
             {
                 db.Entry(activity).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", activity.CommunityID);
+            
             return View(activity);
         }
 
