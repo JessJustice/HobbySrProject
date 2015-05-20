@@ -75,7 +75,7 @@ namespace HobbyTracker.Controllers
             string key = null;
             if(User.Identity.GetUserId() != null) //this needed to be != instead of ==
             {
-                key = User.Identity.GetUserId();
+                key = User.Identity.GetUserId(); 
             }
             else
             {
@@ -89,6 +89,7 @@ namespace HobbyTracker.Controllers
 
 
             activity.UserName = user.UserName;
+            activity.Email = user.Email;
             //done getting user name
             
             if (ModelState.IsValid)

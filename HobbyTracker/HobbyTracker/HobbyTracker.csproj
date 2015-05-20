@@ -222,6 +222,10 @@
     <Compile Include="Migrations\201505181855213_CommunityFix.Designer.cs">
       <DependentUpon>201505181855213_CommunityFix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505200829141_fixActivityEmail.cs" />
+    <Compile Include="Migrations\201505200829141_fixActivityEmail.Designer.cs">
+      <DependentUpon>201505200829141_fixActivityEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -394,6 +398,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505181855213_CommunityFix.resx">
       <DependentUpon>201505181855213_CommunityFix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505200829141_fixActivityEmail.resx">
+      <DependentUpon>201505200829141_fixActivityEmail.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

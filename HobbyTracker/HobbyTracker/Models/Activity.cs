@@ -27,13 +27,9 @@ namespace HobbyTracker.Models
         public string UserName { get; set; }
 
         /*pull the email for the activity automatically so the user cant change it */
-        public string Email
-        {
-            get
-            {
-                return System.Web.HttpContext.Current.User.Identity.Name;
-            }
-        }
+        public string Email {get; set;}
+            
+        
 
         public virtual Community Community { get; set; } //to keep track of which community this activity is a part of
     }
