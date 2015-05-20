@@ -127,14 +127,9 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,UserName,Community")] Activity activity)
+        public ActionResult Edit([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,UserName")] Activity activity)
         {
-            //to reattach community to activity, it gets lost in the shuffle somehow.
-            var key = activity.CommunityID;
-            Community findCommun = (from s in db.Communities
-                            where s.CommunityID == key
-                            select s).First(); // only one thing in the list so pull the first thing
-            activity.Community = findCommun;
+      
             ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", activity.CommunityID);
             if (activity.UserName == null)
             {
