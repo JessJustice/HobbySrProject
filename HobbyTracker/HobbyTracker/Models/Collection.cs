@@ -12,6 +12,7 @@ namespace HobbyTracker.Models
     {
         public int CollectionID { get; set; }
         [Display(Name = "Collection")]
+        [Required]
         public string CollectionName { get; set; }
         // [Display(Name = "Genre")]
         public int GenreID { get; set; }

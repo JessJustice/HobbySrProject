@@ -226,6 +226,10 @@
     <Compile Include="Migrations\201505200829141_fixActivityEmail.Designer.cs">
       <DependentUpon>201505200829141_fixActivityEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505200840101_addRequiredTags.cs" />
+    <Compile Include="Migrations\201505200840101_addRequiredTags.Designer.cs">
+      <DependentUpon>201505200840101_addRequiredTags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -401,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505200829141_fixActivityEmail.resx">
       <DependentUpon>201505200829141_fixActivityEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505200840101_addRequiredTags.resx">
+      <DependentUpon>201505200840101_addRequiredTags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -10,7 +10,7 @@ namespace HobbyTracker.Models
     {
         [Key]
         public int CommunityID { get; set; }
-
+        [Required]
         public string CommunityName { get; set; }
         //In community, you can have more than one CommunityComment added to it
 
