@@ -17,11 +17,7 @@ namespace HobbyTracker.Controllers
 
         // GET: Community
         //public ActionResult Index()
-        //{
-            //return View(db.Communities.ToList());
-        //}
-
-        public ActionResult Index(int? id, int? commentID, int? communityID, string sortOrder, string searchString)
+             public ActionResult Index(int? id, int? commentID, int? communityID, string sortOrder, string searchString)
         {
             var viewModel = new CommunityIndexData();
             viewModel.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
@@ -36,33 +32,33 @@ namespace HobbyTracker.Controllers
                     break;
             }
 
-            String CommName = null;
+            //String CommName = null;
             
-            if (id != null)
-            {
-                //CommName is the name of the community that is being selected. id.value is the community id
-                CommName = (from n in db.Communities
-                                  where n.CommunityID == id.Value 
-                                  select n.CommunityName).First();
-                ViewBag.CommunityID = id.Value;
-                ViewBag.CommunityName = CommName;
-                viewModel.Comments = viewModel.Communities.Where(
-                    i => i.CommunityID == id.Value).Single().Comments.Take(5);
+            //if (id != null)
+            //{
+            //    //CommName is the name of the community that is being selected. id.value is the community id
+            //    CommName = (from n in db.Communities
+            //                      where n.CommunityID == id.Value 
+            //                      select n.CommunityName).First();
+            //    ViewBag.CommunityID = id.Value;
+            //    ViewBag.CommunityName = CommName;
+            //    viewModel.Comments = viewModel.Communities.Where(
+            //        i => i.CommunityID == id.Value).Single().Comments.Take(5);
 
-                //pick up CommunID/Name for use in comment create
-                var CommuID = id.Value;
-                TempData["commuID"] = CommuID;
-            }
+            //    //pick up CommunID/Name for use in comment create
+            //    var CommuID = id.Value;
+            //    TempData["commuID"] = CommuID;
+            //}
 
-            String CommDesc = null;
-            if(id != null) // grab the information from the database when it is clicked
-            {
-                CommDesc = (from n in db.Communities
-                            where n.CommunityID == id.Value
-                            select n.DescriptionField).First(); //always returns an array, so take the first element
-                ViewBag.CommunityID = id.Value;
-                ViewBag.DescriptionField = CommDesc;
-            }
+            //String CommDesc = null;
+            //if(id != null) // grab the information from the database when it is clicked
+            //{
+            //    CommDesc = (from n in db.Communities
+            //                where n.CommunityID == id.Value
+            //                select n.DescriptionField).First(); //always returns an array, so take the first element
+            //    ViewBag.CommunityID = id.Value;
+            //    ViewBag.DescriptionField = CommDesc;
+            //}
             
             if (commentID != null)
             {

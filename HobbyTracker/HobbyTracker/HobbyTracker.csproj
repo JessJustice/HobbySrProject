@@ -230,6 +230,10 @@
     <Compile Include="Migrations\201505200840101_addRequiredTags.Designer.cs">
       <DependentUpon>201505200840101_addRequiredTags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201505241800259_deleteWillAttend.cs" />
+    <Compile Include="Migrations\201505241800259_deleteWillAttend.Designer.cs">
+      <DependentUpon>201505241800259_deleteWillAttend.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -408,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505200840101_addRequiredTags.resx">
       <DependentUpon>201505200840101_addRequiredTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505241800259_deleteWillAttend.resx">
+      <DependentUpon>201505241800259_deleteWillAttend.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

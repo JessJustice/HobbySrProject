@@ -68,7 +68,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,Username")] Activity activity)
+        public ActionResult Create([Bind(Include = "ActivityID,ActName,Email,Phone,CommunityID,Username")] Activity activity)
         {
             
             //get the current user name
@@ -128,7 +128,7 @@ namespace HobbyTracker.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ActivityID,ActName,Email,Phone,WillAttend,CommunityID,UserName")] Activity activity)
+        public ActionResult Edit([Bind(Include = "ActivityID,ActName,Email,Phone,CommunityID,UserName")] Activity activity)
         {
       
             ViewBag.CommunityID = new SelectList(db.Communities, "CommunityID", "CommunityName", activity.CommunityID);

@@ -18,9 +18,9 @@ namespace HobbyTracker.Models
         [Required(ErrorMessage = "Please enter your phone number")]
         [DisplayName("Phone Number")]
         public string Phone { get; set; }
-        [DisplayName("Will you attend?")]
-        [Required(ErrorMessage = "Please specify wheter you'll attend")]
-        public bool? WillAttend { get; set; }
+        //[DisplayName("Will you attend?")]
+        //[Required(ErrorMessage = "Please specify wheter you'll attend")]
+        //public bool? WillAttend { get; set; }
         [DisplayName("Community Name")]
         public int CommunityID { get; set; }
         [DisplayName("Username")]

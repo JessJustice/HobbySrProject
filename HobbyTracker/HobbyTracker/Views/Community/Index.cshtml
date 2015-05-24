@@ -28,7 +28,7 @@
             <table class="table table-condensed table-hover">
                 <tr>
                     <th>@Html.ActionLink("Community", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })</th>
-                    <th>Main Page</th>
+                    @*<th>Main Page</th>*@
                     <th></th>
                 </tr>
 
@@ -42,20 +42,20 @@
                     }
                     <tr class="@selectedRow">
                         <td>
-                            <!--@Html.DisplayFor(modelItem => item.CommunityName) commented out-->        
+                            @*@Html.DisplayFor(modelItem => item.CommunityName)*@        
                              <!--make the community name that is dis
                             played a link so that when clicked, the comments show up instead
                                 of clicking a "select" link. Looks better this way.-->
                             @Html.ActionLink(item
-                            .CommunityName, "Index", new { id = item.CommunityID })
-            </td>
+                            .CommunityName, "Details", new { id = item.CommunityID })
+                       </td>
 
-                            <td>
+                         <td>
                         </td>
 
-                        <td>
+                        @*<td>
                             @Html.ActionLink("View Page", "Details", new { id = item.CommunityID })
-                        </td>
+                        </td>*@
 
                         <td>
                             <!--Check to see if logged on user is an administrator. If so, display more editing options-->
@@ -71,7 +71,7 @@
             </table>
 
 
-            @if (Model.Comments != null)
+            @*@if (Model.Comments != null)
             {
                 <h3>Description</h3>
 
@@ -106,9 +106,9 @@
 
                             </td>
                         </tr>
-                    }
-                </table>
-            }
+                    }*@
+                @*</table>
+            }*@
             </div>
         </div>
     </body>

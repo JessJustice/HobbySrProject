@@ -21,7 +21,7 @@
     <title>Thanks</title>
 </head>
 <body>
-    @{
+    @*@{
         try
         {
             WebMail.SmtpServer = "smtp-mail.outlook.com";
@@ -37,11 +37,11 @@
         {
             @:<b> Sorry - we couldn't send the email to confirm your RSVP.</b>
         }
-    }
+    }*@
     <div class="text-center">
         <h2> Thank you, @User.Identity.GetUserName()</h2>
         <div class="lead">    
-                Your comment has been posted. A confirmation has been sent to your email. 
+                Your comment has been posted.
         </div>
 
     </div>
