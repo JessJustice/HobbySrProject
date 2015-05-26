@@ -16,7 +16,7 @@
     <div class=" panel panel-warning">
         <div class="panel-heading text-center"><h2>@Html.DisplayFor(model => model.CommunityName) Community</h2></div>
         <div class="panel-bady">
-
+            @Html.HiddenFor(model => model.CommunityID)
             
 
             <p>
@@ -60,7 +60,9 @@
                 </div>
 
 
-                @Html.ActionLink("Add new comment", "Create", "Comment")
+            @*@Html.ActionLink("Add Item", "Create", "CollectionItem", new { id = item.CollectionID }, new { }) |*@
+
+                @Html.ActionLink("Add new comment", "Create", "Comment", new { id = Model.CommunityID }, new { })
                 </div>
             </div>
         </body>
@@ -89,9 +91,6 @@
                                     </tr>
                                 }
                             </table>
-
-
-
                             <p>
                                 @Html.ActionLink("Back to List", "Index")
                             </p>

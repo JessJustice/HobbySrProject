@@ -21,32 +21,21 @@
     <title>Thanks</title>
 </head>
 <body>
-    @*@{
-        try
-        {
-            WebMail.SmtpServer = "smtp-mail.outlook.com";
-            WebMail.SmtpPort = 587;
-            WebMail.EnableSsl = true;
-            WebMail.UserName = "zhaoqi0904@hotmail.com";
-            WebMail.Password = "xxxx";
-            WebMail.From = "zhaoqi0904@hotmail.cxxom";
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.CommunityID)
 
-            WebMail.Send(@User.Identity.GetUserName(), "Your comment:", Model.TextInput + " is sent to the comment board");
-        }
-        catch (Exception)
-        {
-            @:<b> Sorry - we couldn't send the email to confirm your RSVP.</b>
-        }
-    }*@
+    @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Community.CommunityName)*@
+
     <div class="text-center">
         <h2> Thank you, @User.Identity.GetUserName()</h2>
         <div class="lead">    
                 Your comment has been posted.
         </div>
-
+ 
     </div>
-   
-    @Html.ActionLink("Back to Communities", "Index", "Community")
+    @Html.ActionLink( "Back to Community", "Details", "Community", new { id = Model.CommunityID }, new { }) |
+    @*@Html.ActionLink("Back to Communities", "Index", "Community")*@
 
 </body>
 </html>
