@@ -7,13 +7,13 @@ namespace HobbyTracker.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
-    public sealed partial class fix2 : IMigrationMetadata
+    public sealed partial class fixMigrations : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fix2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(fixMigrations));
         
         string IMigrationMetadata.Id
         {
-            get { return "201504171917394_fix2"; }
+            get { return "201505262224149_fixMigrations"; }
         }
         
         string IMigrationMetadata.Source

@@ -178,61 +178,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201502272326161_fixCollection.cs" />
-    <Compile Include="Migrations\201502272326161_fixCollection.Designer.cs">
-      <DependentUpon>201502272326161_fixCollection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504171917394_fix2.cs" />
-    <Compile Include="Migrations\201504171917394_fix2.Designer.cs">
-      <DependentUpon>201504171917394_fix2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504221738056_activitiesAndCommunities.cs" />
-    <Compile Include="Migrations\201504221738056_activitiesAndCommunities.Designer.cs">
-      <DependentUpon>201504221738056_activitiesAndCommunities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504240154487_addNote.cs" />
-    <Compile Include="Migrations\201504240154487_addNote.Designer.cs">
-      <DependentUpon>201504240154487_addNote.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504292358302_addIOwn.cs" />
-    <Compile Include="Migrations\201504292358302_addIOwn.Designer.cs">
-      <DependentUpon>201504292358302_addIOwn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201504300138520_changeToBool.cs" />
-    <Compile Include="Migrations\201504300138520_changeToBool.Designer.cs">
-      <DependentUpon>201504300138520_changeToBool.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505010339529_Private attribute.cs" />
-    <Compile Include="Migrations\201505010339529_Private attribute.Designer.cs">
-      <DependentUpon>201505010339529_Private attribute.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505060606126_addCommentUser.cs" />
-    <Compile Include="Migrations\201505060606126_addCommentUser.Designer.cs">
-      <DependentUpon>201505060606126_addCommentUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505140432531_AddsUserNameToActivity.cs" />
-    <Compile Include="Migrations\201505140432531_AddsUserNameToActivity.Designer.cs">
-      <DependentUpon>201505140432531_AddsUserNameToActivity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505142135395_ActivityModelEdit.cs" />
-    <Compile Include="Migrations\201505142135395_ActivityModelEdit.Designer.cs">
-      <DependentUpon>201505142135395_ActivityModelEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505181855213_CommunityFix.cs" />
-    <Compile Include="Migrations\201505181855213_CommunityFix.Designer.cs">
-      <DependentUpon>201505181855213_CommunityFix.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505200829141_fixActivityEmail.cs" />
-    <Compile Include="Migrations\201505200829141_fixActivityEmail.Designer.cs">
-      <DependentUpon>201505200829141_fixActivityEmail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505200840101_addRequiredTags.cs" />
-    <Compile Include="Migrations\201505200840101_addRequiredTags.Designer.cs">
-      <DependentUpon>201505200840101_addRequiredTags.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201505241800259_deleteWillAttend.cs" />
-    <Compile Include="Migrations\201505241800259_deleteWillAttend.Designer.cs">
-      <DependentUpon>201505241800259_deleteWillAttend.cs</DependentUpon>
+    <Compile Include="Migrations\201505262224149_fixMigrations.cs" />
+    <Compile Include="Migrations\201505262224149_fixMigrations.Designer.cs">
+      <DependentUpon>201505262224149_fixMigrations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -374,47 +322,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201502272326161_fixCollection.resx">
-      <DependentUpon>201502272326161_fixCollection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504171917394_fix2.resx">
-      <DependentUpon>201504171917394_fix2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504221738056_activitiesAndCommunities.resx">
-      <DependentUpon>201504221738056_activitiesAndCommunities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504240154487_addNote.resx">
-      <DependentUpon>201504240154487_addNote.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504292358302_addIOwn.resx">
-      <DependentUpon>201504292358302_addIOwn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201504300138520_changeToBool.resx">
-      <DependentUpon>201504300138520_changeToBool.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505010339529_Private attribute.resx">
-      <DependentUpon>201505010339529_Private attribute.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505060606126_addCommentUser.resx">
-      <DependentUpon>201505060606126_addCommentUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505140432531_AddsUserNameToActivity.resx">
-      <DependentUpon>201505140432531_AddsUserNameToActivity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505142135395_ActivityModelEdit.resx">
-      <DependentUpon>201505142135395_ActivityModelEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505181855213_CommunityFix.resx">
-      <DependentUpon>201505181855213_CommunityFix.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505200829141_fixActivityEmail.resx">
-      <DependentUpon>201505200829141_fixActivityEmail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505200840101_addRequiredTags.resx">
-      <DependentUpon>201505200840101_addRequiredTags.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201505241800259_deleteWillAttend.resx">
-      <DependentUpon>201505241800259_deleteWillAttend.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201505262224149_fixMigrations.resx">
+      <DependentUpon>201505262224149_fixMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
