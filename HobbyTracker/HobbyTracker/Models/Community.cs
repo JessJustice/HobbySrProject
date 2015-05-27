@@ -17,9 +17,11 @@ namespace HobbyTracker.Models
         public string CommunityLocation { get; set; }
         public string CommunityLoc { get; set; }
 
-        //public string? creator { get; set; }
+        public string CommunityOwner { get; set; }
 
         public string DescriptionField { get; set; }
+
+        public string Email { get; set; }
         
         public virtual ICollection<Comment> Comments { get; set; }
 

@@ -30,6 +30,11 @@
                 @Html.DisplayFor(model => model.CommunityLoc)
             </p>
 
+            <p>
+                Community Owner Email: <br />
+                @Html.DisplayFor(model => model.Email)
+            </p>
+
             <div>
                 @using (Html.BeginForm())
                 {
@@ -96,5 +101,18 @@
                             </p>
                         </div>
                     </div>
+
+                    <p>
+                        @if (User.Identity.Name == Model.Email) //let the owner edit/delete their own activity
+                        {
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.CommunityID }) }
+
+                        |
+                        @if (User.Identity.Name == Model.CommunityOwner)
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = Model.CommunityID }) }
+
+                        | @Html.ActionLink("Back to List", "Index")
+                    </p>
 
     </body>

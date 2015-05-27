@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using HobbyTracker.Models;
 using HobbyTracker.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace HobbyTracker.Controllers
 {
@@ -17,7 +19,7 @@ namespace HobbyTracker.Controllers
 
         // GET: Community
         //public ActionResult Index()
-             public ActionResult Index(int? id, int? commentID, int? communityID, string sortOrder, string searchString)
+        public ActionResult Index(int? id, int? commentID, int? communityID, string sortOrder, string searchString)
         {
             var viewModel = new CommunityIndexData();
             viewModel.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
@@ -125,6 +127,29 @@ namespace HobbyTracker.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CommunityID,CommunityName,DescriptionField,CommunityLoc")] Community community)
         {
+            //get the current user name
+            string key = null;
+            if (User.Identity.GetUserId() != null) //this needed to be != instead of ==
+            {
+                key = User.Identity.GetUserId();
+            }
+            else
+            {
+                return Redirect("Account/Register");
+            }
+
+
+            var user = (from s in db.Users
+                        where s.Id == key
+                        select s).First(); // only one thing in the list so pull the first thing
+
+
+            community.CommunityOwner = user.UserName;
+            community.Email = user.Email;
+            //done getting user name
+            
+
+
             if (ModelState.IsValid)
             {
                 db.Communities.Add(community);
