@@ -16,7 +16,6 @@
         <div class="panel-heading text-center"><h2>Item</h2></div>
         <p>Create a new item to add to one of your collections.</p>
         <div class="panel-bady">
-
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -67,9 +66,6 @@
             </div>
             <div>
                @Html.ActionLink("Create a New Collection", "Create", "Collection")
-            </div>
-            <div>
-                @Html.ActionLink("Create a New Genre", "Create", "Genre")
             </div>
        
 

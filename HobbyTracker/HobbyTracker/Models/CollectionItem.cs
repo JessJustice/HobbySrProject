@@ -10,8 +10,7 @@ namespace HobbyTracker.Models
     public class CollectionItem
     {
         public int CollectionItemID { get; set; }
-        
-        [ForeignKey("Collection")]
+                [ForeignKey("Collection")]
         [Column(Order = 1)]
         public int CollectionID { get; set; }
         
@@ -19,8 +18,6 @@ namespace HobbyTracker.Models
         [Column(Order = 2)]
         public int ItemID { get; set; }
         public String Note { get; set; }
-        [Range(1, 10)]
-        public int Rating { get; set; }
         public bool IOwn { get; set; }
 
         public virtual Collection Collection { get; set; }
