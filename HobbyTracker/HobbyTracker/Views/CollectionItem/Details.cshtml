@@ -9,7 +9,6 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" type="text/css" href="~/Content/styles.css" />
     <title>Details</title>
-    
 </head>
 
 
@@ -19,7 +18,7 @@
         <div class="panel-bady">
 
             <p class="text-danger">
-               
+
                 @Html.ActionLink("Back to My Collections", "Index", "Collection") <br />
                 @Html.ActionLink("Browse Items", "Index", "Item") <br />
                 @Html.ActionLink("Create A New Item", "Create", "Item") <br />
@@ -49,6 +48,9 @@
                     <th>
                         @Html.ActionLink("Own", "Details", new { sortOrder = ViewBag.OwnSortParm })
                     </th>
+                    <th>
+                        @Html.ActionLink("Rating", "Details", new { sortOrder = ViewBag.RatingSortParm })
+                    </th>
                     <th></th>
                 </tr>
 
@@ -69,6 +71,9 @@
                             @Html.DisplayFor(modelItem => item.IOwn)
                         </td>
                         <td>
+                            @Html.DisplayFor(modelItem => item.Rating)
+                        </td>
+                        <td>
                             @Html.ActionLink("Add Item", "Create", "CollectionItem", new { id = item.CollectionID }, new { }) |
                             @Html.ActionLink("Edit", "Edit", "CollectionItem", new { id = item.CollectionItemID }, new { }) |
                             @Html.ActionLink("Delete", "Delete", new { id = item.CollectionID })
@@ -76,8 +81,6 @@
                     </tr>
                 }
             </table>
-
-
         </div>
     </div>
 </body>
