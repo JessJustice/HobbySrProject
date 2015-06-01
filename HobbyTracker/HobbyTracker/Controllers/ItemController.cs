@@ -85,45 +85,59 @@ namespace HobbyTracker.Controllers
         {
             ViewBag.GenreID = new SelectList(db.Genres, "GenreID", "GenreName", item.GenreID);
             var itemName = (from n in db.Items
-                                  select n.ItemName);
+                            select n.ItemName);
             var itemDesc = (from n in db.Items
                             select n.ItemDesc);
             var itemGenre = (from n in db.Items
                              select n.GenreID);
 
-            if(itemName.Contains(item.ItemName) == false || itemDesc.Contains(item.ItemDesc) == false || itemGenre.Contains(item.GenreID) == false){
+            //if(itemName.Contains(item.ItemName) == false || itemDesc.Contains(item.ItemDesc) == false 
+            //    || itemGenre.Contains(item.GenreID) == false){
 
-                var key = User.Identity.GetUserId();
-                var collCheck =  (from s in db.Collections
-                                where s.User.Id == key && s.GenreID == item.GenreID
-                                select s.CollectionID);
-
-                //Trying to use this in error message below, can't figure out how to get a string back
-               // String genName = item.Genre.GenreName.ToString();
-
-            if (ModelState.IsValid)
+            if (itemName.Contains(item.ItemName) == true && itemDesc.Contains(item.ItemDesc) == true
+                && itemGenre.Contains(item.GenreID) == true)
             {
-                db.Items.Add(item);
-                db.SaveChanges();
-          
-                TempData["passItem"] = item;
-                if (collCheck.Any())
-                {
-                    return RedirectToAction("Create2", "CollectionItem"); //, new { name = itemName });
-                }
-                ModelState.AddModelError("", "You don't have a collection of this genre, do you want to create one? After you create a new collection, you can add this item to it.");
-                return View();
-               
-            }
-        }
-            else{
+
                 ModelState.AddModelError("", "The item you are trying to add already exisits.");
                 return View();
             }
+            else
+            {
+
+                var key = User.Identity.GetUserId();
+                var collCheck = (from s in db.Collections
+                                 where s.User.Id == key && s.GenreID == item.GenreID
+                                 select s.CollectionID);
+
+                //Trying to use this in error message below, can't figure out how to get a string back
+                // String genName = item.Genre.GenreName.ToString();
+
+                if (ModelState.IsValid)
+                {
+                    db.Items.Add(item);
+                    db.SaveChanges();
+
+                    TempData["passItem"] = item;
+                    if (collCheck.Any())
+                    {
+                        return RedirectToAction("Create2", "CollectionItem"); //, new { name = itemName });
+                    }
+                    ModelState.AddModelError("", "You don't have a collection of this genre, do you want to create one? After you create a new collection, you can add this item to it.");
+                    return View();
+
+                }
+            }
+            return View();
+        }
+        
+            //else{
+            //    ModelState.AddModelError("", "The item you are trying to add already exisits.");
+            //   
+            //}
                    
             
-            return View(item);
-        }
+        //    return View(item);
+        //}
 
         // GET: Item/Edit/5
         public ActionResult Edit(int? id)

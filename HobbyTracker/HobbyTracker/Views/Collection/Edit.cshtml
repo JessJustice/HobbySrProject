@@ -26,6 +26,7 @@
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.CollectionID)
+            @Html.HiddenFor(model => model.GenreID)
 
             <div class="form-group">
                 @Html.LabelFor(model => model.CollectionName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -48,7 +49,7 @@
                     @Html.LabelFor(model => model.Private, "Private", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Private, null, new { htmlAttributes = new { @class = "text-left"} })
-                        @Html.ValidationMessageFor(model => model.GenreID, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.Private, "", new { @class = "text-danger" })
                         <p class="help-block">Check this box if you want to keep this collection private?</p>
                     </div>
                     
