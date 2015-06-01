@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201505271824413_communityEmail.Designer.cs">
       <DependentUpon>201505271824413_communityEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506011827188_wtf.cs" />
+    <Compile Include="Migrations\201506011827188_wtf.Designer.cs">
+      <DependentUpon>201506011827188_wtf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -331,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201505271824413_communityEmail.resx">
       <DependentUpon>201505271824413_communityEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506011827188_wtf.resx">
+      <DependentUpon>201506011827188_wtf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
