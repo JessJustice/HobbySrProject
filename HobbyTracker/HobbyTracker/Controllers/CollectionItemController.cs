@@ -65,6 +65,7 @@ namespace HobbyTracker.Controllers
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DescSortParm = sortOrder == "Description" ? "description_desc" : "Description";
             ViewBag.NoteSortParm = sortOrder == "Note" ? "note_desc" : "Note";
+            ViewBag.RatingSortParm = sortOrder == "Rating" ? "rating_desc" : "Rating";
             ViewBag.OwnSortParm = sortOrder == "Own" ? "own_desc" : "Own";
             switch (sortOrder)
             {
@@ -82,6 +83,9 @@ namespace HobbyTracker.Controllers
                     break;
                 case "note_desc":
                     collectionItems = collectionItems.OrderByDescending(s => s.Note);
+                    break;
+                case "rating_desc":
+                    collectionItems = collectionItems.OrderByDescending(s => s.Rating);
                     break;
                 case "Own":
                     collectionItems = collectionItems.OrderBy(s => s.IOwn);
