@@ -11,6 +11,7 @@ namespace HobbyTracker.Models
     {
         public int ItemID { get; set; }
         [Display(Name = "Item")]
+        [Required]
         public string ItemName { get; set; }
         [Display(Name = "Description")]
         public string ItemDesc { get; set; }

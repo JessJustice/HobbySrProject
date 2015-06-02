@@ -13,6 +13,7 @@ namespace HobbyTracker.Models
         public int CommentID { get; set; }
 
         [DataType(DataType.MultilineText)]
+        [Required]
         public string TextInput { get; set; }
         public int CommunityID { get; set;}
         public string CommentUser { get; set; }
