@@ -30,8 +30,6 @@ namespace HobbyTracker.Controllers
         // FOr My collections  if you make changes here, look to see if you need to make them index2 as well
         public ActionResult Index(string sortOrder, string search, int? collectionID, bool filterByUser = true )
         {
-          
-
             string key = null;
             
             if (User.Identity.GetUserId() != null) //If the current user has an ID
@@ -47,7 +45,6 @@ namespace HobbyTracker.Controllers
                               select s;
          
             if (filterByUser) collections = collections.Where(c => c.User.Id == key); // Show only the collections
-
 
             if (!String.IsNullOrEmpty(search))
             {
