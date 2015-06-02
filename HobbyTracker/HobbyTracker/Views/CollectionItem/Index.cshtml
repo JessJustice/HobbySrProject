@@ -32,7 +32,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Item.ItemName)
         </th>
-      
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
       
         <th></th>
     </tr>
@@ -44,6 +46,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Item.ItemName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
         </td>
         <td>
            @if (Request.IsAuthenticated)
