@@ -28,11 +28,13 @@
 
 </p>
 
-
+@if (Request.IsAuthenticated == false)
+{
 <div id="getStarted" class="button-collection">
     <!--make a button that links to /controller/action -->
     <input type="button" class="btn btn-info btn-sm" value="Get Started" onclick="window.location.href='/Account/Register'">
 </div>
+}
 
 <br>
 <br>
