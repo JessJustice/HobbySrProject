@@ -178,7 +178,7 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note,IOwn")] CollectionItem collectionItem, int id)
+        public ActionResult Create([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note,IOwn,Rating")] CollectionItem collectionItem, int id)
         {
             // ************** If you make changes here, be sure to check Create2 and Edit for complete change set*********
             var key = User.Identity.GetUserId();
@@ -251,7 +251,7 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create2([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note,IOwn")] CollectionItem collectionItem)
+        public ActionResult Create2([Bind(Include = "CollectionItemID,CollectionID,ItemID,Note,IOwn,Rating")] CollectionItem collectionItem)
         {
             // ************** If you make changes here, be sure to check Create1 and Edit for complete change set*********
            
@@ -330,7 +330,7 @@ namespace HobbyTracker.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID, ItemID, Note,IOwn")] CollectionItem collectionItem)
+        public ActionResult Edit([Bind(Include = "CollectionItemID,CollectionID, ItemID, Note,IOwn,Rating")] CollectionItem collectionItem)
         {
             //This is a wierd instance!!!! collectionItem is not holding its values, so this is a hack around. Jess
             var holdNote = collectionItem.Note;

@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201506020208096_fieldsOfRequired.Designer.cs">
       <DependentUpon>201506020208096_fieldsOfRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201506020313046_Ratings2RatingsBoogaloo.cs" />
+    <Compile Include="Migrations\201506020313046_Ratings2RatingsBoogaloo.Designer.cs">
+      <DependentUpon>201506020313046_Ratings2RatingsBoogaloo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
@@ -338,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201506020208096_fieldsOfRequired.resx">
       <DependentUpon>201506020208096_fieldsOfRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506020313046_Ratings2RatingsBoogaloo.resx">
+      <DependentUpon>201506020313046_Ratings2RatingsBoogaloo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
