@@ -27,7 +27,7 @@ namespace HobbyTracker.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                  items = items.Where(s => s.Genre.GenreName.Contains(searchString));
+                  items = items.Where(s => s.Genre.GenreName.Contains(searchString) || s.ItemDesc.Contains(searchString));
             }
 
             switch (sortOrder)
